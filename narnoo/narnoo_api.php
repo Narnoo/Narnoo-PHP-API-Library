@@ -9,6 +9,7 @@ class NarnooAPI {
 	public $data = array();
 	public $APIresponse;
 	
+	//Add Operators
 	function addNarnooOperator($operator_id) {  
 	 			$method = 'addOperator';
 	 			$this->operator_id = $operator_id;
@@ -20,6 +21,7 @@ class NarnooAPI {
 				
 	 }
 	 
+	 //Delete Operators
 	 function deleteNarnooOperator($operator_id) {  
 	 			$method = 'deleteOperator';
 	 			$this->operator_id = $operator_id;
@@ -29,6 +31,7 @@ class NarnooAPI {
 				
 	 }
 	
+	 //Get Operator Images
 	 function getNarnooImages($operator_id) {  
 	 			$method = 'getImages';
 	 			$this->operator_id = $operator_id;
@@ -39,6 +42,7 @@ class NarnooAPI {
 				return $result;
 	 }
 	 
+	 // Get Operator Album Names
 	  function getNarnooVideos($operator_id) {  
 	 			$method = 'getVideos';
 	 			$this->operator_id = $operator_id;
