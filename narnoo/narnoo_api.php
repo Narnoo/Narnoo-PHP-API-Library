@@ -19,6 +19,7 @@ class NarnooAPI {
 				
 				return $result;
 				
+	
 	 }
 	 
 	 //Delete Operators
@@ -29,6 +30,7 @@ class NarnooAPI {
 				
 				$result = $this->RESTcall($method,$operator_id);
 				
+	
 	 }
 	
 	 //Get Operator Images
@@ -40,6 +42,7 @@ class NarnooAPI {
 				$result = $this->RESTcall($method,$operator_id);
 				
 				return $result;
+	
 	 }
 	 
 	 // Get Operator Album Names
@@ -63,12 +66,15 @@ class NarnooAPI {
 				
 				return $result;
 	
+
 	 }	
 		 	
 		
+		//Make the REST call
 public function RESTcall($method,$operator_id){
 		$data = array('app_key' => app_key, 'secret_key' => secret_key, 'response_type' => response_type, 'action' => $method, 'operator_id' => $operator_id);
 		$xmlUrl = 'http://devapi.narnoo.com/xml.php'; // this link will change once moved to live service.
+		$xmlUrl = 'http://devapi.narnoo.com/xml.php'; // XML feed file/URL
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_VERBOSE, 1);
