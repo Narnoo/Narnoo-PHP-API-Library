@@ -8,7 +8,6 @@ class NarnooAPI {
 	public $result;
 	public $data = array();
 	public $APIresponse;
-	public $save_img;
 	
 	function addNarnooOperator($operator_id) {  
 	 			$method = 'addOperator';
