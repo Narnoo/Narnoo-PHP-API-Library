@@ -19,7 +19,6 @@ class NarnooAPI {
 				$result = $this->RESTcall($method,$operator_id);
 				
 				return $result;
-				//output results Images
 	 }
 	 
 	 function deleteNarnooOperator($operator_id) {  
@@ -29,7 +28,6 @@ class NarnooAPI {
 				
 				$result = $this->RESTcall($method,$operator_id);
 				
-				//output results Images
 	 }
 	
 	 function getNarnooImages($operator_id) {  
@@ -41,7 +39,6 @@ class NarnooAPI {
 				
 				return $result;
 				
-				//output results Images
 	 }
 	 
 	  function getNarnooVideos($operator_id) {  
@@ -51,13 +48,11 @@ class NarnooAPI {
 				
 				$result = $this->RESTcall($method,$operator_id);
 				
-				//output results videos
 	 }	
 		 	
 		
 public function RESTcall($method,$operator_id){
 		$data = array('app_key' => app_key, 'secret_key' => secret_key, 'response_type' => response_type, 'action' => $method, 'operator_id' => $operator_id);
-		$xmlUrl = 'http://devapi.narnoo.com/xml.php'; // XML feed file/URL
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HEADER, 0);
 		curl_setopt($ch, CURLOPT_VERBOSE, 1);
