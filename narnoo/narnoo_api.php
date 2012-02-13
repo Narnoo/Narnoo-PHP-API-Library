@@ -9,7 +9,6 @@ class NarnooAPI {
 	public $data = array();
 	public $APIresponse;
 	public $save_img;
-	public $remoteImg,$img_id;
 	
 	function addNarnooOperator($operator_id) {  
 	 			$method = 'addOperator';
