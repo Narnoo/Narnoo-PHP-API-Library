@@ -46,6 +46,8 @@ class NarnooAPI {
 				$this->RESTcall();
 				
 				$result = $this->RESTcall($method,$operator_id);
+				
+				return $result;
 	
 	 }	
 		 	
