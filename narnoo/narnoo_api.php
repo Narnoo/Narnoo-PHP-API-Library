@@ -43,6 +43,7 @@ class NarnooAPI {
 	 }
 	 
 	 // Get Operator Album Names
+	 function getNarnooAlbumNames($operator_id){
 	  function getNarnooVideos($operator_id) {  
 	 			$method = 'getVideos';
 	 			$this->operator_id = $operator_id;
