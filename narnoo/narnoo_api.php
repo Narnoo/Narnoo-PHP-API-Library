@@ -19,6 +19,7 @@ class NarnooAPI {
 				$result = $this->RESTcall($method,$operator_id);
 				
 				return $result;
+				
 	 }
 	 
 	 function deleteNarnooOperator($operator_id) {  
