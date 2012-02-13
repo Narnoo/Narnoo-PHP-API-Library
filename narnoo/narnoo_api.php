@@ -38,7 +38,6 @@ class NarnooAPI {
 				$result = $this->RESTcall($method,$operator_id);
 				
 				return $result;
-				
 	 }
 	 
 	  function getNarnooVideos($operator_id) {  
@@ -47,7 +46,6 @@ class NarnooAPI {
 				$this->RESTcall();
 				
 				$result = $this->RESTcall($method,$operator_id);
-				
 	 }	
 		 	
 		
