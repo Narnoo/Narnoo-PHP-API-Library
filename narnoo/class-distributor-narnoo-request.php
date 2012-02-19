@@ -21,15 +21,20 @@ class DistributorNarnooRequest extends NarnooRequest {
 	function getVideos() {
 		return $this->getResponse ( 'getVideos', null );
 	}
-	function getBrochures() {
-		return $this->getResponse ( 'getBrochures', null );
-	}
+	
 	function getVideoDetails($video_id) {
 		return $this->getResponse ( 'getVideoDetails', array ('video_id' => $video_id ) );
 	}
+	
+	function getBrochures() {
+		return $this->getResponse ( 'getBrochures', null );
+	}
+
 	function getBrochureDetails($brochure_id) {
 		return $this->getResponse ( 'getBrochureDetails', array ('brochure_id' => $brochure_id ) );
 	}
+	
+	
 	function getAlbums() {
 		return $this->getResponse ( 'getAlbums', null );
 	}
