@@ -1,5 +1,7 @@
-
-
+<html>
+<head>
+</head>
+<body>
 <ul>
 	<li><a href="demo-distributor-addOperators.php" target="_blank">addOperators</a>
 	
@@ -25,3 +27,6 @@
 		target="_blank">getProductDescriptions</a>
 
 </ul>
+</body>
+</html>
+
