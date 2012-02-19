@@ -1,6 +1,6 @@
 <?php
 
-namespace narnoo;
+
 
 class NarnooRequest{
  var $app_key = ""; //  App Key From Portal
