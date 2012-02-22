@@ -22,7 +22,7 @@ class NarnooRequest{
  }
  
  function getResponse($method,$params){
- 	$config = array('app_key' => app_key, 'secret_key' => secret_key, 'response_type' => response_type, 'action' => $method);
+ 	$config = array('app_key' => $this->app_key, 'secret_key' => $this->secret_key, 'response_type' => $this->response_type, 'action' => $method);
  	
     $data=array_merge($config,$params);
  	
@@ -39,7 +39,7 @@ class NarnooRequest{
  	$returned = curl_exec($ch);
  	//parse JSON
  	if($this->response_type == 'json'){
- 		return json_decode($returned,true);
+ 		return json_decode($returned);
  	} else {
  		return	$returned;
  	}
