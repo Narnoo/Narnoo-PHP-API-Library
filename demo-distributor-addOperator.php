@@ -8,7 +8,7 @@ echo $operator_id;
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->addOperators ( $operator_id );
+	$message = $request->addOperator ( $operator_id );
 }
 
 ?>
@@ -18,7 +18,7 @@ if (isset ( $operator_id )) {
 <head>
 </head>
 <body>
-	<form action="demo-distributor-addOperators.php" method="post">
+	<form action="" method="post">
 		<label for="operator">Operator id</label> <input name=operator_id
 			type="text"></input><input type="submit" value="submit">
 	</form>
@@ -31,13 +31,15 @@ if (isset ( $operator_id )) {
 	  <?php
 		$error = $message->Error;
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->ErrorCode .'</br>';
+			echo 'ErrorCode' . $error->ErrorCode . '</br>';
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		}
 		
 		?>
 	  </div>
 	<?php
+	} else {
+		echo $message;
 	}
 	
 	?>

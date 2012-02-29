@@ -4,11 +4,12 @@ require_once 'narnoo-cofing.php';
 require_once 'narnoo/class-distributor-narnoo-request.php';
 
 $operator_id = $_POST ['operator_id'];
+$product_title = $_POST ['product_title'];
 
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getImages ( $operator_id );
+	$message = $request->getProductDescription ( $operator_id, $product_title );
 }
 
 ?>
@@ -20,7 +21,9 @@ if (isset ( $operator_id )) {
 <body>
 	<form action="" method="post">
 		<label for="operator_id">Operator id</label> <input name=operator_id
-			type="text" value="39"></input><input type="submit" value="submit">
+			type="text" value="39"></input><label for="product_title">product
+			title</label> <input name=product_title type="text" value="Narnoo"></input><input
+			type="submit" value="submit">
 	</form>
 	
 	<?php
@@ -35,20 +38,19 @@ if (isset ( $operator_id )) {
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		} else {
 			echo '<ul>';
-			foreach ( $message->operator_images as $item ) {
-				$image = $item->image;
+			foreach ( $message->operator_products as $item ) {
+				$product_description = $item->product_description;
 				echo '<li><ul>';
-				echo '<li>image_id : ' . $image->image_id . '</li>';
-				echo '<li>entry_date : ' . $image->entry_date . '</li>';
-				echo '<li>thumb_image_path : ' . $image->thumb_image_path . '</li>';
-				echo '<li>preview_image_path : ' . $image->preview_image_path . '</li>';
-				echo '<li>large_image_path : ' . $image->large_image_path . '</li>';
-				echo '<li>image_caption : ' . $image->image_caption . '</li>';
+				echo '<li>product_title: ' . $product_description->product_title . '</li>';
+				$text = $product_description->text;
+				
+				echo '<li>word_50: ' . $text->word_50 . '</li>';
+				echo '<li>word_100: ' . $text->word_100 . '</li>';
+				echo '<li>word_150: ' . $text->word_150 . '</li>';
 				echo '</ul></li>';
 			}
 			
 			echo '</ul>';
-		
 		}
 		
 		?>
