@@ -23,7 +23,9 @@ class NarnooRequest{
  
  function getResponse($method,$params){
  	$config = array('app_key' => $this->app_key, 'secret_key' => $this->secret_key, 'response_type' => $this->response_type, 'action' => $method);
- 	
+ 	if($params == null){
+ 		$params = array();
+ 	}
     $data=array_merge($config,$params);
  	
  	$ch = curl_init();

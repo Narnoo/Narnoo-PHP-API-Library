@@ -82,8 +82,8 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * 
 	 * @return array
 	 */
-	function getAlbums() {
-		return $this->getResponse ( 'getAlbums', null );
+	function getAlbums($distributor_id) {
+		return $this->getResponse ('getAlbums', array('operator_id'=>$distributor_id) );
 	}
 	
 	/**
