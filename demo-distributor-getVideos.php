@@ -8,6 +8,7 @@ $operator_id = $_POST ['operator_id'];
 
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
+	
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->getVideos($operator_id);
 }
