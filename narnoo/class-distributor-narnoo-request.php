@@ -55,7 +55,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($operator_id, $video_id) {
-		return $this->getResponse ( 'getVideoDetails', array ('operator_id' => $operator_id, 'video_id' => $video_id ) );
+		return $this->getResponse ( 'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
 	}
 	
 	/**
@@ -68,7 +68,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	}
 	
 	function getSingleBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure_id' => $brochure_id ) );
+		return $this->getResponse ( 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
 	}
 	
 	/**
