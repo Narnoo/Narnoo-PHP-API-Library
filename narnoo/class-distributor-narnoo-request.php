@@ -10,6 +10,10 @@ require_once ('narnoo/class-narnoo-request.php');
  */
 class DistributorNarnooRequest extends NarnooRequest {
 	
+	
+	var $interaction_url = "http://devapi.narnoo.com/xml.php";//Distributor -> Operator Interaction
+	var $dist_url = "http://devapi.narnoo.com/dist_xml.php";//Distributor's own account
+	
 	/**
 	 * add an operator in subscriber list
 	 *
@@ -17,7 +21,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return boolean
 	 */
 	function addOperator($operator_id) {
-		return $this->getResponse ( 'addOperator', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url, 'addOperator', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -27,7 +31,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return boolean
 	 */
 	function deleteOperator($operator_id) {
-		return $this->getResponse ( 'deleteOperator', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url,  'deleteOperator', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -36,7 +40,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getImages($operator_id) {
-		return $this->getResponse ( 'getImages', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url,  'getImages', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -45,7 +49,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getVideos($operator_id) {
-		return $this->getResponse ( 'getVideos', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url,  'getVideos', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -55,7 +59,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($operator_id, $video_id) {
-		return $this->getResponse ( 'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
+		return $this->getResponse ($this->interaction_url,  'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
 	}
 	
 	/**
@@ -64,11 +68,11 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getBrochures($operator_id) {
-		return $this->getResponse ( 'getBrochures', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url,  'getBrochures', array ('operator_id' => $operator_id ) );
 	}
 	
 	function getSingleBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
+		return $this->getResponse ($this->interaction_url,  'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
 	}
 	
 	/**
@@ -87,7 +91,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbums($operator_id) {
-		return $this->getResponse ( 'getAlbums', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url,  'getAlbums', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -97,7 +101,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbumImages($operator_id, $album_name) {
-		return $this->getResponse ( 'getAlbumImages', array ('operator_id' => $operator_id, 'albumName' => $album_name ) );
+		return $this->getResponse ($this->interaction_url,  'getAlbumImages', array ('operator_id' => $operator_id, 'albumName' => $album_name ) );
 	}
 	
 	/**
@@ -106,7 +110,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getProducts($operator_id) {
-		return $this->getResponse ( 'getProducts', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->interaction_url,  'getProducts', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -116,8 +120,52 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getProductDescription($operator_id, $product_title) {
-		return $this->getResponse ( 'getProductDescription', array ('operator_id' => $operator_id, 'product_title' => $product_title ) );
+		return $this->getResponse ($this->interaction_url,  'getProductDescription', array ('operator_id' => $operator_id, 'product_title' => $product_title ) );
 	}
+	
+	/*
+	 * find opertators by some criterias 
+	 * 
+	 */
+	function searchOperators($country,$category,$subcategory,$state,$suburb,$postal_code){
+	  $params = array();
+	  
+	  if (is_null($country) == false || empty($country)  == false){
+	  	$params = array_merge($params,array("country" => $country));
+	  }
+	  
+	  if (is_null($category) == false || empty($category)  == false){
+	  	$params = array_merge($params,array("category" => $category));
+	  }
+	  
+	  if (is_null($subcategory) == false || empty($subcategory)  == false){
+	  	$params = array_merge($params,array("subcategory" => $subcategory));
+	  }
+	  
+	  if (is_null($state) == false || empty($state)  == false){
+	  	$params = array_merge($params,array("state" => $state));
+	  }
+	  
+	  if (is_null($suburb) == false || empty($suburb)  == false){
+	  	$params = array_merge($params,array("suburb" => $suburb));
+	  }
+	  
+	  if (is_null($postal_code) == false || empty($postal_code)  == false){
+	  	$params = array_merge($params,array("postal_code" => $postal_code));
+	  }
+	  
+	  return $this->getResponse($this->interaction_url, "searchOperators", $params);
+
+	}
+	
+	/**
+	 * 
+	 * 
+	 * 
+	 */
+	 //function getImages(){
+	 //	
+	// }
 }
 
 ?>
