@@ -8,12 +8,18 @@
 	font-weight: bold;
 	color: #666;
 }
+</style>
 </head>
 <body>
+<div id="title">Current Functions</div>
 <ul>
 	<li><a href="demo-distributor-addOperator.php" target="_blank">addOperator</a>
 	
 	<li><a href="demo-distributor-deleteOperator.php" target="_blank">deleteOperator</a>
+    
+    <li><a href="demo-distributor-listOperators.php" target="_blank">listOperators</a>
+    
+    <li><a href="demo-distributor-singleOperatorDetail.php" target="_blank">singleOperatorDetail</a>
 	
 	<li><a href="demo-distributor-getVideos.php" target="_blank">getVideos</a>
 	
