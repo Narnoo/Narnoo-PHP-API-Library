@@ -11,8 +11,8 @@ require_once ('narnoo/class-narnoo-request.php');
 class DistributorNarnooRequest extends NarnooRequest {
 	
 	
-	var $interaction_url = "http://devapi.narnoo.com/xml.php";//Distributor -> Operator Interaction
-	var $dist_url = "http://devapi.narnoo.com/dist_xml.php";//Distributor's own account
+	var $interaction_url = "devapi.narnoo.com/xml.php";//Distributor -> Operator Interaction
+	var $dist_url = "devapi.narnoo.com/dist_xml.php";//Distributor's own account
 	
 	/**
 	 * add an operator in subscriber list

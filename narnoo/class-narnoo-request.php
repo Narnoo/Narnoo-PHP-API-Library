@@ -26,9 +26,9 @@ class NarnooRequest{
     $data=array_merge($config,$params);
  	
     if($this->requiredSSL == true){
-    	$url = "https://"+$remote_url;
+    	$url = "https://".$remote_url;
     }else{
-    	$url = "http://"+$remote_url;
+    	$url = "http://".$remote_url;
     }
     
  	$ch = curl_init();
