@@ -1,4 +1,3 @@
-
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
@@ -10,10 +9,11 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->addOperator ( $operator_id );
+	$message = $request->deleteOperator ( $operator_id );
 }
 
 ?>
+
 
 <html>
 <head>
@@ -40,38 +40,35 @@ $(function(){
 			<label for="operator">Operator id</label> <input name=operator_id
 				type="text"></input><input type="submit" value="submit">
 		</form>
+	
+	<?php
+	if (isset ( $message )) {
 		
-		<?php
-		if (isset ( $message )) {
-			
-			?>
+		?>
 	  <div>
 	  <?php
-			$error = $message->Error;
-			if (isset ( $error )) {
-				echo 'ErrorCode' . $error->ErrorCode . '</br>';
-				echo 'ErroMessage' . $error->ErrorMessage . '</br>';
-			}
-			
-			?>
-	  </div>
-	<?php
-		} else {
-			echo $message;
+		$error = $message->Error;
+		if (isset ( $error )) {
+			echo 'ErrorCode' . $error->ErrorCode . '</br>';
+			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		}
 		
 		?>
+	  </div>
+	<?php
+	} else {
+		
+		echo $message;
+	}
+	
+	?>	
 	</div>
 
 	<br />
 	<pre class="code" lang="php">
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->addOperator ( $operator_id );
+	$message = $request->deleteOperator ( $operator_id );
 			</pre>
-
-
-
-
 </body>
 </html>
