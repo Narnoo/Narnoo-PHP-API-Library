@@ -1,6 +1,13 @@
 <html>
 <head>
 <title>Distributor Functions</title>
+<style type="text/css">
+#title {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #666;
+}
 </head>
 <body>
 <ul>
