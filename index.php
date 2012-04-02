@@ -1,5 +1,9 @@
 <html>
 <head>
+<style type="text/css">
+#title {
+	font-size: 18px;
+</style>
 </head>
 <body>
 
@@ -8,6 +12,7 @@
 		<li><a href="demo-operator.php">Operator</a></li>
 	</ul>
 
+</div>
 </body>
 </html>
 

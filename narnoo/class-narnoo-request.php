@@ -13,8 +13,8 @@ class NarnooRequest{
  	$this->secret_key = $secretkey;
  }
  
- function  setRequriedSSL($requried_ssl){
- 	$this->requiredSSL = $requried_ssl == true;
+ function  setRequiredSSL($required_ssl){
+ 	$this->requiredSSL = $required_ssl == true;
  }
 
  

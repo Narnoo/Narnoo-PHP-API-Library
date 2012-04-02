@@ -35,6 +35,25 @@ class DistributorNarnooRequest extends NarnooRequest {
 	}
 	
 	/**
+	 * get your operator's details
+	 *
+	 * @return array
+	 */
+	function listOperators() {
+		return $this->getResponse ( $this->interaction_url, 'listOperators' );
+	}
+	
+	/**
+	 * get a single Operators Details
+	 *
+	 * @return array
+	 */
+	function singleOperatorDetail($operator_id) {
+		return $this->getResponse ( $this->interaction_url, 'singleOperatorDetail', array ('operator_id' => $operator_id ) );
+	}
+	
+	
+	/**
 	 * get your all image information
 	 *
 	 * @return array
@@ -71,19 +90,16 @@ class DistributorNarnooRequest extends NarnooRequest {
 		return $this->getResponse ($this->interaction_url,  'getBrochures', array ('operator_id' => $operator_id ) );
 	}
 	
+	/**
+	 * get a single brochure information
+	 *
+	 * @param $brochure_id string 
+	 * @return array
+	 */
+	
 	function getSingleBrochure($operator_id, $brochure_id) {
 		return $this->getResponse ($this->interaction_url,  'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
 	}
-	
-	/**
-	 * get detail information of the brochure
-	 *
-	 * @param $brochure_id string       	
-	 * @return Object
-	 */
-	//function getBrochureDetails($operator_id,$brochure_id) {
-	//	return $this->getResponse ( 'getBrochureDetails', array ('operator_id' => $operator_id, 'brochure_id' => $brochure_id ));
-	//}
 	
 	/**
 	 * get your all albums

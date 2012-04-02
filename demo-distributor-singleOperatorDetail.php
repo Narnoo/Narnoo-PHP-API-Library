@@ -8,7 +8,7 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getImages ( $operator_id );
+	$message = $request->singleOperatorDetail ( $operator_id );
 }
 
 ?>
@@ -22,7 +22,6 @@ if (isset ( $operator_id )) {
 		<label for="operator_id">Operator id</label> <input name=operator_id
 			type="text" value="39"></input><input type="submit" value="submit">
 	</form>
-	
 	<?php
 	if (isset ( $message )) {
 		
@@ -35,15 +34,20 @@ if (isset ( $operator_id )) {
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		} else {
 			echo '<ul>';
-			foreach ( $message->operator_images as $item ) {
-				$image = $item->image;
+			foreach ( $message->operator_detail as $item ) {
+				$business = $item->operator;
 				echo '<li><ul>';
-				echo '<li>image_id : ' . $image->image_id . '</li>';
-				echo '<li>entry_date : ' . $image->entry_date . '</li>';
-				echo '<li>thumb_image_path : ' . $image->thumb_image_path . '</li>';
-				echo '<li>preview_image_path : ' . $image->preview_image_path . '</li>';
-				echo '<li>large_image_path : ' . $image->large_image_path . '</li>';
-				echo '<li>image_caption : ' . $image->image_caption . '</li>';
+				echo '<li>operator_id : ' . $business->operator_id . '</li>';
+				echo '<li>category : ' . $business->category . '</li>';
+				echo '<li>sub_category : ' . $business->sub_category . '</li>';
+				echo '<li>operator_businessname : ' . $business->operator_businessname . '</li>';
+				echo '<li>country_name : ' . $business->country_name . '</li>';
+				echo '<li>state : ' . $business->state . '</li>';
+				echo '<li>suburb : ' . $business->suburb . '</li>';
+				echo '<li>latitude : ' . $business->latitude . '</li>';
+				echo '<li>longitude : ' . $business->longitude . '</li>';
+				echo '<li>postcode : ' . $business->postcode . '</li>';
+				echo '<li>keywords : ' . $business->keywords . '</li>';
 				echo '</ul></li>';
 			}
 			

@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>Distributor Functions</title>
 </head>
 <body>
 <ul>
