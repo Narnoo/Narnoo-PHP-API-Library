@@ -1,6 +1,6 @@
 <?php
 
-require_once 'narnoo/narnoo-config.php';
+require_once 'narnoo-cofing.php';
 require_once 'narnoo/class-distributor-narnoo-request.php';
 
 $operator_id = $_POST ['operator_id'];
