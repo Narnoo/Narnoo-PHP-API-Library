@@ -35,7 +35,6 @@
 	font: normal 0.8em "Trebuchet MS", "Helvetica", "Arial", "Verdana",
 		"sans-serif";
 	color: #e87b10;
-
 	margin-top: 1 .5em;
 	margin-bottom: 0;
 	padding-left: 8 px;
@@ -66,4 +65,13 @@
 	color: #ffffff;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
+}
+
+#demo-frame {
+	clear: right;
+	width: 520px;
+	height: 300px;
+	border: 1px solid #DDD;
+	overflow: auto;
+	position: relative;
 }

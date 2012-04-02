@@ -6,6 +6,16 @@
 <title>Narnoo.com - Tourism Media Networking Platform</title>
 <link href="css/public-style.css" rel="stylesheet" type="text/css" />
 <link href="css/demo.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('dd a').click(function(e){
+		e.preventDefault();	
+		$('#code-container').attr('src',$(this).attr('href')+'?r='+Math.random())
+	});
+});
+</script>
 
 </head>
 <body marginwidth="0" marginheight="0">
@@ -73,64 +83,64 @@
 							<dl class="demos-nav">
 								<dt>Distributor->Operator</dt>
 								<dd>
-									<a href="/demos/distributor/addOperator">addOperator</a>
+									<a href="demos/distributor/addOperator.php">addOperator</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor/deleteOperator">deleteOperator</a>
+									<a href="demos/distributor/deleteOperator.php">deleteOperator</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor/listOperators">listOperators</a>
+									<a href="demos/distributor/listOperators.php">listOperators</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor/singleOperatorDetail">singleOperatorDetail</a>
+									<a href="demos/distributor/singleOperatorDetail.php">singleOperatorDetail</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor/searchOperators">searchOperators</a>
+									<a href="demos/distributor/searchOperators.php">searchOperators</a>
 								</dd>
 								<dt>Distributor’s Own Media</dt>
 								<dd>
-									<a href="/demos/distributor-media/getImages">getImages</a>
+									<a href="demos/distributor-media/getImages.php">getImages</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getAlbums">getAlbums</a>
+									<a href="demos/distributor-media/getAlbums.php">getAlbums</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getAlbumImages">getAlbumImages</a>
+									<a href="demos/distributor-media/getAlbumImages.php">getAlbumImages</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getVideos">getVideos</a>
+									<a href="demos/distributor-media/getVideos.php">getVideos</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getVideoDetails">getVideoDetails</a>
+									<a href="demos/distributor-media/getVideoDetails.php">getVideoDetails</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getBrochures">getBrochures</a>
+									<a href="demos/distributor-media/getBrochures.php">getBrochures</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getSingleBrochure">getSingleBrochure</a>
+									<a href="demos/distributor-media/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-media/getChannel">getChannel</a>
-								</dd>
-
-								<dd>
-									<a href="/demos/distributor-media/getChannelVideos">getChannelVideos</a>
+									<a href="demos/distributor-media/getChannel.php">getChannel</a>
 								</dd>
 
 								<dd>
-									<a href="/demos/distributor-media/searchMedia">searchMedia</a>
+									<a href="demos/distributor-media/getChannelVideos.php">getChannelVideos</a>
 								</dd>
 
 								<dd>
-									<a href="/demos/distributor-media/downloadImage">downloadImage</a>
+									<a href="demos/distributor-media/searchMedia.php">searchMedia</a>
 								</dd>
 
 								<dd>
-									<a href="/demos/distributor-media/downloadVideo">downloadVideo</a>
+									<a href="demos/distributor-media/downloadImage.php">downloadImage</a>
 								</dd>
 
 								<dd>
-									<a href="/demos/distributor-media/downloadBrochure">downloadBrochure</a>
+									<a href="demos/distributor-media/downloadVideo.php">downloadVideo</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/downloadBrochure.php">downloadBrochure</a>
 								</dd>
 
 
@@ -138,88 +148,88 @@
 
 								<dt>Distributors->Operator Media</dt>
 								<dd>
-									<a href="/demos/distributor-operator/getImages">getImages</a>
+									<a href="demos/distributor-operator/getImages.php">getImages</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getAlbums">getAlbums</a>
+									<a href="demos/distributor-operator/getAlbums.php">getAlbums</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getAlbumImages">getAlbumImages</a>
+									<a href="demos/distributor-operator/getAlbumImages.php">getAlbumImages</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getVideos">getVideos</a>
+									<a href="demos/distributor-operator/getVideos.php">getVideos</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getVideoDetails">getVideoDetails</a>
+									<a href="demos/distributor-operator/getVideoDetails.php">getVideoDetails</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getBrochures">getBrochures</a>
+									<a href="demos/distributor-operator/getBrochures.php">getBrochures</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getSingleBrochure">getSingleBrochure</a>
+									<a href="demos/distributor-operator/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getProducts">getProducts</a>
+									<a href="demos/distributor-operator/getProducts.php">getProducts</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/getProductDescription">getProductDescription</a>
-								</dd>
-
-								<dd>
-									<a href="/demos/distributor-operator/downloadImage">downloadImage</a>
-								</dd>
-								<dd>
-									<a href="/demos/distributor-operator/downloadVideo">downloadVideo</a>
+									<a href="demos/distributor-operator/getProductDescription.php">getProductDescription</a>
 								</dd>
 
 								<dd>
-									<a href="/demos/distributor-operator/downloadBrochure">downloadBrochure</a>
+									<a href="demos/distributor-operator/downloadImage.php">downloadImage</a>
 								</dd>
 								<dd>
-									<a href="/demos/distributor-operator/searchMedia">searchMedia</a>
+									<a href="demos/distributor-operator/downloadVideo.php">downloadVideo</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-operator/downloadBrochure.php">downloadBrochure</a>
+								</dd>
+								<dd>
+									<a href="demos/distributor-operator/searchMedia.php">searchMedia</a>
 								</dd>
 
 								<dt>Operator</dt>
 								<dd>
-									<a href="demos/operator/getImages">getImages</a>
+									<a href="demos/operator/getImages.php">getImages</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getAlbums">getAlbums</a>
+									<a href="demos/operator/getAlbums.php">getAlbums</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getAlbumImages">getAlbumImages</a>
+									<a href="demos/operator/getAlbumImages.php">getAlbumImages</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getVideos">getVideos</a>
+									<a href="demos/operator/getVideos.php">getVideos</a>
 								</dd>
 								<dd>
-									<a href="#demos/operator/getVideoDetails">getVideoDetails</a>
+									<a href="#demos/operator/getVideoDetails.php">getVideoDetails</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getBrochures">getBrochures</a>
+									<a href="demos/operator/getBrochures.php">getBrochures</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getSingleBrochure">getSingleBrochure</a>
+									<a href="demos/operator/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getProducts">getProducts</a>
+									<a href="demos/operator/getProducts.php">getProducts</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getProductDescription">getProductDescription</a>
+									<a href="demos/operator/getProductDescription.php">getProductDescription</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/downloadImage">downloadImage</a>
+									<a href="demos/operator/downloadImage.php">downloadImage</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/downloadVideo">downloadVideo</a>
+									<a href="demos/operator/downloadVideo.php">downloadVideo</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/downloadBrochure">downloadBrochure</a>
+									<a href="demos/operator/downloadBrochure.php">downloadBrochure</a>
 								</dd>
 
 							</dl>
 						</td>
-						<td class="normal"></td>
+						<td class="normal"><iframe id="code-container" src="" style="border: 0;width: 100%;height: 100%;"></iframe></td>
 
 					</tr>
 				</tbody>

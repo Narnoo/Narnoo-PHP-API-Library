@@ -1,6 +1,6 @@
 <?php
 
-require_once ('narnoo/class-narnoo-request.php');
+//require_once ('narnoo/class-narnoo-request.php');
 
 /**
  * The narnoo request methods for distributor
