@@ -1,7 +1,7 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-operator-narnoo-request.php';
+require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
@@ -17,7 +17,7 @@ if (count ( $_POST ) > 0) {
 	$longitude = $_POST ["longitude"];
 	$keywords = $_POST ["keywords"];
 	
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->searchMedia ( $media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords );
 }
@@ -105,7 +105,7 @@ $(function(){
 	<br />
 
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->searchMedia ( $media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords );
 	</pre>

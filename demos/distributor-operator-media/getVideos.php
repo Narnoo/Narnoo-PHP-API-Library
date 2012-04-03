@@ -1,16 +1,16 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-operator-narnoo-request.php';
+require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
 $operator_id = $_POST ['operator_id'];
 
 if (isset ( $operator_id )) {
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();	
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( $operator_id );
+	$message = $request->getVideos ( $operator_id );
 }
 
 ?>
@@ -55,21 +55,23 @@ $(function(){
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		} else {
 			echo '<ul>';
-			foreach ( $message->operator_brochures as $item ) {
-				$brochure = $item->brochure;
-				
+			foreach ( $message->operator_videos as $item ) {
+				$operator_video = $item->operator_video;
 				echo '<li><ul>';
-				echo '<li>brochure_id : ' . $brochure->brochure_id . '</li>';
-				echo '<li>entry_date :' . $brochure->entry_date . '</li>';
-				echo '<li>thumb_image_path : ' . $brochure->thumb_image_path . '</li>';
-				echo '<li>preview_image_path : ' . $brochure->preview_image_path . '</li>';
-				echo '<li>page_order_xml_config : ' . $brochure->page_order_xml_config . '</li>';
-				echo '<li>file_path_to_pdf : ' . uncdata ( $brochure->file_path_to_pdf ) . '</li>';
-				echo '<li>validity_date : ' . $brochure->validity_date . '</li>';
-				echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
+				echo '<li>video_id : ' . $operator_video->video_id . '</li>';
+				echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
+				echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
+				echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
+				echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
+				
+				echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</li>';
+				echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
+				echo '<li>video_language : ' . $operator_video->video_language . '</li>';
 				echo '</ul></li>';
+			
 			}
-			echo '</ul>';
+			
+			echo '<ul>';
 		}
 		
 		?>
@@ -81,10 +83,11 @@ $(function(){
 	</div>
 
 	<br />
+
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();	
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( $operator_id );	
+	$message = $request->getVideos ( $operator_id );	
 	</pre>
 
 </body>

@@ -1,17 +1,17 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-operator-narnoo-request.php';
+require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
 $operator_id = $_POST ["operator_id"];
-$image_id = $_POST ['image_id'];
+$video_id = $_POST ['video_id'];
 
-if (isset ( $image_id ) && isset ( $operator_id )) {
-	$request = new DistributorOperatorNarnooRequest ();
+if (isset ( $video_id ) && isset ( $operator_id )) {
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ( $operator_id, $image_id );
+	$message = $request->downloadVideo ( $operator_id, $video_id );
 }
 
 ?>
@@ -40,8 +40,8 @@ $(function(){
 	<?php if (isset ( $message )==false){ ?>
 		<form method="post">
 			<label for="operator_id">operator_id</label><input name="operator_id"
-				type="text" value="39"></input> <label for="image_id">image_id</label>
-			<input name=image_id type="text" value="295"></input> <input
+				type="text" value="39"></input> <label for="video_id">video_id</label>
+			<input name=video_id type="text" value="413"></input> <input
 				type="submit" value="submit">
 		</form>
 	
@@ -57,28 +57,14 @@ $(function(){
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		} else {
 			
-			$download_image = $message->download_image;
+			$download_video = $message->download_video;
 			
-			$download_image_details = $download_image[0];
+			$download_video_details = $download_video[0];
 			
-			echo '<ul>';
-			foreach ( $download_image_details as $item ) {
-				
-				echo '<li><ul>';
-				echo '<li>image_id : ' . $item->video_id . '</li>';
-				echo '<li>entry_date :' . $item->entry_date . '</li>';
-				echo '<li>thumb_image_path : ' . uncdata ( $item->thumb_image_path ) . '</li>';
-				echo '<li>preview_image_path : ' . uncdata ( $item->preview_image_path ) . '</li>';
-				echo '<li>large_image_path : ' . uncdata ( $item->large_image_path ) . '</li>';
-				
-				echo '<li>image_owner_business_name : ' . $item->image_owner_business_name . '</li>';
-				echo '<li>image_caption : ' . $item->image_caption . '</li>';
-				
-				echo '</ul></li>';
+			$download_video_detail = $download_video_details->download_video_details;
 			
-			}
-			
-			echo '<ul>';
+			echo 'download_video_stream_path : ' . uncdata ( $download_video_detail->download_video_stream_path );
+		
 		}
 		
 		?>
@@ -92,9 +78,9 @@ $(function(){
 	<br />
 
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ( $operator_id, $image_id );
+	$message = $request->downloadVideo ( $operator_id, $video_id );
 	</pre>
 
 </body>

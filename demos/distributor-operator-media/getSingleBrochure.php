@@ -1,7 +1,7 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-operator-narnoo-request.php';
+require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
@@ -9,7 +9,7 @@ $operator_id = $_POST ['operator_id'];
 $brochure_id = $_POST ['brochure_id'];
 
 if (isset ( $operator_id )) {
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->getSingleBrochure ( $operator_id, $brochure_id );
 
@@ -106,7 +106,7 @@ $(function(){
 	</div>
 	<br />
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->getSingleBrochure ( $operator_id, $brochure_id );	
 	</pre>

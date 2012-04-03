@@ -146,45 +146,45 @@ $(function(){
 
 								<dt>Distributors->Operator Media</dt>
 								<dd>
-									<a href="demos/distributor-operator/getImages.php">getImages</a>
+									<a href="demos/distributor-operator-media/getImages.php">getImages</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getAlbums.php">getAlbums</a>
+									<a href="demos/distributor-operator-media/getAlbums.php">getAlbums</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getAlbumImages.php">getAlbumImages</a>
+									<a href="demos/distributor-operator-media/getAlbumImages.php">getAlbumImages</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getVideos.php">getVideos</a>
+									<a href="demos/distributor-operator-media/getVideos.php">getVideos</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getVideoDetails.php">getVideoDetails</a>
+									<a href="demos/distributor-operator-media/getVideoDetails.php">getVideoDetails</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getBrochures.php">getBrochures</a>
+									<a href="demos/distributor-operator-media/getBrochures.php">getBrochures</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getSingleBrochure.php">getSingleBrochure</a>
+									<a href="demos/distributor-operator-media/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getProductText.php">getProductText</a>
+									<a href="demos/distributor-operator-media/getProductText.php">getProductText</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getProductTextWords.php">getProductTextWords</a>
-								</dd>
-
-								<dd>
-									<a href="demos/distributor-operator/downloadImage.php">downloadImage</a>
-								</dd>
-								<dd>
-									<a href="demos/distributor-operator/downloadVideo.php">downloadVideo</a>
+									<a href="demos/distributor-operator-media/getProductTextWords.php">getProductTextWords</a>
 								</dd>
 
 								<dd>
-									<a href="demos/distributor-operator/downloadBrochure.php">downloadBrochure</a>
+									<a href="demos/distributor-operator-media/downloadImage.php">downloadImage</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/searchMedia.php">searchMedia</a>
+									<a href="demos/distributor-operator-media/downloadVideo.php">downloadVideo</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-operator-media/downloadBrochure.php">downloadBrochure</a>
+								</dd>
+								<dd>
+									<a href="demos/distributor-operator-media/searchMedia.php">searchMedia</a>
 								</dd>
 
 								<dt>Operator</dt>
