@@ -76,7 +76,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ( $operator_id, $image_id );
+	$message = $request->downloadImage ($image_id );
 	</pre>
 
 </body>

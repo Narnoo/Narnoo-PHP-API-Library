@@ -131,12 +131,12 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("media_id" => $image_id ) );
 	}
 	
-	function downloadVideo($operator_id, $video_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("operator_id" => $operator_id, "video__id" => $video_id ) );
+	function downloadVideo( $video_id) {
+		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("video__id" => $video_id ) );
 	}
 	
-	function downloadBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("operator_id" => $operator_id, "brochure__id" => $brochure_id ) );
+	function downloadBrochure($brochure_id) {
+		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("brochure__id" => $brochure_id ) );
 	}
 }
 
