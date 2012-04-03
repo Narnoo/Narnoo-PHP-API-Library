@@ -5,13 +5,9 @@ require_once '../../narnoo/class-distributor-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
-$operator_id = $_POST ['operator_id'];
-
-if (isset ( $operator_id )) {
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( $operator_id );
-}
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$message = $request->getBrochures ();
 
 ?>
 
@@ -55,7 +51,10 @@ $(function(){
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		} else {
 			echo '<ul>';
-			foreach ( $message->operator_brochures as $item ) {
+			
+			$distributor_brochures = $message->distributor_brochures;
+			
+			foreach ( $distributor_brochures as $item ) {
 				$brochure = $item->brochure;
 				
 				echo '<li><ul>';
@@ -84,7 +83,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( $operator_id );	
+	$message = $request->getBrochures ( );	
 	</pre>
 
 </body>
