@@ -5,13 +5,9 @@ require_once '../../narnoo/class-distributor-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
-$operator_id = $_POST ['operator_id'];
-
-if (isset ( $operator_id )) {
-	$request = new DistributorMediaNarnooRequest ();	
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideos ( $operator_id );
-}
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$message = $request->getVideos ();
 
 ?>
 
@@ -55,8 +51,11 @@ $(function(){
 			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 		} else {
 			echo '<ul>';
-			foreach ( $message->operator_videos as $item ) {
-				$operator_video = $item->operator_video;
+			
+			$distributor_videos = $message->distributor_videos;			
+			
+			foreach ( $distributor_videos as $item ) {
+				$operator_video = $item->distributor_video;
 				echo '<li><ul>';
 				echo '<li>video_id : ' . $operator_video->video_id . '</li>';
 				echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
@@ -87,7 +86,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();	
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideos ( $operator_id );	
+	$message = $request->getVideos ();	
 	</pre>
 
 </body>
