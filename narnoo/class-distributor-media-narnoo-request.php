@@ -127,8 +127,8 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->remote_url, 'searchMedia', $params );
 	}
 	
-	function downloadImage($operator_id, $image_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("operator_id" => $operator_id, "media_id" => $image_id ) );
+	function downloadImage($image_id) {
+		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("media_id" => $image_id ) );
 	}
 	
 	function downloadVideo($operator_id, $video_id) {
