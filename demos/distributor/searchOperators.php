@@ -120,7 +120,7 @@ foreach ( $search_operators as $item ) {
 	<pre class="code" lang="php">	
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->listOperators();
+	$message = $request->searchOperators ( $country, $category, $subcategory, $state, $suburb, $postal_code );
 	</pre>
 
 </body>

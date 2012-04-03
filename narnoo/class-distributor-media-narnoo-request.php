@@ -1,9 +1,11 @@
 <?php
-namespace narnoo;
 
-require_once ('narnoo/class-narnoo-request.php');
+//require_once ('narnoo/class-narnoo-request.php');
 
 class DistributorMediaNarnooRequest extends NarnooRequest {
+	
+	//var $remote_url = "devapi.narnoo.com/dist_xml.php";//Distributor -> Operator Interaction
+	var $remote_url = "devapi.narnoo.com/xml.php";//Distributor -> Operator Interaction
 	/* Distributor's Own Media Requests*/
 	
 	
@@ -14,7 +16,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getImages($operator_id) {
-		return $this->getResponse ($this->interaction_url,  'getImages', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->remote_url,  'getImages', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -23,7 +25,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbums($operator_id) {
-		return $this->getResponse ($this->interaction_url,  'getAlbums', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->remote_url,  'getAlbums', array ('operator_id' => $operator_id ) );
 	}
 	
 	
@@ -34,7 +36,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbumImages($operator_id, $album_name) {
-		return $this->getResponse ($this->interaction_url,  'getAlbumImages', array ('operator_id' => $operator_id, 'albumName' => $album_name ) );
+		return $this->getResponse ($this->remote_url,  'getAlbumImages', array ('operator_id' => $operator_id, 'albumName' => $album_name ) );
 	}
 	
 	
@@ -44,7 +46,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getVideos($operator_id) {
-		return $this->getResponse ($this->interaction_url,  'getVideos', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->remote_url,  'getVideos', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -54,7 +56,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($operator_id, $video_id) {
-		return $this->getResponse ($this->interaction_url,  'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
+		return $this->getResponse ($this->remote_url,  'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
 	}
 	
 	/**
@@ -63,11 +65,11 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getBrochures($operator_id) {
-		return $this->getResponse ($this->interaction_url,  'getBrochures', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ($this->remote_url,  'getBrochures', array ('operator_id' => $operator_id ) );
 	}
 	
 	function getSingleBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ($this->interaction_url,  'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
+		return $this->getResponse ($this->remote_url,  'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
 	}
 	
 	//TODO:Not test yet.

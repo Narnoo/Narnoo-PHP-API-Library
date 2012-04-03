@@ -1,7 +1,6 @@
 <?php
-namespace narnoo;
 
-require_once ('narnoo/class-narnoo-request.php');
+//require_once ('narnoo/class-narnoo-request.php');
 
 class DistributorOperatorNarnooRequest extends NarnooRequest {
 	
