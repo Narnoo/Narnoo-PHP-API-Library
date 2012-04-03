@@ -9,7 +9,7 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getImages ( $operator_id );
+	$message = $request->getAlbums ( $operator_id );
 }
 
 ?>
@@ -35,10 +35,9 @@ $(function(){
 </head>
 <body>
 	<div id="demo-frame">
-<?php
-if (isset ( $message ) == false) {
-	?>
-	<form action="" method="post">
+<?php if (isset ( $message ) == false){?>
+	
+		<form action="" method="post">
 			<label for="operator_id">Operator id</label> <input name=operator_id
 				type="text" value="39"></input><input type="submit" value="submit">
 		</form>
@@ -54,38 +53,30 @@ if (isset ( $message ) == false) {
 		echo 'ErrorCode' . $error->ErrorCode . '</br>';
 		echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 	} else {
+		
 		echo '<ul>';
-		foreach ( $message->operator_images as $item ) {
-			$image = $item->image;
-			echo '<li><ul>';
-			echo '<li>image_id : ' . $image->image_id . '</li>';
-			echo '<li>entry_date : ' . $image->entry_date . '</li>';
-			echo '<li>thumb_image_path : ' . $image->thumb_image_path . '</li>';
-			echo '<li>preview_image_path : ' . $image->preview_image_path . '</li>';
-			echo '<li>large_image_path : ' . $image->large_image_path . '</li>';
-			echo '<li>image_caption : ' . $image->image_caption . '</li>';
-			echo '</ul></li>';
+		$operator_albums = $message->operator_albums;
+		foreach ( $operator_albums as $item ) {
+			$album = $item->album;
+			echo '<li>album_id: ' . $album->album_id . '  album_name: ' . $album->album_name . '</li>';
 		}
 		
 		echo '</ul>';
-	
 	}
 	
 	?>
 	  </div>
 	<?php
 }
-
 ?>
-	
-	<br />
 	</div>
+
+	<br />
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getImages ( $operator_id );	
+	$message = $request->getAlbums ( $operator_id );	
 	
 	</pre>
-
 </body>
 </html>
