@@ -138,8 +138,8 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("operator_id"=>$operator_id,"media_id" => $image_id ) );
 	}
 	
-	function downloadVideo($video_id) {
-	
+	function downloadVideo($operator_id,$video_id) {
+		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("operator_id"=>$operator_id,"video__id" => $video_id ) );
 	}
 	
 	function dowloadBrochure($brochure_id) {
