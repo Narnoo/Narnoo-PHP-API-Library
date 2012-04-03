@@ -4,13 +4,12 @@ require_once '../../narnoo/class-narnoo-request.php';
 require_once '../../narnoo/class-distributor-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 
-$operator_id = $_POST ['operator_id'];
 $album_name = $_POST ['album_name'];
 
-if (isset ( $operator_id )) {
+if (isset ( $album_name )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ( $operator_id, $album_name );
+	$message = $request->getAlbumImages ( $album_name );
 }
 
 ?>
@@ -39,10 +38,8 @@ $(function(){
 	<div id="demo-frame">
 <?php if (isset ( $message )==false){ ?>
 	<form action="" method="post">
-			<label for="operator">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><label for="album_name">album name</label>
-			<input name=album_name type="text" value="test"></input><input
-				type="submit" value="submit">
+			<label for="album_name">album name</label> <input name=album_name
+				type="text" value="test"></input><input type="submit" value="submit">
 		</form>
 	
 	<?php
@@ -88,7 +85,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ( $operator_id, $album_name );
+	$message = $request->getAlbumImages ($album_name );
 </pre>
 </body>
 </html>

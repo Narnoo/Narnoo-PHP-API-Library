@@ -28,8 +28,8 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @param $album_id string       	
 	 * @return array
 	 */
-	function getAlbumImages($operator_id, $album_name) {
-		return $this->getResponse ( $this->remote_url, 'getAlbumImages', array ('operator_id' => $operator_id, 'album__name' => $album_name ) );
+	function getAlbumImages($album_name) {
+		return $this->getResponse ( $this->remote_url, 'getAlbumImages', array ('album__name' => $album_name ) );
 	}
 	
 	/**
