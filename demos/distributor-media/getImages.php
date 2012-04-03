@@ -4,13 +4,9 @@ require_once '../../narnoo/class-narnoo-request.php';
 require_once '../../narnoo/class-distributor-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 
-$operator_id = $_POST ['operator_id'];
-
-if (isset ( $operator_id )) {
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getImages ( $operator_id );
-}
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$message = $request->getImages ();
 
 ?>
 
@@ -36,17 +32,9 @@ $(function(){
 <body>
 	<div id="demo-frame">
 <?php
-if (isset ( $message ) == false) {
+if (isset ( $message )) {
 	?>
-	<form action="" method="post">
-			<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><input type="submit" value="submit">
-		</form>
-	
-	<?php
-} else {
-	
-	?>
+
 	  <div>
 	  <?php
 	$error = $message->Error;
@@ -55,7 +43,9 @@ if (isset ( $message ) == false) {
 		echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 	} else {
 		echo '<ul>';
-		foreach ( $message->operator_images as $item ) {
+		$distributor_images = $message->distributor_images;
+		
+		foreach ( $distributor_images as $item ) {
 			$image = $item->image;
 			echo '<li><ul>';
 			echo '<li>image_id : ' . $image->image_id . '</li>';
@@ -68,7 +58,6 @@ if (isset ( $message ) == false) {
 		}
 		
 		echo '</ul>';
-	
 	}
 	
 	?>
@@ -83,7 +72,7 @@ if (isset ( $message ) == false) {
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getImages ( $operator_id );	
+	$message = $request->getImages ( );	
 	
 	</pre>
 

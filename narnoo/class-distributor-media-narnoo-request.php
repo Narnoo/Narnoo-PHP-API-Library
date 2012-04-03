@@ -4,21 +4,17 @@
 
 class DistributorMediaNarnooRequest extends NarnooRequest {
 	
-	// var $remote_url = "devapi.narnoo.com/dist_xml.php";//Distributor ->
+	 var $remote_url = "devapi.narnoo.com/dist_xml.php";//Distributor ->
 	// Operator Interaction
-	var $remote_url = "devapi.narnoo.com/xml.php"; // Distributor -> Operator
+	//var $remote_url = "devapi.narnoo.com/xml.php"; // Distributor -> Operator
 	                                               // Interaction
 	/*
 	 * Distributor's Own Media Requests
 	 */
 	
-	/**
-	 * get your all image information
-	 *
-	 * @return array
-	 */
-	function getImages($operator_id) {
-		return $this->getResponse ( $this->remote_url, 'getImages', array ('operator_id' => $operator_id ) );
+
+	function getImages() {
+		return $this->getResponse ( $this->remote_url, 'getImages' );
 	}
 	
 	/**
