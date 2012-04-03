@@ -7,19 +7,10 @@ require_once '../utilities.php';
 
 $operator_id = $_POST ['operator_id'];
 
-if (count ( $_POST ) > 0) {
-	$media_type = $_POST ["media_type"];
-	$category = $_POST ["category"];
-	$subcategory = $_POST ["subcategory"];
-	$suburb = $_POST ["suburb"];
-	$location = $_POST ["location"];
-	$latitude = $_POST ["latitude"];
-	$longitude = $_POST ["longitude"];
-	$keywords = $_POST ["keywords"];
-	
-	$request = new DistributorOperatorNarnooRequest ();
+if (isset ( $operator_id )) {
+	$request = new DistributorOperatorNarnooRequest ();	
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchMedia ( $media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords );
+	$message = $request->getVideos ( $operator_id );
 }
 
 ?>
@@ -39,6 +30,7 @@ if (count ( $_POST ) > 0) {
 <script type="text/javascript">
 $(function(){
 	$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+
 });
 </script>
 </head>
@@ -46,21 +38,9 @@ $(function(){
 
 	<div id="demo-frame">
 	<?php if (isset ( $message )==false){ ?>
-		<form method="post">
-			<label for="media_type">media_type</label><select name="media_type">
-				<option value="image">image</option>
-				<option value="brochure">brochure</option>
-				<option value="video">video</option>
-			</select><br /> <label for="category">category</label> <input
-				name=category type="text"></input> <br /> <label for="subcategory">subcategory</label>
-			<input name=subcategory type="text"></input> <br /> <label
-				for="suburb">suburb</label> <input name=suburb type="text"></input>
-			<br /> <label for="location">location</label> <input name="location"
-				type="text"></input> <br /> <label for="latitude">latitude</label> <input
-				name="latitude" type="text"></input> <br /> <label for="longitude">longitude</label>
-			<input name=longitude type="text"></input> <br /> <label
-				for="keywords">keywords</label> <input name=keywords type="text"></input>
-			<br /> <input type="submit" value="submit">
+		<form action="" method="post">
+			<label for="operator_id">Operator id</label> <input name=operator_id
+				type="text" value="39"></input><input type="submit" value="submit">
 		</form>
 	
 	<?php
@@ -105,9 +85,9 @@ $(function(){
 	<br />
 
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorNarnooRequest ();
+	$request = new DistributorOperatorNarnooRequest ();	
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchMedia ( $media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords );
+	$message = $request->getVideos ( $operator_id );	
 	</pre>
 
 </body>
