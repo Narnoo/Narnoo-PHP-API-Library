@@ -78,7 +78,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadVideo ( $operator_id, $video_id );
+	$message = $request->downloadVideo ($video_id );
 	</pre>
 
 </body>
