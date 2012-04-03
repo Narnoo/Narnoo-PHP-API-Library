@@ -78,7 +78,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	/*
 	 * Distributor's Own Media Download Requst
 	 */
-	function searchMedia($media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords) {
+	function searchMedia($media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords, $page_no) {
 		$params = array ();
 		
 		if (is_null ( $media_type ) || empty ( $media_type )) {
@@ -115,6 +115,11 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 			$params = array_merge ( $params, array ("keywords" => $keywords ) );
 		}
 		
+		if (is_null ( $page_no ) || empty ( $page_no )) {
+			$page_no = 1;
+		}
+		$params = array_merge ( $params, array ("page_no" => $page_no ) );
+		
 		// if (count ( $params ) < 2) {
 		//
 		// $message = new NarrooException();
@@ -124,14 +129,14 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		// return $message;
 		// }
 		
-		return $this->getResponse ( $this->remote_url, 'searchMedia', $params );
+		return $this->getResponse ("devapi.narnoo.com/xml.php", 'searchMedia', $params );
 	}
 	
 	function downloadImage($image_id) {
 		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("media_id" => $image_id ) );
 	}
 	
-	function downloadVideo( $video_id) {
+	function downloadVideo($video_id) {
 		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("video__id" => $video_id ) );
 	}
 	
