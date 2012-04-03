@@ -2,7 +2,7 @@
 
 // require_once ('narnoo/class-narnoo-request.php');
 
-class DistributorOperatorNarnooRequest extends NarnooRequest {
+class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	
 	var $remote_url = "devapi.narnoo.com/xml.php"; // Distributor -> Operator
 	
@@ -143,6 +143,15 @@ class DistributorOperatorNarnooRequest extends NarnooRequest {
 	function downloadBrochure($operator_id, $brochure_id) {
 		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("operator_id" => $operator_id, "brochure__id" => $brochure_id ) );
 	}
+	
+	function getProductText($operator_id) {
+		return $this->getResponse ( $this->remote_url, 'getProductText', array ("operator_id" => $operator_id ) );
+	}
+	
+	function getProductTextWords($operator_id,$product_title) {
+		return $this->getResponse ( $this->remote_url, 'getProductTextWords', array ("operator_id" => $operator_id,"product_title"=>$product_title ) );
+	}
+	
 }
 
 ?>
