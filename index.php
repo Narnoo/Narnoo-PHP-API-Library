@@ -144,8 +144,6 @@ $(function(){
 								</dd>
 
 
-
-
 								<dt>Distributors->Operator Media</dt>
 								<dd>
 									<a href="demos/distributor-operator/getImages.php">getImages</a>
@@ -169,10 +167,10 @@ $(function(){
 									<a href="demos/distributor-operator/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getProducts.php">getProducts</a>
+									<a href="demos/distributor-operator/getProductText.php">getProductText</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator/getProductDescription.php">getProductDescription</a>
+									<a href="demos/distributor-operator/getProductTextWords.php">getProductTextWords</a>
 								</dd>
 
 								<dd>
@@ -212,10 +210,10 @@ $(function(){
 									<a href="demos/operator/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getProducts.php">getProducts</a>
+									<a href="demos/operator/getProductText.php">getProductText</a>
 								</dd>
 								<dd>
-									<a href="demos/operator/getProductDescription.php">getProductDescription</a>
+									<a href="demos/operator/getProductTextWords.php">getProductTextWords</a>
 								</dd>
 								<dd>
 									<a href="demos/operator/downloadImage.php">downloadImage</a>

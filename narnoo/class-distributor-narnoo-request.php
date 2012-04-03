@@ -58,27 +58,27 @@ class DistributorNarnooRequest extends NarnooRequest {
 	function searchOperators($country,$category,$subcategory,$state,$suburb,$postal_code){
 		$params = array();
 		 
-		if (is_null($country) == false || empty($country)  == false){
+		if (is_null($country) == false && empty($country)  == false){
 			$params = array_merge($params,array("country" => $country));
 		}
 		 
-		if (is_null($category) == false || empty($category)  == false){
+		if (is_null($category) == false && empty($category)  == false){
 			$params = array_merge($params,array("category" => $category));
 		}
 		 
-		if (is_null($subcategory) == false || empty($subcategory)  == false){
+		if (is_null($subcategory) == false && empty($subcategory)  == false){
 			$params = array_merge($params,array("subcategory" => $subcategory));
 		}
 		 
-		if (is_null($state) == false || empty($state)  == false){
+		if (is_null($state) == false && empty($state)  == false){
 			$params = array_merge($params,array("state" => $state));
 		}
 		 
-		if (is_null($suburb) == false || empty($suburb)  == false){
+		if (is_null($suburb) == false && empty($suburb)  == false){
 			$params = array_merge($params,array("suburb" => $suburb));
 		}
 		 
-		if (is_null($postal_code) == false || empty($postal_code)  == false){
+		if (is_null($postal_code) == false && empty($postal_code)  == false){
 			$params = array_merge($params,array("postal_code" => $postal_code));
 		}
 		 
