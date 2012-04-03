@@ -17,13 +17,9 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->remote_url, 'getImages' );
 	}
 	
-	/**
-	 * get your all albums
-	 *
-	 * @return array
-	 */
-	function getAlbums($operator_id) {
-		return $this->getResponse ( $this->remote_url, 'getAlbums', array ('operator_id' => $operator_id ) );
+
+	function getAlbums() {
+		return $this->getResponse ( $this->remote_url, 'getAlbums');
 	}
 	
 	/**
