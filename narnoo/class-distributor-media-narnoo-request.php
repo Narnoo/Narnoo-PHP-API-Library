@@ -47,8 +47,8 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @param $video_id string       	
 	 * @return object
 	 */
-	function getVideoDetails($operator_id, $video_id) {
-		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
+	function getVideoDetails($video_id) {
+		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('video__id' => $video_id ) );
 	}
 	
 	/**

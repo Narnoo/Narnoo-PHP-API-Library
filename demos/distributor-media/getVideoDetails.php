@@ -5,13 +5,12 @@ require_once '../../narnoo/class-distributor-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
-$operator_id = $_POST ['operator_id'];
 $video_id = $_POST ['video_id'];
 
-if (isset ( $operator_id )) {
+if (isset ( $video_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideoDetails ( $operator_id, $video_id );
+	$message = $request->getVideoDetails ( $video_id );
 
 }
 
@@ -41,10 +40,8 @@ $(function(){
 <?php if (isset ( $message )==false) { ?>
 	
 		<form action="" method="post">
-			<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><label for="operator_id">video id</label>
-			<input name=video_id type="text" value="413"></input><input
-				type="submit" value="submit">
+			<label for="video_id">video id</label> <input name=video_id
+				type="text" value="160"></input><input type="submit" value="submit">
 		</form>
 	
 	<?php
@@ -58,22 +55,23 @@ $(function(){
 		echo 'ErrorCode' . $error->ErrorCode . '</br>';
 		echo 'ErroMessage' . $error->ErrorMessage . '</br>';
 	} else {
-		echo '<ul>';
-		foreach ( $message->operator_videos as $item ) {
-			$operator_video = $item->operator_video;
-			echo '<li><ul>';
-			echo '<li>video_id : ' . $operator_video->video_id . '</li>';
-			echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
-			echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
-			echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
-			echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
-			echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</pre></li>';
-			echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
-			echo '<li>video_language : ' . $operator_video->video_language . '</li>';
-			echo '</ul></li>';
-		}
 		
-		echo '<ul>';
+		$distributor_video_detail = $message->distributor_video_details[0];
+		
+		$distributor_video = $distributor_video_detail->distributor_video;
+		
+
+		echo '<dl>';
+		echo '<dt>video_id<dt><dd>' . $distributor_video->video_id . '</dt>';
+		echo '<dt>entry_date<dt><dd>' . $distributor_video->entry_date . '</dt>';
+		echo '<dt>video_thumb_image_path<dt><dd>' . $distributor_video->video_thumb_image_path . '</dt>';
+		echo '<dt>video_pause_image_path <dt><dd> ' . $distributor_video->video_pause_image_path . '</dt>';
+		echo '<dt>video_preview_path<dt><dd> ' . $distributor_video->video_preview_path . '</li>';
+		echo '<dt>video_stream_path<dt><dd>' . uncdata ( $distributor_video->video_stream_path ) . '</pre></dt>';
+		echo '<dt>video_caption <dt><dd> ' . $distributor_video->video_caption . '</dt>';
+		echo '<dt>video_language <dt><dd>' . $distributor_video->video_language . '</dt>';
+		echo '</dl>';
+	
 	}
 	
 	?>
@@ -87,7 +85,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideoDetails ( $operator_id, $video_id );	
+	$message = $request->getVideoDetails ($video_id );	
 	</pre>
 
 </body>
