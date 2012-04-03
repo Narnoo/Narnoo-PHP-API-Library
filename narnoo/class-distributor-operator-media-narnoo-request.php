@@ -83,7 +83,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	/*
 	 * Distributor's Own Media Download Requst
 	 */
-	function searchMedia($media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords) {
+	function searchMedia($media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords) {
 		$params = array ();
 		
 		if (is_null ( $media_type ) || empty ( $media_type )) {
@@ -91,6 +91,14 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		}
 		
 		$params = array_merge ( $params, array ("media_type" => $media_type ) );
+		
+		if (is_null ( $country ) == false && empty ( $country ) == false) {
+			$params = array_merge ( $params, array ("country" => $country ) );
+		}
+		
+		if (is_null ( $state ) == false && empty ( $state ) == false) {
+			$params = array_merge ( $params, array ("state" => $state ) );
+		}
 		
 		if (is_null ( $category ) == false && empty ( $category ) == false) {
 			$params = array_merge ( $params, array ("category" => $category ) );
@@ -106,6 +114,10 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		
 		if (is_null ( $location ) == false && empty ( $location ) == false) {
 			$params = array_merge ( $params, array ("location" => $location ) );
+		}
+		
+		if (is_null ( $postal_code ) == false && empty ( $postal_code ) == false) {
+			$params = array_merge ( $params, array ("postal_code" => $postal_code ) );
 		}
 		
 		if (is_null ( $latitude ) == false && empty ( $latitude ) == false) {
