@@ -56,3 +56,8 @@ class NarnooRequest{
  
  
 }
+
+
+//class NarrooException{
+//	var $Error;
+//}
