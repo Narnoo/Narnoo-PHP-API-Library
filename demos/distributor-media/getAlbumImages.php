@@ -58,7 +58,9 @@ $(function(){
 			
 			
 			<?php
-		foreach ( $message->operator_albums_images as $image ) {
+			
+			
+		foreach ( $message->distributor_albums_images as $image ) {
 			echo '<li><ul>';
 			$album_image = $image->album_image;
 			

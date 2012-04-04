@@ -38,7 +38,7 @@ $(function(){
 	<div id="demo-frame">
 		<form action="" method="post">
 			<label for="operator">Operator id</label> <input name=operator_id
-				type="text"></input><input type="submit" value="submit">
+				type="text" value="39"></input><input type="submit" value="submit">
 		</form>
 		
 		<?php

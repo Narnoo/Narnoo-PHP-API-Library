@@ -66,9 +66,9 @@ if (isset ( $message )) {
 }
 
 ?>
+	</div>
 	
 	<br />
-	</div>
 	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );

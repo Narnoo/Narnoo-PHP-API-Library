@@ -16,11 +16,11 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 */
 	
 	function getImages() {
-		return $this->getResponse ( $this->remote_url, 'getImages' );
+		return $this->getResponse ( $this->remote_url, 'getImages',null);
 	}
 	
 	function getAlbums() {
-		return $this->getResponse ( $this->remote_url, 'getAlbums' );
+		return $this->getResponse ( $this->remote_url, 'getAlbums',null);
 	}
 	
 	/**
@@ -39,7 +39,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getVideos() {
-		return $this->getResponse ( $this->remote_url, 'getVideos' );
+		return $this->getResponse ( $this->remote_url, 'getVideos',null);
 	}
 	
 	/**
@@ -58,7 +58,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getBrochures() {
-		return $this->getResponse ( $this->remote_url, 'getBrochures' );
+		return $this->getResponse ( $this->remote_url, 'getBrochures',null );
 	}
 	
 	function getSingleBrochure($brochure_id) {

@@ -42,7 +42,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	
 	//TODO: Not test yet
 	function listOperators(){
-		return $this->getResponse($this->interaction_url, 'listOperators');
+		return $this->getResponse($this->interaction_url, 'listOperators',null);
 	}
 	
 	//TODO: Not test yet

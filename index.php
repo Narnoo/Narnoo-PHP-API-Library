@@ -6,6 +6,25 @@
 <title>Narnoo.com - Tourism Media Networking Platform</title>
 <link href="css/public-style.css" rel="stylesheet" type="text/css" />
 <link href="css/demo.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.normal {
+	height: 100%;
+	width: auto;
+}
+
+.normal div,.normal iframe {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.normal iframe {
+	display: block;
+	width: 100%;
+	border: 0;
+}
+</style>
+
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
@@ -14,6 +33,16 @@ $(function(){
 		e.preventDefault();	
 		$('#code-container').attr('src',$(this).attr('href')+'?r='+Math.random())
 	});
+
+	function setHeight(){
+			$('iframe').height($('.normal').height());
+	}	
+
+	$(window).resize(function(){
+		setHeight();
+	});
+
+	setHeight();
 });
 </script>
 
@@ -75,7 +104,8 @@ $(function(){
 	<!-- Main Contents -->
 	<div id="contentBox">
 		<div id="contentContainer">
-			<table width="950" class="layout-grid">
+			<table width="950" class="layout-grid" style="height: 100%;"
+				border="0" cellspacing="0" cellpadding="0">
 				<tbody>
 
 					<tr>
@@ -164,13 +194,15 @@ $(function(){
 									<a href="demos/distributor-operator-media/getBrochures.php">getBrochures</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator-media/getSingleBrochure.php">getSingleBrochure</a>
+									<a
+										href="demos/distributor-operator-media/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
 									<a href="demos/distributor-operator-media/getProductText.php">getProductText</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-operator-media/getProductTextWords.php">getProductTextWords</a>
+									<a
+										href="demos/distributor-operator-media/getProductTextWords.php">getProductTextWords</a>
 								</dd>
 
 								<dd>
@@ -201,7 +233,7 @@ $(function(){
 									<a href="demos/operator/getVideos.php">getVideos</a>
 								</dd>
 								<dd>
-									<a href="#demos/operator/getVideoDetails.php">getVideoDetails</a>
+									<a href="demos/operator/getVideoDetails.php">getVideoDetails</a>
 								</dd>
 								<dd>
 									<a href="demos/operator/getBrochures.php">getBrochures</a>
@@ -227,7 +259,7 @@ $(function(){
 
 							</dl>
 						</td>
-						<td class="normal"><iframe id="code-container" src="" style="border: 0;width: 100%;height: 100%;"></iframe></td>
+						<td class="normal"><iframe id="code-container" src="" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
 
 					</tr>
 				</tbody>
@@ -243,12 +275,12 @@ $(function(){
 				<div style="margin-top: 15px">
 					<img src="icons/icon-128.png" width="124" height="124" alt="icon"><img
 						src="icons/icon-96.png" width="96" height="96" alt="icon"><img
-							src="icons/icon-72.png" width="72" height="72" alt="icon"><img
-								src="icons/icon-64.png" width="64" height="64" alt="icon"><img
-									src="icons/icon-48.png" width="48" height="48" alt="icon"><img
-										src="icons/icon-32.png" width="32" height="32" alt="icon"><img
-											src="icons/icon-24.png" width="24" height="24" alt="icon"><img
-												src="icons/icon-16.png" width="16" height="16" alt="icon">
+						src="icons/icon-72.png" width="72" height="72" alt="icon"><img
+						src="icons/icon-64.png" width="64" height="64" alt="icon"><img
+						src="icons/icon-48.png" width="48" height="48" alt="icon"><img
+						src="icons/icon-32.png" width="32" height="32" alt="icon"><img
+						src="icons/icon-24.png" width="24" height="24" alt="icon"><img
+						src="icons/icon-16.png" width="16" height="16" alt="icon">
 				
 				</div>
 			</table>
