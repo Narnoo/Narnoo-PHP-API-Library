@@ -64,10 +64,9 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	function getSingleBrochure($brochure_id) {
 		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('brochure__id' => $brochure_id ) );
 	}
-	
-	// TODO:Not test yet.
-	function getChannel() {
-	
+
+	function getChannelList() {
+	  return $this->getResponse($this->remote_url, 'getChannelList', null);
 	}
 	
 	// TODO:Not test yet.

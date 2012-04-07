@@ -150,7 +150,7 @@ $(function(){
 									<a href="demos/distributor-media/getSingleBrochure.php">getSingleBrochure</a>
 								</dd>
 								<dd>
-									<a href="demos/distributor-media/getChannel.php">getChannel</a>
+									<a href="demos/distributor-media/getChannelsList .php">getChannelsList</a>
 								</dd>
 
 								<dd>
