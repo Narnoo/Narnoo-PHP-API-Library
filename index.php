@@ -38,11 +38,13 @@ $(function(){
 			$('iframe').height($('.normal').height());
 	}	
 
-	$(window).resize(function(){
+	if($.browser.msie){
+		$(window).resize(function(){
+			setHeight();
+		});
+	
 		setHeight();
-	});
-
-	setHeight();
+	}
 });
 </script>
 
@@ -259,7 +261,8 @@ $(function(){
 
 							</dl>
 						</td>
-						<td class="normal"><iframe id="code-container" src="" marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
+						<td class="normal"><iframe id="code-container" src=""
+								marginheight="0" marginwidth="0" frameborder="0"></iframe></td>
 
 					</tr>
 				</tbody>

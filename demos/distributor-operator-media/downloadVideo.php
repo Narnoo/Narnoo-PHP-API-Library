@@ -19,9 +19,9 @@ if (isset ( $video_id ) && isset ( $operator_id )) {
 
 <html>
 <head>
-<link href="../../css/demo.css" rel="stylesheet" type="text/css" />
 <link href="../../scripts/highlight/highlight.css" rel="stylesheet"
 	type="text/css" />
+<link href="../../css/demo.css" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery.min.js"></script>
