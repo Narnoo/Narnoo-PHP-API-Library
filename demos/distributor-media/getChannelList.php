@@ -33,16 +33,7 @@ $(function(){
 <body>
 
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
-		<form action="" method="post">
-			<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><input type="submit" value="submit">
-		</form>
-	
-	<?php
-	} else {
-		
-		?>
+	<?php if (isset ( $message )){ ?>
 	  <div>
 	  <?php
 		$error = $message->Error;

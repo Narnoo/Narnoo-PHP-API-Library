@@ -9,11 +9,12 @@ header('Content-type: application/json');
 
 $app_key = "1000000002";
 $secret_key = "8d75f2d29d40296867d12ae65f685fc81c6b5d0a";
-// action may be  (listOperators or listDetails or searchMedia(media_id) or getImages or downloadImage(based on dst_id,based on image id) or getAlbums or getAlbumImages(based on album_name) or getBrochures or getSingleBrochure(based on brochure_id) or downloadBrochure(based on dst_id,based on brochure_id) or getVideos or getVideoDetails(based on video_id) or downloadVideo(based on dst_id,based on video_id)
+// action may be  (listOperators or listDetails or searchMedia(media_id) or getImages or downloadImage(based on dst_id,based on image id) or getAlbums or getAlbumImages(based on album_name) or getChannelList or getChannelVideos(based on album_name) or getBrochures or getSingleBrochure(based on brochure_id) or downloadBrochure(based on dst_id,based on brochure_id) or getVideos or getVideoDetails(based on video_id) or downloadVideo(based on dst_id,based on video_id)
 $action =  (trim($_GET['action'])!='') ? trim($_GET['action']) : "listDetails";
 // if you left blank album name then all images of all album will be listed when you use getAlbumImages action
 $page_no =  ($_GET['page_no']!='') ? $_GET['page_no'] : 1;
 $album__name =  (trim($_GET['album'])!='') ? trim($_GET['album']) : "";
+$channel =  (trim($_GET['channel'])!='') ? trim($_GET['channel']) : "";
 $operator_id =  ($_GET['op_id']!='') ? $_GET['op_id'] : 0;
 $brochure__id =  ($_GET['brochure_id']!='') ? $_GET['brochure_id'] : 0;
 $video__id =  ($_GET['video_id']!='') ? $_GET['video_id'] : 0;
@@ -33,7 +34,7 @@ $latitude =  ($_GET['latitude']!='') ? $_GET['latitude'] : "";
 $longitude =  ($_GET['longitude']!='') ? $_GET['longitude'] : "";
 $keywords =  ($_GET['keywords']!='') ? $_GET['keywords'] : "";
 
-$data = array('app_key' => $app_key, 'secret_key' => $secret_key, 'response_type' => $response_type, 'action' => $action, 'album__name' => $album__name, 'brochure__id' => $brochure__id, 'video__id' => $video__id, 'media_id' =>$media_id, 'media_type' => $media_type, 'category' => $category, 'subcategory' => $subcategory, 'location' => $location, 'latitude' => $latitude, 'longitude' => $longitude, 'keywords' => $keywords, 'page_no' => $page_no);
+$data = array('app_key' => $app_key, 'secret_key' => $secret_key, 'response_type' => $response_type, 'action' => $action, 'album__name' => $album__name, 'channel' => $channel, 'brochure__id' => $brochure__id, 'video__id' => $video__id, 'media_id' =>$media_id, 'media_type' => $media_type, 'category' => $category, 'subcategory' => $subcategory, 'location' => $location, 'latitude' => $latitude, 'longitude' => $longitude, 'keywords' => $keywords, 'page_no' => $page_no);
 if ($_SERVER['HTTPS'] == "on") {
 $xmlUrl = 'https://devapi.narnoo.com/dist_xml.php'; // XML feed file/URL
 } else {
