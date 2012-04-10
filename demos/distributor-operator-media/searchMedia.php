@@ -173,7 +173,7 @@ $(function(){
 	<pre class="code" lang="php">
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchMedia ($operator_id, $media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords );
+	$message = $request->searchMedia ($media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords );
 	</pre>
 
 </body>
