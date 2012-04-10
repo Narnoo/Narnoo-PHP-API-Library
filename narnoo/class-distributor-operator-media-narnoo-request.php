@@ -70,21 +70,10 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
 	}
 	
-	// TODO:Not test yet.
-	function getChannel() {
-	
-	}
-	
-	// TODO:Not test yet.
-	function getChannelVideos($channel_name) {
-	
-	}
-	
-	/*
-	 * Distributor's Own Media Download Requst
-	 */
-	function searchMedia($media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords) {
-		$params = array ();
+
+	function searchMedia($operator_id,$media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords) {
+		
+		$params = array ('operator_id' => $operator_id);
 		
 		if (is_null ( $media_type ) || empty ( $media_type )) {
 			$media_type = "image";
