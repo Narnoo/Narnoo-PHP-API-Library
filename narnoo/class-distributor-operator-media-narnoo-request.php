@@ -71,9 +71,9 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	}
 	
 
-	function searchMedia($operator_id,$media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords) {
+	function searchMedia($media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords) {
 		
-		$params = array ('operator_id' => $operator_id);
+		$params = array ();
 		
 		if (is_null ( $media_type ) || empty ( $media_type )) {
 			$media_type = "image";

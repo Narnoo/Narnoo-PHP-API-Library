@@ -5,7 +5,6 @@ require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
-$operator_id = $_POST ['operator_id'];
 
 if (count ( $_POST ) > 0) {
 	$media_type = $_POST ["media_type"];
@@ -23,7 +22,7 @@ if (count ( $_POST ) > 0) {
 	
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchMedia ($operator_id, $media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords );
+	$message = $request->searchMedia ( $media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords );
 }
 
 ?>
@@ -51,8 +50,7 @@ $(function(){
 	<div id="demo-frame">
 	<?php if (isset ( $message )==false){ ?>
 		<form method="post">
-		<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"><br/>
+
 			<label for="media_type">media_type</label><select name="media_type">
 				<option value="image">image</option>
 				<option value="brochure">brochure</option>
