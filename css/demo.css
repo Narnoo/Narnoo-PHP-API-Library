@@ -22,9 +22,13 @@
 	padding: 0
 }
 
+
+
+
+
 .left-nav .demos-nav {
 	float: left;
-	width: 230px;
+	width: 240px;
 	font-size: 1.3em;
 	padding: 14px 23px 8px 22px;
 }
@@ -36,11 +40,18 @@
 		"sans-serif";
 	color: #e87b10;
 	margin-top: 1 .5em;
-	margin-bottom: 0;
+	margin-bottom: 10pz;
 	padding-left: 8 px;
-	padding-bottom: 5 px;
+	padding-bottom: 0 px;
 	line-height: 1.2em;
 	border-bottom: 1 px solid #F4F4F4;
+	background: url(../images/icons-expand.png) no-repeat right center;
+	cursor: pointer;
+}
+
+.left-nav .demos-nav dt.collapse {
+	background: url(../images/icons-collapse.png) no-repeat right center;
+
 }
 
 .left-nav .demos-nav dd a {
