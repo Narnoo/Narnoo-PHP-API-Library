@@ -14,7 +14,7 @@ class OperatorNarnooRequest extends NarnooRequest{
 	}
 	
 	function getAlbumImages($album_name){
-		
+		return $this->getResponse($this->remote_url, 'getAlbumImages',array('album__name'=>$album_name));
 	}
 	
 	function getVideos(){
