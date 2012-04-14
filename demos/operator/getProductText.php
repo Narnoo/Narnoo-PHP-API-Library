@@ -1,17 +1,13 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
-require_once '../narnoo-cofing.php';
+require_once '../../narnoo/class-operator-narnoo-request.php';
+require_once '../narnoo-operator-config.php';
 require_once '../utilities.php';
 
-$operator_id = $_POST ['operator_id'];
-
-if (isset ( $operator_id )) {
-	$request = new DistributorOperatorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductText ( $operator_id );
-}
+$request = new OperatorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$message = $request->getProductText ();
 
 ?>
 
@@ -37,16 +33,8 @@ $(function(){
 <body>
 
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
-		<form action="" method="post">
-			<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><input type="submit" value="submit">
-		</form>
-	
-	<?php
-	} else {
-		
-		?>
+	<?php if (isset ( $message )){ ?>
+
 	  <div>
 	  <?php
 		$error = $message->Error;
@@ -76,9 +64,9 @@ $(function(){
 
 	<br />
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();
+	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductText( $operator_id );	
+	$message = $request->getProductText();	
 	</pre>
 
 </body>

@@ -1,16 +1,17 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-operator-media-narnoo-request.php';
-require_once '../narnoo-cofing.php';
+require_once '../../narnoo/class-operator-narnoo-request.php';
+require_once '../narnoo-operator-config.php';
 require_once '../utilities.php';
 
-$operator_id = $_POST ['operator_id'];
 
-if (isset ( $operator_id )) {
-	$request = new DistributorOperatorMediaNarnooRequest ();
+$product_title = $_POST ["product_title"];
+
+if (isset ( $product_title )) {
+	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductText ( $operator_id );
+	$message = $request->getProductTextWords ($product_title );
 }
 
 ?>
@@ -39,8 +40,9 @@ $(function(){
 	<div id="demo-frame">
 	<?php if (isset ( $message )==false){ ?>
 		<form action="" method="post">
-			<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><input type="submit" value="submit">
+			<label for="product_title">product_title</label>
+			<input name=product_title type="text" value="Narnoo Platform"></input><input
+				type="submit" value="submit">
 		</form>
 	
 	<?php
@@ -59,9 +61,23 @@ $(function(){
 			
 			echo '<ul>';
 			foreach ( $operator_products as $item ) {
-				$product = $item->operator_product;
+				$product_description = $item->product_description;
 				
-				echo "<dl><dt>product_id</dt><dd>" . $product->product_id . "</dd><dt>product_title</dt><dd>" . $product->product_title . "</dd></dl>";
+				echo "<dl>";
+				
+				echo "<dt>product_title</dt><dd>" . $product_description->product_title . "</dd>";
+				
+				$text = $product_description->text;
+				
+				echo "<dt></dt><dd><ul>";
+				echo "<li>word_50:" . $text->word_50 . "</li>";
+				echo "<li>word_100:" . $text->word_100 . "</li>";
+				echo "<li>word_150:" . $text->word_150 . "</li>";
+				echo "</ul></dd>";
+				
+				echo "</dl>";
+				
+				
 			}
 			echo '</ul>';
 		}
@@ -76,9 +92,9 @@ $(function(){
 
 	<br />
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();
+	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductText( $operator_id );	
+	$message = $request->getProductTextWords ($product_title );
 	</pre>
 
 </body>
