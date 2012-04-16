@@ -64,6 +64,7 @@ if (isset ( $message ) == false) {
 			echo '<li>image_id : ' . $album->image_id . '</li>';
 			echo '<li>entry_date : ' . $album->entry_date . '</li>';
 			echo '<li>thumb_image_path : ' . $album->thumb_image_path . '</li>';
+			echo '<li>preview_image_path : ' . $album->preview_image_path . '</li>';
 			echo '<li>large_image_path : ' . $album->large_image_path . '</li>';
 			echo '<li>image_caption : ' . $album->image_caption . '</li>';
 	

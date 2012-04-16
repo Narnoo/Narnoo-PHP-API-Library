@@ -31,6 +31,8 @@ class NarnooRequest{
     	$url = "http://".$remote_url;
     }
     
+    $link = $url . '?' . join('=', $params);
+    
  	$ch = curl_init();
  	curl_setopt($ch, CURLOPT_HEADER, 0);
  	curl_setopt($ch, CURLOPT_VERBOSE, 1);
