@@ -71,7 +71,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	}
 	
 
-	function searchMedia($media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords) {
+	function searchMedia($media_type,$business_name,$country,$state, $category, $subcategory, $suburb, $location, $postal_code,$latitude, $longitude, $keywords,$page_no) {
 		
 		$params = array ();
 		
@@ -120,6 +120,11 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		if (is_null ( $keywords ) == false && empty ( $keywords ) == false) {
 			$params = array_merge ( $params, array ("keywords" => $keywords ) );
 		}
+		
+		if (is_null ( $page_no ) || empty ( $page_no )) {
+			$page_no = 1;
+		}
+		$params = array_merge ( $params, array ("page_no" => $page_no ) );
 		
 		// if (count ( $params ) < 2) {
 		//

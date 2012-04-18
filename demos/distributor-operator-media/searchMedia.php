@@ -19,10 +19,11 @@ if (count ( $_POST ) > 0) {
 	$latitude = $_POST ["latitude"];
 	$longitude = $_POST ["longitude"];
 	$keywords = $_POST ["keywords"];
+	$page_no = 1;
 	
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchMedia ( $media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords );
+	$message = $request->searchMedia ( $media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords,$page_no );
 }
 
 ?>

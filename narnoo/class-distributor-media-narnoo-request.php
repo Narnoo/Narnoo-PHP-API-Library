@@ -76,7 +76,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	/*
 	 * Distributor's Own Media Download Requst
 	 */
-	function searchMedia($media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords, $page_no) {
+	function searchMedia($media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords,$page_no) {
 		$params = array ();
 		
 		if (is_null ( $media_type ) || empty ( $media_type )) {

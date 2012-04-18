@@ -16,10 +16,11 @@ if (count ( $_POST ) > 0) {
 	$latitude = $_POST ["latitude"];
 	$longitude = $_POST ["longitude"];
 	$keywords = $_POST ["keywords"];
+	$page_no = 1;
 	
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchMedia ( $media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords );
+	$message = $request->searchMedia ( $media_type, $category, $subcategory, $suburb, $location, $latitude, $longitude, $keywords,$page_no);
 }
 
 ?>
