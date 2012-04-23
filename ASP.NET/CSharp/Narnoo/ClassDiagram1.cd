@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Narnoo.NarnooRequest">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAIAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NarnooRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Narnoo.OperatorNarnooRequest">
+    <Position X="11.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperatorNarnooRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Narnoo.DistributorOperatorMediaNarnooRequest">
+    <Position X="7.5" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DistributorOperatorMediaNarnooRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Narnoo.DistributorNarnooRequest">
+    <Position X="4.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DistributorNarnooRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Narnoo.DistributorMediaNarnooRequest">
+    <Position X="1" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DistributorMediaNarnooRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>
