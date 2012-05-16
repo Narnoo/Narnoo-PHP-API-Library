@@ -1,7 +1,7 @@
 <?php
 
 class OperatorNarnooRequest extends NarnooRequest {
-	var $remote_url = "devapi.narnoo.com/op_xml.php"; // Operator's own account
+	var $remote_url = "api.narnoo.com/op_xml.php"; // Operator's own account
 	
 	/**
 	 * get your all image information

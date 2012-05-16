@@ -4,7 +4,7 @@
 
 class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	
-	var $remote_url = "devapi.narnoo.com/xml.php"; // Distributor -> Operator
+	var $remote_url = "api.narnoo.com/xml.php"; // Distributor -> Operator
 	
 	/*
 	 * Distributor's Own Media Requests

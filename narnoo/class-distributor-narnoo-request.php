@@ -11,8 +11,8 @@
 class DistributorNarnooRequest extends NarnooRequest {
 	
 	
-	var $interaction_url = "devapi.narnoo.com/xml.php";//Distributor -> Operator Interaction
-	var $dist_url = "devapi.narnoo.com/dist_xml.php";//Distributor's own account
+	var $interaction_url = "api.narnoo.com/xml.php";//Distributor -> Operator Interaction
+	var $dist_url = "api.narnoo.com/dist_xml.php";//Distributor's own account
 	
 	
 	
