@@ -7,8 +7,8 @@ header('Content-type: text/json');
 header('Content-type: application/json');
 }
 
-$app_key = "1000000002";
-$secret_key = "8d75f2d29d40296867d12ae65f685fc81c6b5d0a";
+$app_key = "1336471851155";
+$secret_key = "be96a6462b3bda7f36831afb4888c75e675cdfa3";
 // action may be  (addOperator or deleteOperator or listOperators or searchOperators(Country/category/subcategory/state/suburb/zip) or searchMedia(media_id) or singleOperatorDetail or getImages or downloadImage(based on op_id,based on image id) or getAlbums or getAlbumImages(based on album_name) or getBrochures or getSingleBrochure(based on brochure_id) or downloadBrochure(based on op_id,based on brochure_id) or getVideos or getVideoDetails(based on video_id) or downloadVideo(based on op_id,based on video_id) or getProductText or getProductTextWords or getProductDescription(based on product_title) )
 $action =  (trim($_GET['action'])!='') ? trim($_GET['action']) : "addOperator";
 // if you left blank album name then all images of all album will be listed when you use getAlbumImages action
@@ -38,12 +38,13 @@ $latitude =  ($_GET['latitude']!='') ? $_GET['latitude'] : "";
 $longitude =  ($_GET['longitude']!='') ? $_GET['longitude'] : "";
 $keywords =  ($_GET['keywords']!='') ? $_GET['keywords'] : "";
 $business_name =  ($_GET['business_name']!='') ? $_GET['business_name'] : "";
-$data = array('app_key' => $app_key, 'secret_key' => $secret_key, 'response_type' => $response_type, 'action' => $action, 'album__name' => $album__name, 'brochure__id' => $brochure__id, 'video__id' => $video__id, 'media_id' =>$media_id, 'media_type' => $media_type, 'product__title' => $product__title, 'operator_id' => $operator_id, 'country' => $country, 'category' => $category, 'subcategory' => $subcategory, 'state' => $state, 'suburb' => $suburb, 'location' => $location, 'postal_code' => $postal_code, 'latitude' => $latitude, 'longitude' => $longitude, 'keywords' => $keywords, 'business_name' => $business_name, 'page_no' => $page_no);
+$data = array('app_key' => $app_key, 'secret_key' => $secret_key, 'response_type' => $response_type, 'action' => $action, 'album_name' => $album__name, 'brochure_id' => $brochure__id, 'video_id' => $video__id, 'media_id' =>$media_id, 'media_type' => $media_type, 'product_title' => $product__title, 'operator_id' => $operator_id, 'country' => $country, 'category' => $category, 'subcategory' => $subcategory, 'state' => $state, 'suburb' => $suburb, 'location' => $location, 'postal_code' => $postal_code, 'latitude' => $latitude, 'longitude' => $longitude, 'keywords' => $keywords, 'business_name' => $business_name, 'page_no' => $page_no);
 if ($_SERVER['HTTPS'] == "on") {
-$xmlUrl = 'https://devapi.narnoo.com/xml.php'; // XML feed file/URL
+$xmlUrl = 'https://api.narnoo.com/xml.php'; // XML feed file/URL
 } else {
-$xmlUrl = 'http://devapi.narnoo.com/xml.php'; // XML feed file/URL
+$xmlUrl = 'http://api.narnoo.com/xml.php'; // XML feed file/URL
 }
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_VERBOSE, 1);
