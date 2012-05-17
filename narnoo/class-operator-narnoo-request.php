@@ -47,7 +47,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($video_id) {
-		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('video__id' => $video_id ) );
+		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('video_id' => $video_id ) );
 	}
 	
 	/**
@@ -60,7 +60,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	}
 	
 	function getSingleBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('brochure__id' => $brochure_id ) );
+		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('brochure_id' => $brochure_id ) );
 	}
 	
 	function searchMedia($media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords) {
@@ -126,15 +126,15 @@ class OperatorNarnooRequest extends NarnooRequest {
 	}
 	
 	function downloadImage($image_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("media_id" => $image_id ) );
+		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("image_id" => $image_id ) );
 	}
 	
 	function downloadVideo($video_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("video__id" => $video_id ) );
+		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("video_id" => $video_id ) );
 	}
 	
 	function downloadBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("brochure__id" => $brochure_id ) );
+		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("brochure_id" => $brochure_id ) );
 	}
 	
 	function getProductText() {

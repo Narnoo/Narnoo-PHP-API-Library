@@ -56,8 +56,8 @@ $(function(){
 	  <?php
 			$error = $message->error;
 			if (isset ( $error )) {
-				echo 'ErrorCode' . $error->errorCode . '</br>';
-				echo 'ErroMessage' . $error->errorMessage . '</br>';
+				echo 'ErrorCode:' . $error->errorCode . '</br>';
+				echo 'ErroMessage:' . $error->errorMessage . '</br>';
 			}
 			
 			?>

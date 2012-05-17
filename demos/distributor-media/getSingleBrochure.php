@@ -48,7 +48,7 @@ $(function(){
 <?php if (isset ( $message ) ==false){ ?>
 	<form action="" method="post">
 			<label for="brochure_id">brochure id</label> <input name=brochure_id
-				type="text" value="170"></input><input type="submit" value="submit">
+				type="text" value="208"></input><input type="submit" value="submit">
 		</form>
 	
 	<?php
