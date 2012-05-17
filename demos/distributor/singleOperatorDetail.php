@@ -54,10 +54,10 @@ $(function(){
 			?>
 	  <div>
 	  <?php
-			$error = $message->Error;
+			$error = $message->error;
 			if (isset ( $error )) {
-				echo 'ErrorCode' . $error->ErrorCode . '</br>';
-				echo 'ErroMessage' . $error->ErrorMessage . '</br>';
+				echo 'ErrorCode' . $error->errorCode . '</br>';
+				echo 'ErroMessage' . $error->errorMessage . '</br>';
 			} else {
 				$operator_detail = $message->operator_detail;
 				$operator = $operator_detail [0]->operator;

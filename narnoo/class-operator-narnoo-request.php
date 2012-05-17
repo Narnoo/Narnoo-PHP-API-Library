@@ -116,7 +116,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 		// if (count ( $params ) < 2) {
 		//
 		// $message = new NarrooException();
-		// $message->Error = "Minimum of one search criteria needs to be passed
+		// $message->error = "Minimum of one search criteria needs to be passed
 		// across all possible criteria." ;
 		//
 		// return $message;

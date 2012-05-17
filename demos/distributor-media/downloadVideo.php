@@ -56,10 +56,10 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->Error;
+		$error = $message->error;
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->ErrorCode . '</br>';
-			echo 'ErroMessage' . $error->ErrorMessage . '</br>';
+			echo 'ErrorCode' . $error->errorCode . '</br>';
+			echo 'ErroMessage' . $error->errorMessage . '</br>';
 		} else {
 			
 			$download_video = $message->download_video;
