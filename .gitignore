@@ -7,3 +7,6 @@
 *.pdb
 obj/
 /doc/~$erator.doc
+/get_result_from_api.php
+/get_dist_result_from_api.php
+/get_op_result_from_api.php
