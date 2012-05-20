@@ -9,6 +9,7 @@ $operator_id = $_POST ['operator_id'];
 
 if (count ( $_POST ) > 0) {
 	$media_type = $_POST ["media_type"];
+	$media_id = $_POST ["media_id"];
 	$business_name = $_POST ["business_name"];
 	$country = $_POST ["country"];
 	$state = $_POST ["state"];
@@ -19,6 +20,8 @@ if (count ( $_POST ) > 0) {
 	$postal_code = $_POST ["postal_code"];
 	$latitude = $_POST ["latitude"];
 	$longitude = $_POST ["longitude"];
+	$radius = $_POST ["radius"];
+	$privilege = $_POST ["privilege"];
 	$keywords = $_POST ["keywords"];
 	
 	$request = new DistributorOperatorMediaNarnooRequest ();
@@ -43,13 +46,16 @@ if (count ( $_POST ) > 0) {
 <script type="text/javascript">
 $(function(){
 	$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+
+	
 });
 </script>
 </head>
 <body>
-<h2>Distributor's search their Operator's media</h2>
-<p>Distributors use this function to search their Operator's media. *min 1 criteria needed</p>
-<pre class="code" lang="php">
+	<h2>Distributor's search their Operator's media</h2>
+	<p>Distributors use this function to search their Operator's media.
+		*min 1 criteria needed</p>
+	<pre class="code" lang="php">
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->searchMedia ( $media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords );
@@ -177,7 +183,7 @@ $(function(){
 
 	<br />
 
-	
+
 
 </body>
 </html>

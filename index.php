@@ -43,7 +43,8 @@ $(function(){
 	
 	$('dd a').click(function(e){
 		e.preventDefault();	
-		$('#code-container').attr('src',$(this).attr('href')+'?r='+Math.random())
+		$('#code-container').attr('src',$(this).attr('href')+'?r='+Math.random());
+	
 	});
 
 	function setHeight(){
@@ -63,8 +64,9 @@ $(function(){
 </head>
 <body marginwidth="0" marginheight="0">
 
-	<!-- Header Nav Contents --><!-- Header Contents -->
-  <div id="headerBox">
+	<!-- Header Nav Contents -->
+	<!-- Header Contents -->
+	<div id="headerBox">
 		<div id="headerContainer">
 			<table height="80" width="950">
 				<tbody>
@@ -158,6 +160,18 @@ $(function(){
 								</dd>
 
 
+								<dd>
+									<a href="demos/distributor-media/deleteBrochure.php">deleteBrochure</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/deleteImage.php">deleteImage</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/deleteVideo.php">deleteVideo</a>
+								</dd>
+
 								<dt>Distributors->Operator Media</dt>
 								<dd>
 									<a href="demos/distributor-operator-media/getImages.php">getImages</a>
@@ -241,6 +255,18 @@ $(function(){
 									<a href="demos/operator/downloadBrochure.php">downloadBrochure</a>
 								</dd>
 
+								<dd>
+									<a href="demos/operator/deleteBrochure.php">deleteBrochure</a>
+								</dd>
+
+								<dd>
+									<a href="demos/operator/deleteImage.php">deleteImage</a>
+								</dd>
+
+								<dd>
+									<a href="demos/operator/deleteVideo.php">deleteVideo</a>
+								</dd>
+
 							</dl>
 						</td>
 						<td class="normal"><iframe id="code-container" src=""
@@ -260,12 +286,12 @@ $(function(){
 				<div style="margin-top: 15px">
 					<img src="icons/icon-128.png" width="124" height="124" alt="icon"><img
 						src="icons/icon-96.png" width="96" height="96" alt="icon"><img
-							src="icons/icon-72.png" width="72" height="72" alt="icon"><img
-								src="icons/icon-64.png" width="64" height="64" alt="icon"><img
-									src="icons/icon-48.png" width="48" height="48" alt="icon"><img
-										src="icons/icon-32.png" width="32" height="32" alt="icon"><img
-											src="icons/icon-24.png" width="24" height="24" alt="icon"><img
-												src="icons/icon-16.png" width="16" height="16" alt="icon">
+						src="icons/icon-72.png" width="72" height="72" alt="icon"><img
+						src="icons/icon-64.png" width="64" height="64" alt="icon"><img
+						src="icons/icon-48.png" width="48" height="48" alt="icon"><img
+						src="icons/icon-32.png" width="32" height="32" alt="icon"><img
+						src="icons/icon-24.png" width="24" height="24" alt="icon"><img
+						src="icons/icon-16.png" width="16" height="16" alt="icon">
 				
 				</div>
 			</table>

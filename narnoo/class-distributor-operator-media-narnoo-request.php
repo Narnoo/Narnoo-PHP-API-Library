@@ -54,7 +54,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($operator_id, $video_id) {
-		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('operator_id' => $operator_id, 'video__id' => $video_id ) );
+		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('operator_id' => $operator_id, 'video_id' => $video_id ) );
 	}
 	
 	/**
@@ -67,7 +67,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	}
 	
 	function getSingleBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure__id' => $brochure_id ) );
+		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure_id' => $brochure_id ) );
 	}
 	
 
@@ -134,15 +134,15 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	}
 	
 	function downloadImage($operator_id, $image_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("operator_id" => $operator_id, "media_id" => $image_id ) );
+		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("operator_id" => $operator_id, "image_id" => $image_id ) );
 	}
 	
 	function downloadVideo($operator_id, $video_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("operator_id" => $operator_id, "video__id" => $video_id ) );
+		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("operator_id" => $operator_id, "video_id" => $video_id ) );
 	}
 	
 	function downloadBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("operator_id" => $operator_id, "brochure__id" => $brochure_id ) );
+		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("operator_id" => $operator_id, "brochure_id" => $brochure_id ) );
 	}
 	
 	function getProductText($operator_id) {

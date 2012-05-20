@@ -22,9 +22,10 @@
 	padding: 0
 }
 
-
-
-
+label {
+	display: inline-block;
+	width: 100px;
+}
 
 .left-nav .demos-nav {
 	float: left;
@@ -51,7 +52,6 @@
 
 .left-nav .demos-nav dt.collapse {
 	background: url(../images/icons-collapse.png) no-repeat right center;
-
 }
 
 .left-nav .demos-nav dd a {
