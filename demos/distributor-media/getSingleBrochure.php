@@ -75,7 +75,7 @@ $(function(){
 		echo '<dt>file_path_to_pdf</dt><dd>' . uncdata ( $brochure->file_path_to_pdf ) . '</dd>';
 		echo '<dt>validity_date</dt><dd>' . $brochure->validity_date . '</dd>';
 		echo '<dt>brochure_caption</dt><dd>' . $brochure->brochure_caption . '</dd>';
-		
+		echo '<dt>format</dt><dd>' . $brochure->format . '</dd>';
 		$standard_pages = $brochure->standard_pages;
 		echo '<dt>standard_pages</dt><dd> <ul>';
 		echo '<li>page_0: ' . $standard_pages->page_0 . '</li>';
