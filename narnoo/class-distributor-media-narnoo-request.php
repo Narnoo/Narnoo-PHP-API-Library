@@ -24,7 +24,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbumImages($album_name) {
-		return $this->getResponse ( $this->getDistXmlApi(), 'getAlbumImages', array ('album__name' => $album_name ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getAlbumImages', array ('album' => $album_name ) );
 	}
 	
 	/**

@@ -6,3 +6,4 @@
 *.user
 *.pdb
 obj/
+/doc/~$erator.doc
