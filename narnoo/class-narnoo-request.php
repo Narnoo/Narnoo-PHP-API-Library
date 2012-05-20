@@ -7,6 +7,45 @@ class NarnooRequest{
  var $secret_key = ""; // Secret Key From Portal
  var $response_type = "json"; //xml / json
  var $requiredSSL = false;
+ var $sandbox = true;
+ 
+ // Distributor's own account
+ 
+ // Distributor -> Operator Interaction
+ 
+ var $api_dist_xml = "devapi.narnoo.com/dist_xml.php";
+ var $api_live_dist_xml = "api.narnoo.com/dist_xml.php";
+
+ var $api_xml = "devapi.narnoo.com/xml.php";
+ var $api_live_xml = "api.narnoo.com/xml.php";
+ 
+ var $api_op_xml = "devapi.narnoo.com/op_xml.php";
+ var $api_live_op_xml = "api.narnoo.com/op_xml.php";
+ 
+ 
+ function getDistXmlApi(){
+ 	if($this->sandbox == true){
+ 		return $this->api_dist_xml;
+ 	}else{
+ 		return $this->api_live_dist_xml;
+ 	}
+ }
+ 
+ function getXmlApi(){
+ 	if($this->sandbox == true){
+ 		return $this->api_xml;
+ 	}else{
+ 		return $this->api_live_xml;
+ 	}
+ }
+ 
+ function getOpXmlApi(){
+ 	if($this->sandbox == true){
+ 		return $this->api_op_xml;
+ 	}else{
+ 		return $this->api_live_op_xml;
+ 	}
+ }
  
  function setAuth($appkey,$secretkey){
  	$this->app_key = $appkey;

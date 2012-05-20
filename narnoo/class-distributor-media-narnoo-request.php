@@ -4,23 +4,17 @@
 
 class DistributorMediaNarnooRequest extends NarnooRequest {
 	
-	var $remote_url = "api.narnoo.com/dist_xml.php"; // Distributor ->
-	                                                 // Operator Interaction
-	                                                 // var $remote_url =
-	                                                 // "devapi.narnoo.com/xml.php";
-	                                                 // // Distributor ->
-	                                                 // Operator
-	                                                 // Interaction
+	
 	/*
 	 * Distributor's Own Media Requests
 	 */
 	
 	function getImages() {
-		return $this->getResponse ( $this->remote_url, 'getImages', null );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getImages', null );
 	}
 	
 	function getAlbums() {
-		return $this->getResponse ( $this->remote_url, 'getAlbums', null );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getAlbums', null );
 	}
 	
 	/**
@@ -30,7 +24,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbumImages($album_name) {
-		return $this->getResponse ( $this->remote_url, 'getAlbumImages', array ('album__name' => $album_name ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getAlbumImages', array ('album__name' => $album_name ) );
 	}
 	
 	/**
@@ -39,7 +33,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getVideos() {
-		return $this->getResponse ( $this->remote_url, 'getVideos', null );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getVideos', null );
 	}
 	
 	/**
@@ -49,7 +43,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($video_id) {
-		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('video_id' => $video_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getVideoDetails', array ('video_id' => $video_id ) );
 	}
 	
 	/**
@@ -58,19 +52,19 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getBrochures() {
-		return $this->getResponse ( $this->remote_url, 'getBrochures', null );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getBrochures', null );
 	}
 	
 	function getSingleBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('brochure_id' => $brochure_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getSingleBrochure', array ('brochure_id' => $brochure_id ) );
 	}
 	
 	function getChannelList() {
-		return $this->getResponse ( $this->remote_url, 'getChannelList', null );
+		return $this->getResponse ( $this->getDistXmlApi(), 'getChannelList', null );
 	}
 	
 	function getChannelVideos($channel) {
-		return $this->getResponse ( $this->remote_url, "getChannelVideos", array ("channel" => $channel ) );
+		return $this->getResponse ( $this->getDistXmlApi(), "getChannelVideos", array ("channel" => $channel ) );
 	}
 	
 	/*
@@ -128,7 +122,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 			if (is_null ( $keywords ) == false && empty ( $keywords ) == false) {
 				$params = array_merge ( $params, array ("keywords" => $keywords ) );
 			}
-			
+		
 		}
 		
 		if (is_null ( $page_no ) || empty ( $page_no )) {
@@ -145,31 +139,31 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		// return $message;
 		// }
 		
-		return $this->getResponse ( "api.narnoo.com/xml.php", 'searchMedia', $params );
+		return $this->getResponse ($this->getXmlApi(), 'searchMedia', $params );
 	}
 	
 	function downloadImage($image_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("image_id" => $image_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'downloadImage', array ("image_id" => $image_id ) );
 	}
 	
 	function downloadVideo($video_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("video_id" => $video_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'downloadVideo', array ("video_id" => $video_id ) );
 	}
 	
 	function downloadBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("brochure_id" => $brochure_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'downloadBrochure', array ("brochure_id" => $brochure_id ) );
 	}
 	
 	function deleteImage($image_id) {
-		return $this->getResponse ( $this->remote_url, 'deleteImage', array ("image_id" => $image_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'deleteImage', array ("image_id" => $image_id ) );
 	}
 	
 	function deleteBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'deleteBrochure', array ("brochure_id" => $brochure_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'deleteBrochure', array ("brochure_id" => $brochure_id ) );
 	}
 	
 	function deleteVideo($video_id) {
-		return $this->getResponse ( $this->remote_url, 'deleteVideo', array ("video_id" => $video_id ) );
+		return $this->getResponse ( $this->getDistXmlApi(), 'deleteVideo', array ("video_id" => $video_id ) );
 	}
 
 }

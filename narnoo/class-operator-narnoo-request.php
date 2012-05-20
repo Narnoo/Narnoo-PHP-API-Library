@@ -1,7 +1,6 @@
 <?php
 
 class OperatorNarnooRequest extends NarnooRequest {
-	var $remote_url = "api.narnoo.com/op_xml.php"; // Operator's own account
 	
 	/**
 	 * get your all image information
@@ -9,7 +8,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getImages() {
-		return $this->getResponse ( $this->remote_url, 'getImages', null );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getImages', null );
 	}
 	
 	/**
@@ -18,7 +17,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbums() {
-		return $this->getResponse ( $this->remote_url, 'getAlbums', null );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getAlbums', null );
 	}
 	
 	/**
@@ -28,7 +27,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbumImages($album_name) {
-		return $this->getResponse ( $this->remote_url, 'getAlbumImages', array ('album__name' => $album_name ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getAlbumImages', array ('album__name' => $album_name ) );
 	}
 	
 	/**
@@ -37,7 +36,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getVideos() {
-		return $this->getResponse ( $this->remote_url, 'getVideos', null );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getVideos', null );
 	}
 	
 	/**
@@ -47,7 +46,7 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($video_id) {
-		return $this->getResponse ( $this->remote_url, 'getVideoDetails', array ('video_id' => $video_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getVideoDetails', array ('video_id' => $video_id ) );
 	}
 	
 	/**
@@ -56,11 +55,11 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getBrochures() {
-		return $this->getResponse ( $this->remote_url, 'getBrochures', null );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getBrochures', null );
 	}
 	
 	function getSingleBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'getSingleBrochure', array ('brochure_id' => $brochure_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getSingleBrochure', array ('brochure_id' => $brochure_id ) );
 	}
 	
 	function searchMedia($media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords) {
@@ -122,27 +121,27 @@ class OperatorNarnooRequest extends NarnooRequest {
 		// return $message;
 		// }
 		
-		return $this->getResponse ( $this->remote_url, 'searchMedia', $params );
+		return $this->getResponse ( $this->getOpXmlApi (), 'searchMedia', $params );
 	}
 	
 	function downloadImage($image_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadImage', array ("image_id" => $image_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'downloadImage', array ("image_id" => $image_id ) );
 	}
 	
 	function downloadVideo($video_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadVideo', array ("video_id" => $video_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'downloadVideo', array ("video_id" => $video_id ) );
 	}
 	
 	function downloadBrochure($brochure_id) {
-		return $this->getResponse ( $this->remote_url, 'downloadBrochure', array ("brochure_id" => $brochure_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'downloadBrochure', array ("brochure_id" => $brochure_id ) );
 	}
 	
 	function getProductText() {
-		return $this->getResponse ( $this->remote_url, 'getProductText', null );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getProductText', null );
 	}
 	
 	function getProductTextWords($product_title) {
-		return $this->getResponse ( $this->remote_url, 'getProductTextWords', array ("product_title" => $product_title ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'getProductTextWords', array ("product_title" => $product_title ) );
 	}
 
 }
