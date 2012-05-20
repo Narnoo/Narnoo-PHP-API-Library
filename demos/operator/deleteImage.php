@@ -1,16 +1,17 @@
 <?php
 
 require_once '../../narnoo/class-narnoo-request.php';
-require_once '../../narnoo/class-distributor-media-narnoo-request.php';
-require_once '../narnoo-cofing.php';
+require_once '../../narnoo/class-operator-narnoo-request.php';
+require_once '../narnoo-operator-config.php';
 require_once '../utilities.php';
 
-$brochure_id = $_POST ['brochure_id'];
 
-if (isset ( $brochure_id )) {
-	$request = new DistributorMediaNarnooRequest ();
+$image_id = $_POST ['image_id'];
+
+if (isset ( $image_id )) {
+	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteBrochure($brochure_id );
+	$message = $request->deleteImage ($image_id );
 }
 
 ?>
@@ -34,19 +35,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's delete Brochure</h2>
-<p>This function used to delete Brochure of the distributor.</p>
-<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
+<h2>Delete Operators images - deleteImage</h2>
+<p>This function used to delete image based on image id of the operator.</p>
+	<pre class="code" lang="php">
+	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteBrochure( $brochure_id );
+	$message = $request->deleteImage ($image_id );
+    
+	</pre>
 
-</pre>
 	<div id="demo-frame">
 	<?php if (isset ( $message )==false){ ?>
 		<form method="post">
-			<label for="brochure_id">brochure_id</label> <input name=brochure_id
-				type="text" value="170"></input> <input type="submit" value="submit">
+			<label for="image_id">image_id</label>
+			<input name=image_id type="text" value="295"></input> <input
+				type="submit" value="submit">
 		</form>
 	
 	<?php
@@ -59,7 +62,16 @@ $(function(){
 		if (isset ( $error )) {
 			echo 'ErrorCode' . $error->errorCode . '</br>';
 			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} 
+		} else {
+			
+			$download_image = $message->download_image;
+			
+			$download_image_details = $download_image [0];
+			
+			$download_image_detail = $download_image_details->download_image_details;
+			
+		    echo "download_image_link:" . uncdata($download_image_detail->download_image_link); 
+		}
 		
 		?>
 	  </div>
@@ -68,6 +80,5 @@ $(function(){
 	
 	?>
 	</div>
-
 </body>
 </html>

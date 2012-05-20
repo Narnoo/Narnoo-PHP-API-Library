@@ -143,7 +143,19 @@ class OperatorNarnooRequest extends NarnooRequest {
 	function getProductTextWords($product_title) {
 		return $this->getResponse ( $this->getOpXmlApi (), 'getProductTextWords', array ("product_title" => $product_title ) );
 	}
-
+	
+	function deleteBrochure($brochure_id) {
+		return $this->getResponse ( $this->getOpXmlApi(), 'deleteBrochure', array ("brochure_id" => $brochure_id ) );
+	}
+	
+	function deleteImage($image_id) {
+		return $this->getResponse ( $this->getOpXmlApi(), 'deleteImage', array ("image_id" => $image_id ) );
+	}
+	
+	
+	function deleteVideo($video_id) {
+		return $this->getResponse ( $this->getOpXmlApi(), 'deleteVideo', array ("video_id" => $video_id ) );
+	}
 }
 
 ?>
