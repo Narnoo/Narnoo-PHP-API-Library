@@ -36,7 +36,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getAlbumImages($operator_id, $album_name) {
-		return $this->getResponse ( $this->getXmlApi(), 'getAlbumImages', array ('operator_id' => $operator_id, 'album__name' => $album_name ) );
+		return $this->getResponse ( $this->getXmlApi(), 'getAlbumImages', array ('operator_id' => $operator_id, 'album_name' => $album_name ) );
 	}
 	
 	/**
