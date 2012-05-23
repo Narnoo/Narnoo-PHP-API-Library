@@ -36,9 +36,10 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get single brochure</h2>
-<p>Distributors use this getSingleBrochure function to retrieve a single brochure's detailed information.</p>
-<pre class="code" lang="php">
+	<h2>Distributor's get single brochure</h2>
+	<p>Distributors use this getSingleBrochure function to retrieve a
+		single brochure's detailed information.</p>
+	<pre class="code" lang="php">
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
 	$message = $request->getSingleBrochure ($brochure_id );	
@@ -78,22 +79,19 @@ $(function(){
 		echo '<dt>format</dt><dd>' . $brochure->format . '</dd>';
 		$standard_pages = $brochure->standard_pages;
 		echo '<dt>standard_pages</dt><dd> <ul>';
-		echo '<li>page_0: ' . $standard_pages->page_0 . '</li>';
-		echo '<li>page_1: ' . $standard_pages->page_1 . '</li>';
-		echo '<li>page_2: ' . $standard_pages->page_2 . '</li>';
-		echo '<li>page_3: ' . $standard_pages->page_3 . '</li>';
-		echo '<li>page_4: ' . $standard_pages->page_4 . '</li>';
-		echo '<li>page_5: ' . $standard_pages->page_5 . '</li>';
+		
+		foreach ( $standard_pages as $item ) {
+			echo '<li>' . $item . '</li>';
+		}
 		echo '</ul></dd>';
 		
 		$zoom_pages = $brochure->zoom_page;
 		echo '<dt>zoom_page </dt><dd><ul>';
-		echo '<li>zoom_0: ' . $zoom_pages->zoom_0 . '</li>';
-		echo '<li>zoom_1: ' . $zoom_pages->zoom_1 . '</li>';
-		echo '<li>zoom_2: ' . $zoom_pages->zoom_2 . '</li>';
-		echo '<li>zoom_3: ' . $zoom_pages->zoom_3 . '</li>';
-		echo '<li>zoom_4: ' . $zoom_pages->zoom_4 . '</li>';
-		echo '<li>zoom_5: ' . $zoom_pages->zoom_5 . '</li>';
+		
+		foreach($zoom_pages as $item){
+			echo '<li>' . $item . '</li>';
+		}
+		
 		echo '</ul></dd>';
 		
 		echo '</dl>';
@@ -107,7 +105,7 @@ $(function(){
 ?>
 	</div>
 	<br />
-	
+
 
 </body>
 </html>
