@@ -7,8 +7,8 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getImages() {
-		return $this->getResponse ( $this->getOpXmlApi (), 'getImages', null );
+	function getImages($page_no = 1) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getImages', array ('page_no' => $page_no ) );
 	}
 	
 	/**
@@ -145,16 +145,15 @@ class OperatorNarnooRequest extends NarnooRequest {
 	}
 	
 	function deleteBrochure($brochure_id) {
-		return $this->getResponse ( $this->getOpXmlApi(), 'deleteBrochure', array ("brochure_id" => $brochure_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'deleteBrochure', array ("brochure_id" => $brochure_id ) );
 	}
 	
 	function deleteImage($image_id) {
-		return $this->getResponse ( $this->getOpXmlApi(), 'deleteImage', array ("image_id" => $image_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'deleteImage', array ("image_id" => $image_id ) );
 	}
 	
-	
 	function deleteVideo($video_id) {
-		return $this->getResponse ( $this->getOpXmlApi(), 'deleteVideo', array ("video_id" => $video_id ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'deleteVideo', array ("video_id" => $video_id ) );
 	}
 }
 

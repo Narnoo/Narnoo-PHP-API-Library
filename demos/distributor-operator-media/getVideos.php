@@ -7,9 +7,14 @@ require_once '../narnoo-cofing.php';
 $operator_id = $_POST ['operator_id'];
 
 if (isset ( $operator_id )) {
-	$request = new DistributorOperatorMediaNarnooRequest ();	
+	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideos ( $operator_id );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->getVideos ( $operator_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,15 +39,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get an Opeartor's videos list details</h2>
-<p>Distributors use this function to retrieve Operator's videos list information</p>
-<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();	
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideos ( $operator_id );	
+	<h2>Distributor's get an Opeartor's videos list details</h2>
+	<p>Distributors use this function to retrieve Operator's videos list
+		information</p>
+	<pre class="code" lang="php">
+$request = new DistributorOperatorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getVideos ( $operator_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $operator_id )==false){ ?>
 		<form action="" method="post">
 			<label for="operator_id">Operator id</label> <input name=operator_id
 				type="text" value="39"></input><input type="submit" value="submit">
@@ -54,14 +65,14 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
+		
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage ();
 		} else {
+			echo '<label>total pages:' . $list->total_pages . '</label>';
 			echo '<ul>';
-			foreach ( $message->operator_videos as $item ) {
-				$operator_video = $item->operator_video;
+			foreach ( $list->operator_videos as $operator_video ) {
+				
 				echo '<li><ul>';
 				echo '<li>video_id : ' . $operator_video->video_id . '</li>';
 				echo '<li>entry_date :' . $operator_video->entry_date . '</li>';

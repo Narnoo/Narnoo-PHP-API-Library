@@ -16,8 +16,8 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getImages($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getImages', array ('operator_id' => $operator_id ) );
+	function getImages($operator_id, $page_no = 1) {
+		return $this->getResponse ( $this->getXmlApi (), 'getImages', array ('operator_id' => $operator_id, 'page_no' => $page_no ) );
 	}
 	
 	/**
@@ -25,8 +25,8 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getAlbums($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getAlbums', array ('operator_id' => $operator_id ) );
+	function getAlbums($operator_id, $page_no = 1) {
+		return $this->getResponse ( $this->getXmlApi (), 'getAlbums', array ('operator_id' => $operator_id, 'page_no' => $page_no ) );
 	}
 	
 	/**
@@ -35,8 +35,8 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 * @param $album_id string       	
 	 * @return array
 	 */
-	function getAlbumImages($operator_id, $album_name) {
-		return $this->getResponse ( $this->getXmlApi(), 'getAlbumImages', array ('operator_id' => $operator_id, 'album_name' => $album_name ) );
+	function getAlbumImages($operator_id, $album_name, $page_no = 1) {
+		return $this->getResponse ( $this->getXmlApi (), 'getAlbumImages', array ('operator_id' => $operator_id, 'album_name' => $album_name, 'page_no' => $page_no ) );
 	}
 	
 	/**
@@ -44,8 +44,8 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getVideos($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getVideos', array ('operator_id' => $operator_id ) );
+	function getVideos($operator_id, $page_no = 1) {
+		return $this->getResponse ( $this->getXmlApi (), 'getVideos', array ('operator_id' => $operator_id, 'page_no' => $page_no ) );
 	}
 	
 	/**
@@ -55,7 +55,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getVideoDetails($operator_id, $video_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getVideoDetails', array ('operator_id' => $operator_id, 'video_id' => $video_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'getVideoDetails', array ('operator_id' => $operator_id, 'video_id' => $video_id ) );
 	}
 	
 	/**
@@ -63,15 +63,15 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getBrochures($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getBrochures', array ('operator_id' => $operator_id ) );
+	function getBrochures($operator_id, $page_no = 1) {
+		return $this->getResponse ( $this->getXmlApi (), 'getBrochures', array ('operator_id' => $operator_id, 'page_no' => $page_no ) );
 	}
 	
 	function getSingleBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure_id' => $brochure_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'getSingleBrochure', array ('operator_id' => $operator_id, 'brochure_id' => $brochure_id ) );
 	}
 	
-	function searchMedia($media_type, $business_name, $country, $state, $category, $subcategory, $suburb, $location, $postal_code, $latitude, $longitude, $keywords) {
+	function searchMedia($media_type = 'image', $business_name = null, $country = null, $state = null, $category = null, $subcategory = null, $suburb = null, $location = null, $postal_code = null, $latitude = null, $longitude = null, $keywords = null, $page_no = 1) {
 		
 		$params = array ();
 		
@@ -121,6 +121,8 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 			$params = array_merge ( $params, array ("keywords" => $keywords ) );
 		}
 		
+		$params = array_merge ( $params, array ("page_no" => $page_no ) );
+		
 		// if (count ( $params ) < 2) {
 		//
 		// $message = new NarrooException();
@@ -130,27 +132,27 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		// return $message;
 		// }
 		
-		return $this->getResponse ( $this->getXmlApi(), 'searchMedia', $params );
+		return $this->getResponse ( $this->getXmlApi (), 'searchMedia', $params );
 	}
 	
 	function downloadImage($operator_id, $image_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'downloadImage', array ("operator_id" => $operator_id, "image_id" => $image_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'downloadImage', array ("operator_id" => $operator_id, "image_id" => $image_id ) );
 	}
 	
 	function downloadVideo($operator_id, $video_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'downloadVideo', array ("operator_id" => $operator_id, "video_id" => $video_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'downloadVideo', array ("operator_id" => $operator_id, "video_id" => $video_id ) );
 	}
 	
 	function downloadBrochure($operator_id, $brochure_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'downloadBrochure', array ("operator_id" => $operator_id, "brochure_id" => $brochure_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'downloadBrochure', array ("operator_id" => $operator_id, "brochure_id" => $brochure_id ) );
 	}
 	
-	function getProductText($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getProductText', array ("operator_id" => $operator_id ) );
+	function getProductText($operator_id, $page_no = 1) {
+		return $this->getResponse ( $this->getXmlApi (), 'getProductText', array ("operator_id" => $operator_id, 'page_no' => $page_no ) );
 	}
 	
 	function getProductTextWords($operator_id, $product_title) {
-		return $this->getResponse ( $this->getXmlApi(), 'getProductTextWords', array ("operator_id" => $operator_id, "product_title" => $product_title ) );
+		return $this->getResponse ( $this->getXmlApi (), 'getProductTextWords', array ("operator_id" => $operator_id, "product_title" => $product_title ) );
 	}
 
 }

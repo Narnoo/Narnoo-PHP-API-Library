@@ -10,7 +10,12 @@ $album_name = $_POST ['album_name'];
 if (isset ( $operator_id )) {
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ( $operator_id, $album_name );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->getAlbumImages ( $operator_id, $album_name );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -35,16 +40,20 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get Operator's album images</h2>
-<p>Distributors use this function to retrieve Operator's album images</p>
-<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ( $operator_id, $album_name );
-    
+	<h2>Distributor's get Operator's album images</h2>
+	<p>Distributors use this function to retrieve Operator's album images</p>
+	<pre class="code" lang="php">
+$request = new DistributorOperatorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sanbox = false;
+try {
+	$list = $request->getAlbumImages ( $operator_id, $album_name );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}    
 </pre>
 	<div id="demo-frame">
-<?php if (isset ( $message )==false){ ?>
+<?php if (isset ( $operator_id )==false){ ?>
 	<form action="" method="post">
 			<label for="operator">Operator id</label> <input name=operator_id
 				type="text" value="39"></input><label for="album_name">album name</label>
@@ -58,19 +67,20 @@ $(function(){
 	?>
 	  <div>
 	  <?php
-	$error = $message->error;
+	
 	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
+		echo $error->getMessage ();
 	} else {
+		echo '<label>total pages:' . $list->total_pages . '</label>';
+		
 		?>
+		
 			<ul>
 			
 			
 			<?php
-		foreach ( $message->operator_albums_images as $image ) {
+		foreach ( $list->operator_albums_images as $album_image ) {
 			echo '<li><ul>';
-			$album_image = $image->album_image;
 			
 			echo '<li>album_name:' . $album_image->album_name . '</li>';
 			echo '<li>image_id:' . $album_image->image_id . '</li>';
@@ -91,6 +101,6 @@ $(function(){
 ?>
 	
 </div>
-	
+
 </body>
 </html>

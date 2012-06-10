@@ -9,7 +9,12 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( $operator_id );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->getBrochures ( $operator_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,16 +39,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get brochures</h2>
-<p>Distributors use this function to retrieve Operator's brochure information</p>
+	<h2>Distributor's get brochures</h2>
+	<p>Distributors use this function to retrieve Operator's brochure
+		information</p>
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( $operator_id );	
-    
+$request = new DistributorOperatorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getBrochures ( $operator_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $operator_id )==false){ ?>
 		<form action="" method="post">
 			<label for="operator_id">Operator id</label> <input name=operator_id
 				type="text" value="39"></input><input type="submit" value="submit">
@@ -55,14 +65,13 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
+		
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage ();
 		} else {
+			echo '<label>total pages:' . $list->total_pages . '</label>';
 			echo '<ul>';
-			foreach ( $message->operator_brochures as $item ) {
-				$brochure = $item->brochure;
+			foreach ( $list->operator_brochures as $brochure ) {
 				
 				echo '<li><ul>';
 				echo '<li>brochure_id : ' . $brochure->brochure_id . '</li>';

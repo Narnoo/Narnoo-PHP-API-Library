@@ -6,7 +6,12 @@ require_once '../narnoo-operator-config.php';
 
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getImages ();
+$request->sandbox = sandbox;
+try {
+	$list = $request->getImages ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 ?>
 
@@ -30,53 +35,46 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Operator's Images - getImages</h2>
-<p>Operators' use the Get Images function to retrieve their own images.</p>
-<pre class="code" lang="php">
+	<h2>Get Operator's Images - getImages</h2>
+	<p>Operators' use the Get Images function to retrieve their own images.</p>
+	<pre class="code" lang="php">
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getImages ();
-	
+$request->sandbox = sandbox;
+try {
+	$list = $request->getImages ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}	
 	</pre>
 	<div id="demo-frame">
-<?php
-if (isset ( $message )) {
-	?>
 
-	  <div>
 	  <?php
-	$error = $message->error;
-	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
-	} else {
-		echo '<ul>';
-
-		
-		$operator_images = $message->operator_images;
-		
-		foreach ( $operator_images as $item ) {
-			$image = $item->image;
-			echo '<li><ul>';
-			echo '<li>image_id : ' . $image->image_id . '</li>';
-			echo '<li>entry_date : ' . $image->entry_date . '</li>';
-			echo '<li>thumb_image_path : ' . $image->thumb_image_path . '</li>';
-			echo '<li>preview_image_path : ' . $image->preview_image_path . '</li>';
-			echo '<li>large_image_path : ' . $image->large_image_path . '</li>';
-			echo '<li>image_caption : ' . $image->image_caption . '</li>';
-			echo '</ul></li>';
-		}
-		
-		echo '</ul>';
-	}
-	
-	?>
+			
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
+				echo '<label>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
+				
+				foreach ( $list->operator_images as $image ) {
+					
+					echo '<li><ul>';
+					echo '<li>image_id : ' . $image->image_id . '</li>';
+					echo '<li>entry_date : ' . $image->entry_date . '</li>';
+					echo '<li>thumb_image_path : ' . $image->thumb_image_path . '</li>';
+					echo '<li>preview_image_path : ' . $image->preview_image_path . '</li>';
+					echo '<li>large_image_path : ' . $image->large_image_path . '</li>';
+					echo '<li>image_caption : ' . $image->image_caption . '</li>';
+					echo '</ul></li>';
+				}
+				
+				echo '</ul>';
+			}
+			
+			?>
 	  </div>
-	<?php
-}
 
-?>
-	</div>
-	
+
 </body>
 </html>

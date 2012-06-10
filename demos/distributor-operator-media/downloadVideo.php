@@ -11,7 +11,12 @@ $video_id = $_POST ['video_id'];
 if (isset ( $video_id ) && isset ( $operator_id )) {
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadVideo ( $operator_id, $video_id );
+	$request->sandbox = sandbox;
+	try {
+		$item = $request->downloadVideo ( $operator_id, $video_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -35,16 +40,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's download Operator's Video</h2>
-<p>Distributors use this function to download an Operator's HD video file</p>
+	<h2>Distributor's download Operator's Video</h2>
+	<p>Distributors use this function to download an Operator's HD video
+		file</p>
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadVideo ( $operator_id, $video_id );
-    
+$request = new DistributorOperatorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$item = $request->downloadVideo ( $operator_id, $video_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $operator_id )==false){ ?>
 		<form method="post">
 			<label for="operator_id">operator_id</label><input name="operator_id"
 				type="text" value="39"></input> <label for="video_id">video_id</label>
@@ -58,21 +68,13 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage();
 		} else {
 			
-			$download_video = $message->download_video;
-			
-			$download_video_details = $download_video[0];
-			
-			$download_video_detail = $download_video_details->download_video_details;
-			
 			echo '<ul>';
-			echo '<li>download_video_stream_path : ' . uncdata ( $download_video_detail->download_video_stream_path ). '</li>';
-			echo '<li>original_video_path : ' .  $download_video_detail->original_video_path . '</li>' ;
+			echo '<li>download_video_stream_path : ' . uncdata ( $item->download_video_stream_path ) . '</li>';
+			echo '<li>original_video_path : ' . $item->original_video_path . '</li>';
 			echo '</ul>';
 		
 		}

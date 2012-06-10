@@ -11,7 +11,12 @@ $image_id = $_POST ['image_id'];
 if (isset ( $image_id ) && isset ( $operator_id )) {
 	$request = new DistributorOperatorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ( $operator_id, $image_id );
+	$request->sandbox = sandbox;
+	try {
+		$item = $request->downloadImage ( $operator_id, $image_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -35,16 +40,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's download Operator's Image</h2>
-<p>Distributors use this function to download an Operator's high resolution image</p>
+	<h2>Distributor's download Operator's Image</h2>
+	<p>Distributors use this function to download an Operator's high
+		resolution image</p>
 	<pre class="code" lang="php">
-	$request = new DistributorOperatorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ( $operator_id, $image_id );
-    
+$request = new DistributorOperatorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$item = $request->downloadImage ( $operator_id, $image_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $operator_id )==false){ ?>
 		<form method="post">
 			<label for="operator_id">operator_id</label><input name="operator_id"
 				type="text" value="39"></input> <label for="image_id">image_id</label>
@@ -58,21 +68,14 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
+		
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage ();
 		} else {
 			
-			$download_image = $message->download_image;
-			
-			$download_image_details = $download_image [0];
-			
-			$download_image_detail = $download_image_details->download_image_details;
-			
-		    echo "download_image_link:" . uncdata($download_image_detail->download_image_link); 
+			echo "download_image_link:" . uncdata ( $item->download_image_link );
 		}
-			
+		
 		?>
 	  </div>
 	<?php
