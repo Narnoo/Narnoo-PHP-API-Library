@@ -7,7 +7,12 @@ require_once '../utilities.php';
 
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getVideos ();
+$request->sandbox = sandbox;
+try {
+	$list = $request->getVideos ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 ?>
 
@@ -31,51 +36,49 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Operator's Videos - getVideos</h2>
-<p>Operators' use the Get Videos function to retrieve their own videos.</p>
-<pre class="code" lang="php">
-	$request = new OperatorNarnooRequest ();	
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideos ();	
+	<h2>Get Operator's Videos - getVideos</h2>
+	<p>Operators' use the Get Videos function to retrieve their own videos.</p>
+	<pre class="code" lang="php">
+$request = new OperatorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getVideos ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 
 	<div id="demo-frame">
-	<?php if (isset ( $message )){ ?>
 
-	  <div>
 	  <?php
-		$error = $message->error;
-		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} else {
-			echo '<ul>';
-			foreach ( $message->operator_videos as $item ) {
-				$operator_video = $item->operator_video;
-				echo '<li><ul>';
-				echo '<li>video_id : ' . $operator_video->video_id . '</li>';
-				echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
-				echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
-				echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
-				echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
+				echo '<label>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
+				foreach ( $list->operator_videos as $operator_video ) {
+					
+					echo '<li><ul>';
+					echo '<li>video_id : ' . $operator_video->video_id . '</li>';
+					echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
+					echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
+					echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
+					echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
+					
+					echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</li>';
+					echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
+					echo '<li>video_language : ' . $operator_video->video_language . '</li>';
+					echo '</ul></li>';
 				
-				echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</li>';
-				echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
-				echo '<li>video_language : ' . $operator_video->video_language . '</li>';
-				echo '</ul></li>';
-			
+				}
+				
+				echo '<ul>';
 			}
 			
-			echo '<ul>';
-		}
-		
-		?>
+			?>
 	  </div>
-	<?php
-	}
-	
-	?>
-	</div>
+
 
 </body>
 </html>

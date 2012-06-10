@@ -7,7 +7,12 @@ require_once '../utilities.php';
 
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getProductText ();
+$request->sandbox = sandbox;
+try {
+	$list = $request->getProductText ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 ?>
 
@@ -31,43 +36,36 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Operator's Text Titles - getProductText</h2>
-<p>Operators' use the Get Prodcut Text function to retrieve their own Text description titles.</p>
-<pre class="code" lang="php">
-	$request = new OperatorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductText();	
-    
+	<h2>Get Operator's Text Titles - getProductText</h2>
+	<p>Operators' use the Get Prodcut Text function to retrieve their own
+		Text description titles.</p>
+	<pre class="code" lang="php">
+$request = new OperatorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getProductText ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )){ ?>
-
-	  <div>
 	  <?php
-		$error = $message->error;
-		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} else {
-			
-			$operator_products = $message->operator_products;
-			
-			echo '<ul>';
-			foreach ( $operator_products as $item ) {
-				$product = $item->operator_product;
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
 				
-				echo "<dl><dt>product_id</dt><dd>" . $product->product_id . "</dd><dt>product_title</dt><dd>" . $product->product_title . "</dd></dl>";
+				echo '<label>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
+				foreach ( $list->operator_products as $product ) {
+					
+					echo "<dl><dt>product_id</dt><dd>" . $product->product_id . "</dd><dt>product_title</dt><dd>" . $product->product_title . "</dd></dl>";
+				}
+				echo '</ul>';
 			}
-			echo '</ul>';
-		}
-		
-		?>
+			
+			?>
 	  </div>
-	<?php
-	}
-	
-	?>
-	</div>
 
 </body>
 </html>

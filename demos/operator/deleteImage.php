@@ -5,13 +5,17 @@ require_once '../../narnoo/class-operator-narnoo-request.php';
 require_once '../narnoo-operator-config.php';
 require_once '../utilities.php';
 
-
 $image_id = $_POST ['image_id'];
 
 if (isset ( $image_id )) {
 	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteImage ($image_id );
+	$request->sandbox = sandbox;
+	try {
+		$request->deleteImage ( $image_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -35,21 +39,25 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Delete Operators images - deleteImage</h2>
-<p>This function used to delete image based on image id of the operator.</p>
+	<h2>Delete Operators images - deleteImage</h2>
+	<p>This function used to delete image based on image id of the
+		operator.</p>
 	<pre class="code" lang="php">
-	$request = new OperatorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteImage ($image_id );
-    
+$request = new OperatorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$request->deleteImage ( $image_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $image_id )==false){ ?>
 		<form method="post">
-			<label for="image_id">image_id</label>
-			<input name=image_id type="text" value="295"></input> <input
-				type="submit" value="submit">
+			<label for="image_id">image_id</label> <input name=image_id
+				type="text" value="295"></input> <input type="submit" value="submit">
 		</form>
 	
 	<?php
@@ -58,19 +66,10 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage ();
 		} else {
-			
-			$download_image = $message->download_image;
-			
-			$download_image_details = $download_image [0];
-			
-			$download_image_detail = $download_image_details->download_image_details;
-			
-		    echo "download_image_link:" . uncdata($download_image_detail->download_image_link); 
+			echo 'done.';
 		}
 		
 		?>

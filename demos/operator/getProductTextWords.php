@@ -5,13 +5,17 @@ require_once '../../narnoo/class-operator-narnoo-request.php';
 require_once '../narnoo-operator-config.php';
 require_once '../utilities.php';
 
-
 $product_title = $_POST ["product_title"];
 
 if (isset ( $product_title )) {
 	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductTextWords ($product_title );
+	$request->sandbox = sandbox;
+	try {
+		$product = $request->getProductTextWords ( $product_title );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -36,19 +40,24 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Operator's Text - getProductTextWords</h2>
-<p>Operators' use the Get Product Text Words function to retrieve their own product descriptions.</p>
+	<h2>Get Operator's Text - getProductTextWords</h2>
+	<p>Operators' use the Get Product Text Words function to retrieve their
+		own product descriptions.</p>
 	<pre class="code" lang="php">
-	$request = new OperatorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getProductTextWords ($product_title );
-    
+$request = new OperatorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$product = $request->getProductTextWords ( $product_title );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $product_title )==false){ ?>
 		<form action="" method="post">
-			<label for="product_title">product_title</label>
-			<input name=product_title type="text" value="Narnoo Platform"></input><input
+			<label for="product_title">product_title</label> <input
+				name=product_title type="text" value="Narnoo Platform"></input><input
 				type="submit" value="submit">
 		</form>
 	
@@ -58,35 +67,28 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage ();
 		} else {
 			
-			$operator_products = $message->operator_products;
+			$operator_products = $product->operator_products;
 			
-			echo '<ul>';
-			foreach ( $operator_products as $item ) {
-				$product_description = $item->product_description;
-				
-				echo "<dl>";
-				
-				echo "<dt>product_title</dt><dd>" . $product_description->product_title . "</dd>";
-				
-				$text = $product_description->text;
-				
-				echo "<dt></dt><dd><ul>";
-				echo "<li>word_50:" . $text->word_50 . "</li>";
-				echo "<li>word_100:" . $text->word_100 . "</li>";
-				echo "<li>word_150:" . $text->word_150 . "</li>";
-				echo "</ul></dd>";
-				
-				echo "</dl>";
-				
-				
-			}
-			echo '</ul>';
+			$product_description = $operator_products [0];
+			
+			echo "<dl>";
+			
+			echo "<dt>product_title</dt><dd>" . $product_description->product_title . "</dd>";
+			
+			$text = $product_description->text;
+			
+			echo "<dt></dt><dd><ul>";
+			echo "<li>word_50:" . $text->word_50 . "</li>";
+			echo "<li>word_100:" . $text->word_100 . "</li>";
+			echo "<li>word_150:" . $text->word_150 . "</li>";
+			echo "</ul></dd>";
+			
+			echo "</dl>";
+		
 		}
 		
 		?>

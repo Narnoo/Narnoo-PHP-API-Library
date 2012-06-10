@@ -16,8 +16,8 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getAlbums() {
-		return $this->getResponse ( $this->getOpXmlApi (), 'getAlbums', null );
+	function getAlbums($page_no = 1) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getAlbums', array ('page_no' => $page_no ) );
 	}
 	
 	/**
@@ -26,8 +26,8 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 * @param $album_id string       	
 	 * @return array
 	 */
-	function getAlbumImages($album_name) {
-		return $this->getResponse ( $this->getOpXmlApi (), 'getAlbumImages', array ('album_name' => $album_name ) );
+	function getAlbumImages($album_name, $page_no = 1) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getAlbumImages', array ('album_name' => $album_name, 'page_no' => $page_no ) );
 	}
 	
 	/**
@@ -35,8 +35,8 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getVideos() {
-		return $this->getResponse ( $this->getOpXmlApi (), 'getVideos', null );
+	function getVideos($page_no = 1) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getVideos', array ('page_no' => $page_no ) );
 	}
 	
 	/**
@@ -54,8 +54,8 @@ class OperatorNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getBrochures() {
-		return $this->getResponse ( $this->getOpXmlApi (), 'getBrochures', null );
+	function getBrochures($page_no = 1) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getBrochures', array ('page_no' => $page_no ) );
 	}
 	
 	function getSingleBrochure($brochure_id) {

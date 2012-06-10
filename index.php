@@ -51,13 +51,13 @@ $(function(){
 			$('iframe').height($('.normal').height());
 	}	
 
-	if($.browser.msie){
+	//if($.browser.msie){
 		$(window).resize(function(){
 			setHeight();
 		});
 	
 		setHeight();
-	}
+	//}
 });
 </script>
 

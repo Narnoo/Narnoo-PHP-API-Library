@@ -9,7 +9,12 @@ $album_name = $_POST ['album_name'];
 if (isset ( $album_name )) {
 	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ( $album_name );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->getAlbumImages ( $album_name );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 ?>
 
@@ -33,16 +38,22 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Operator's Album Images - getAlbumImages</h2>
-<p>Operators' use the Get Album Images function to retrieve their images within an album.</p>
-<pre class="code" lang="php">
+	<h2>Get Operator's Album Images - getAlbumImages</h2>
+	<p>Operators' use the Get Album Images function to retrieve their
+		images within an album.</p>
+	<pre class="code" lang="php">
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getAlbumImages ($album_name);
+$request->sandbox = sandbox;
+try {
+	$list = $request->getAlbumImages ( $album_name );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
 <?php
-if (isset ( $message ) == false) {
+if (isset ( $album_name ) == false) {
 	?>
 <form action="" method="post">
 			<label for="album_name">album name</label> <input name=album_name
@@ -53,19 +64,14 @@ if (isset ( $message ) == false) {
 	  <div>
 	  <?php
 	
-	$error = $message->error;
 	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
+		echo $error->getMessage ();
 	} else {
+		echo '<label>total pages:' . $list->total_pages . '</label>';
 		echo '<ul>';
 		
-
-		
-		$operator_albums_images = $message->operator_albums_images;
-		
-		foreach ( $operator_albums_images as $item ) {
-			$album = $item->album_image;
+		foreach ( $list->operator_albums_images as $album ) {
+			
 			echo '<li><ul>';
 			echo '<li>album_name : ' . $album->album_name . '</li>';
 			echo '<li>image_id : ' . $album->image_id . '</li>';
@@ -74,7 +80,7 @@ if (isset ( $message ) == false) {
 			echo '<li>preview_image_path : ' . $album->preview_image_path . '</li>';
 			echo '<li>large_image_path : ' . $album->large_image_path . '</li>';
 			echo '<li>image_caption : ' . $album->image_caption . '</li>';
-	
+			
 			echo '</ul></li>';
 		}
 		

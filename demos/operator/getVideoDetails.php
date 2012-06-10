@@ -10,7 +10,12 @@ $video_id = $_POST ['video_id'];
 if (isset ( $video_id )) {
 	$request = new OperatorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideoDetails ( $video_id );
+	$request->sandbox = sandbox;
+	try {
+		$operator_video = $request->getVideoDetails ( $video_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 
 }
 
@@ -36,16 +41,22 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Operator's Video - getVideoDetails</h2>
-<p>Operators' use the Get Video Details function to retrieve their single video information.</p>
-<pre class="code" lang="php">
-	$request = new OperatorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideoDetails ($video_id );	
+	<h2>Get Operator's Video - getVideoDetails</h2>
+	<p>Operators' use the Get Video Details function to retrieve their
+		single video information.</p>
+	<pre class="code" lang="php">
+$request = new OperatorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$operator_video = $request->getVideoDetails ( $video_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}	
 	</pre>
-    <br/>
+	<br />
 	<div id="demo-frame">
-<?php if (isset ( $message )==false) { ?>
+<?php if (isset (  $video_id )==false) { ?>
 	
 		<form action="" method="post">
 			<label for="operator_id">video id</label> <input name=video_id
@@ -58,26 +69,18 @@ $(function(){
 	?>
 	  <div>
 	  <?php
-	$error = $message->error;
 	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
+		echo $error->getMessage ();
 	} else {
 		echo '<ul>';
-		foreach ( $message->operator_videos as $item ) {
-			$operator_video = $item->operator_video;
-			echo '<li><ul>';
-			echo '<li>video_id : ' . $operator_video->video_id . '</li>';
-			echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
-			echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
-			echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
-			echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
-			echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</pre></li>';
-			echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
-			echo '<li>video_language : ' . $operator_video->video_language . '</li>';
-			echo '</ul></li>';
-		}
-		
+		echo '<li>video_id : ' . $operator_video->video_id . '</li>';
+		echo '<li>entry_date :' . $operator_video->entry_date . '</li>';
+		echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
+		echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
+		echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
+		echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</pre></li>';
+		echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
+		echo '<li>video_language : ' . $operator_video->video_language . '</li>';
 		echo '<ul>';
 	}
 	
@@ -89,7 +92,7 @@ $(function(){
 ?>
 	</div>
 	<br />
-	
+
 
 </body>
 </html>
