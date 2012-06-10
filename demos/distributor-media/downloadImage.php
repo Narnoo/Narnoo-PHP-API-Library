@@ -10,7 +10,12 @@ $image_id = $_POST ['image_id'];
 if (isset ( $image_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ( $image_id );
+	$request->sandbox = sandbox;
+	try {
+		$item = $request->downloadImage ( $image_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,16 +39,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's Download Image</h2>
-<p>Distributors use this downloadImage function to download the highest resolution image file. *only available to approved Distributors</p>
-<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadImage ($image_id );
-    
+	<h2>Distributor's Download Image</h2>
+	<p>Distributors use this downloadImage function to download the highest
+		resolution image file. *only available to approved Distributors</p>
+	<pre class="code" lang="php">
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$item = $request->downloadImage ( $image_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $image_id )==false){ ?>
 		<form method="post">
 			<label for="image_id">image_id</label> <input name=image_id
 				type="text" value="212"></input> <input type="submit" value="submit">
@@ -55,19 +65,11 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
+
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage();
 		} else {
-			
-			$download_image = $message->download_image;
-			
-			$download_image_details = $download_image [0];
-			
-			$download_image_detail = $download_image_details->download_image_details;
-			
-		    echo "download_image_link:" . uncdata($download_image_detail->download_image_link); 
+			echo "download_image_link:" . uncdata ($item->download_image_link );
 		}
 		
 		?>

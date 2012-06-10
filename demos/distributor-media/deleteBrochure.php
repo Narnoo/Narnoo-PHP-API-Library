@@ -10,7 +10,12 @@ $brochure_id = $_POST ['brochure_id'];
 if (isset ( $brochure_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteBrochure($brochure_id );
+	$request->sandbox = sandbox;
+	try {
+		$request->deleteBrochure ( $brochure_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,16 +39,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's delete Brochure</h2>
-<p>This function used to delete Brochure of the distributor.</p>
-<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteBrochure( $brochure_id );
+	<h2>Distributor's delete Brochure</h2>
+	<p>This function used to delete Brochure of the distributor.</p>
+	<pre class="code" lang="php">
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$request->deleteBrochure ( $brochure_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 </pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $brochure_id )==false){ ?>
 		<form method="post">
 			<label for="brochure_id">brochure_id</label> <input name=brochure_id
 				type="text" value="170"></input> <input type="submit" value="submit">
@@ -55,12 +65,12 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
+	
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} 
-		
+			echo $error->getMessage();
+		}else{
+			echo 'done.';
+		}
 		?>
 	  </div>
 	<?php

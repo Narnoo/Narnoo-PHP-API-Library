@@ -10,7 +10,12 @@ $brochure_id = $_POST ['brochure_id'];
 if (isset ( $brochure_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadBrochure ( $brochure_id );
+	$request->sandbox = sandbox;
+	try {
+		$item = $request->downloadBrochure ( $brochure_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,16 +39,22 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's Download Brochure</h2>
-<p>Distributors use this downloadBrochures function to download their PDF. *only available to approved Distributors</p>
-<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->downloadBrochure( $brochure_id );
+	<h2>Distributor's Download Brochure</h2>
+	<p>Distributors use this downloadBrochures function to download their
+		PDF. *only available to approved Distributors</p>
+	<pre class="code" lang="php">
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$item = $request->downloadBrochure ( $brochure_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 </pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $brochure_id )==false){ ?>
 		<form method="post">
 			<label for="brochure_id">brochure_id</label> <input name=brochure_id
 				type="text" value="170"></input> <input type="submit" value="submit">
@@ -57,18 +68,9 @@ $(function(){
 	  <?php
 		$error = $message->error;
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage();
 		} else {
-			
-			$download_brochure = $message->download_brochure;
-			
-			$download_brochure_details = $download_brochure [0];
-			
-			$download_brochure_detail = $download_brochure_details->download_brochure_details;
-			
-			echo 'download_brochure_to_pdf_path : ' . uncdata ( $download_brochure_detail->download_brochure_to_pdf_path );
-		
+			echo 'download_brochure_to_pdf_path : ' . uncdata ( $item->download_brochure_to_pdf_path );
 		}
 		
 		?>
