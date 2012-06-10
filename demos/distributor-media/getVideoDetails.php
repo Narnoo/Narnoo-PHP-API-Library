@@ -10,8 +10,12 @@ $video_id = $_POST ['video_id'];
 if (isset ( $video_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideoDetails ( $video_id );
-
+	$request->sandbox = sandbox;
+	try {
+		$distributor_video = $request->getVideoDetails ( $video_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -36,15 +40,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get video details</h2>
-<p>Distributors use this Get Video Details function to retreive a single video's details</p>
+	<h2>Distributor's get video details</h2>
+	<p>Distributors use this Get Video Details function to retreive a
+		single video's details</p>
 	<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getVideoDetails ($video_id );	
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$distributor_video = $request->getVideoDetails ( $video_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-<?php if (isset ( $message )==false) { ?>
+<?php if (isset ( $video_id )==false) { ?>
 	
 		<form action="" method="post">
 			<label for="video_id">video id</label> <input name=video_id
@@ -57,17 +67,11 @@ $(function(){
 	?>
 	  <div>
 	  <?php
-	$error = $message->error;
+	
 	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
+		echo $error->getMessage();
 	} else {
 		
-		$distributor_video_detail = $message->distributor_video_details[0];
-		
-		$distributor_video = $distributor_video_detail->distributor_video;
-		
-
 		echo '<dl>';
 		echo '<dt>video_id<dt><dd>' . $distributor_video->video_id . '</dt>';
 		echo '<dt>entry_date<dt><dd>' . $distributor_video->entry_date . '</dt>';

@@ -6,7 +6,12 @@ require_once '../narnoo-cofing.php';
 
 $request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getAlbums ();
+$request->sandbox = sandbox;
+try {
+	$list = $request->getAlbums();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 ?>
 
@@ -30,44 +35,35 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Distributor's album names - Get Albums</h2>
-<p>Distributors use the Get Albums function to retrieve their list of album names.</p>
+	<h2>Get Distributor's album names - Get Albums</h2>
+	<p>Distributors use the Get Albums function to retrieve their list of
+		album names.</p>
 	<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbums ();	
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getAlbums ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	
 	</pre>
 	<div id="demo-frame">
-<?php
-
-if (isset ( $message )) {
-	?>
-	  <div>
 	  <?php
-	$error = $message->error;
-	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
-	} else {
-		
-		echo '<ul>';
-		
-		$distributor_albums = $message->distributor_albums;
-		foreach ( $distributor_albums as $item ) {
-			$album = $item->album;
-			echo '<li>album_id: ' . $album->album_id . '  album_name: ' . $album->album_name . '</li>';
-		}
-		
-		echo '</ul>';
-	}
-	
-	?>
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
+				echo '<label>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
+				
+				foreach ( $list->distributor_albums as $album ) {
+					echo '<li>album_id: ' . $album->album_id . '  album_name: ' . $album->album_name . '</li>';
+				}
+				
+				echo '</ul>';
+			}			
+			?>
 	  </div>
-	<?php
-}
-?>
-	</div>
-
 </body>
 </html>

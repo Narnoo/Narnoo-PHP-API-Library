@@ -9,7 +9,12 @@ $album_name = $_POST ['album_name'];
 if (isset ( $album_name )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ( $album_name );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->getAlbumImages ( $album_name );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,16 +39,21 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Get Distributor's album images - Get Albums Images</h2>
-<p>Distributors use the Get Album Images function to retrieve their list of images within an album.</p>
+	<h2>Get Distributor's album images - Get Albums Images</h2>
+	<p>Distributors use the Get Album Images function to retrieve their
+		list of images within an album.</p>
 	<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getAlbumImages ($album_name );
-    
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getAlbumImages ( $album_name );
+} catch ( Exception $ex ) {
+	$error = $ex;
+} 
 </pre>
 	<div id="demo-frame">
-<?php if (isset ( $message )==false){ ?>
+<?php if (isset ( $album_name )==false){ ?>
 	<form action="" method="post">
 			<label for="album_name">album name</label> <input name=album_name
 				type="text" value="test"></input><input type="submit" value="submit">
@@ -55,22 +65,18 @@ $(function(){
 	?>
 	  <div>
 	  <?php
-	$error = $message->error;
+	
 	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
+		echo $error->getMessage ();
 	} else {
+		echo '<label>total pages:' . $list->total_pages . '</label>';
+		
 		?>
 			<ul>
-			
-			
 			<?php
-			
-			
-		foreach ( $message->distributor_albums_images as $image ) {
+		
+		foreach ( $list->distributor_albums_images as $album_image ) {
 			echo '<li><ul>';
-			$album_image = $image->album_image;
-			
 			echo '<li>album_name:' . $album_image->album_name . '</li>';
 			echo '<li>image_id:' . $album_image->image_id . '</li>';
 			echo '<li>entry_date:' . $album_image->entry_date . '</li>';
