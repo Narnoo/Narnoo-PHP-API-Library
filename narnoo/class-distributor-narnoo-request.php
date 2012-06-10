@@ -52,7 +52,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	/*
 	 * find opertators by some criterias
 	 */
-	function searchOperators($country, $category, $subcategory, $state, $suburb, $postal_code) {
+	function searchOperators($country=null, $category=null, $subcategory=null, $state=null, $suburb=null, $postal_code=null,$page_no=1) {
 		$params = array ();
 		
 		if (is_null ( $country ) == false && empty ( $country ) == false) {
@@ -78,6 +78,8 @@ class DistributorNarnooRequest extends NarnooRequest {
 		if (is_null ( $postal_code ) == false && empty ( $postal_code ) == false) {
 			$params = array_merge ( $params, array ("postal_code" => $postal_code ) );
 		}
+		
+		$params = array_merge ( $params, array ("page_no" => $page_no ) );
 		
 		return $this->getResponse ( $this->getXmlApi(), "searchOperators", $params );
 	

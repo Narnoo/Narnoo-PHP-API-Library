@@ -10,7 +10,12 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->addOperator ( $operator_id );
+	$request->sandbox = sandbox;
+	try {
+		$request->addOperator ( $operator_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,12 +39,18 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's can add Opeartors</h2>
-<p>Distributors use this function to add Operator's to their access list</p>
+	<h2>Distributor's can add Opeartors</h2>
+	<p>Distributors use this function to add Operator's to their access
+		list</p>
 	<pre class="code" lang="php">
-	$request = new DistributorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->addOperator ( $operator_id );
+$request = new DistributorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$request->addOperator ( $operator_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	
     </pre>
 	<div id="demo-frame">
@@ -47,27 +58,21 @@ $(function(){
 			<label for="operator">Operator id</label> <input name=operator_id
 				type="text"></input><input type="submit" value="submit">
 		</form>
-		
-		<?php
-		if (isset ( $message )) {
-			
-			?>
-	  <div>
+
+		<div>
 	  <?php
-			$error = $message->error;
+			
 			if (isset ( $error )) {
-				echo 'ErrorCode:' . $error->errorCode . '</br>';
-				echo 'ErroMessage:' . $error->errorMessage . '</br>';
+				echo $error->getMessage ();
+			} else {
+				if (isset ( $operator_id )) {
+					echo 'done!';
+				}
 			}
 			
 			?>
 	  </div>
-	<?php
-		} else {
-			echo $message;
-		}
-		
-		?>
+
 	</div>
 
 </body>

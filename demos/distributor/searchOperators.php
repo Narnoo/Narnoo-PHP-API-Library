@@ -4,7 +4,8 @@ require_once '../../narnoo/class-narnoo-request.php';
 require_once '../../narnoo/class-distributor-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 
-if (count ( $_POST ) > 0) {
+$postback = count ( $_POST ) > 0;
+if ($postback) {
 	$country = $_POST ["country"];
 	$category = $_POST ["category"];
 	$subcategory = $_POST ["subcategory"];
@@ -13,7 +14,12 @@ if (count ( $_POST ) > 0) {
 	$postal_code = $_POST ["postal_code"];
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchOperators ( $country, $category, $subcategory, $state, $suburb, $postal_code );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->searchOperators ( $country, $category, $subcategory, $state, $suburb, $postal_code );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 ?>
 
@@ -37,17 +43,22 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's can search Opeartors</h2>
-<p>Distributors use this function to search Operator's on Narnoo</p>
-<pre class="code" lang="php">	
-	$request = new DistributorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->searchOperators ( $country, $category, $subcategory, $state, $suburb, $postal_code );
+	<h2>Distributor's can search Opeartors</h2>
+	<p>Distributors use this function to search Operator's on Narnoo</p>
+	<pre class="code" lang="php">	
+$request = new DistributorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->searchOperators ( $country, $category, $subcategory, $state, $suburb, $postal_code );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
 
 	<?php
-	if (isset ( $message ) == false) {
+	if ($postback == false) {
 		?>
 		<form method="post">
 			<label for="country">country</label> <input name=country type="text"></input>
@@ -65,18 +76,18 @@ $(function(){
 		?>
 		<div>
 		<?php
-		$error = $message->error;
+	
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage();
 		} else {
-			$search_operators = $message->search_operators;
+		
 			?>
 			<ul>
 		<?php
+			echo "<label>total pages:" . $list->total_pages .'</label>';
 			
-foreach ( $search_operators as $item ) {
-				$operator = $item->operator;
+			foreach ( $list->search_operators as $operator ) {
+			
 				?>					  
 					 <li><dl>
 						<dt>operator_id</dt>

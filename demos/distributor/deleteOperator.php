@@ -9,7 +9,12 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteOperator ( $operator_id );
+	$reqeust->sandbox = sandbox;
+	try {
+		$request->deleteOperator ( $operator_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -34,13 +39,18 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's can delete Opeartors</h2>
-<p>Distributors use this function to remove Operator's from their access list</p>
+	<h2>Distributor's can delete Opeartors</h2>
+	<p>Distributors use this function to remove Operator's from their
+		access list</p>
 	<pre class="code" lang="php">
-	$request = new DistributorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->deleteOperator ( $operator_id );
-    
+$request = new DistributorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$reqeust->sandbox = sandbox;
+try {
+	$request->deleteOperator ( $operator_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
 		<form action="" method="post">
@@ -49,26 +59,20 @@ $(function(){
 		</form>
 	
 	<?php
-	if (isset ( $message )) {
+	if (isset ( $operator_id )) {
 		
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
-		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		}
 		
+		if (isset ( $error )) {
+			echo $error->getMessage ();
+		} else {
+			echo 'done.';
+		}
 		?>
 	  </div>
-	<?php
-	} else {
-		
-		echo $message;
-	}
-	
-	?>	
-	</div>	
+	  <?php } ?>
+	</div>
 </body>
 </html>
