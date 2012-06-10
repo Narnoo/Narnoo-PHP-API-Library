@@ -35,9 +35,12 @@ class DistributorNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->getXmlApi(), 'deleteOperator', array ('operator_id' => $operator_id ) );
 	}
 	
-	// TODO: Not test yet
-	function listOperators() {
-		return $this->getResponse ( $this->getXmlApi(), 'listOperators', null );
+	
+	function listOperators($page_no=1) {
+		
+		$params = array ("page_no" => $page_no );
+		
+		return $this->getResponse ( $this->getXmlApi(), 'listOperators', $params );
 	}
 	
 	// TODO: Not test yet

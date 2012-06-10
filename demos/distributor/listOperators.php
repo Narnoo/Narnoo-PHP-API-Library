@@ -6,7 +6,13 @@ require_once '../narnoo-cofing.php';
 
 $request = new DistributorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->listOperators ();
+$request->sandbox = sandbox;
+
+try {
+	$list = $request->listOperators ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 ?>
 
@@ -30,57 +36,58 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's can list Opeartors</h2>
-<p>Distributors use this function to list the details of Operator on their access list</p>
+	<h2>Distributor's can list Opeartors</h2>
+	<p>Distributors use this function to list the details of Operator on
+		their access list</p>
 	<pre class="code" lang="php">	
-	$request = new DistributorNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->listOperators();
+$request = new DistributorNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+
+try {
+	$list = $request->listOperators ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
     
 	</pre>
 	<div id="demo-frame">
-	<?php
-	if (isset ( $message )) {
-		
-		?>
-	  <div>
+
+		<div>
 	  <?php
-		$error = $message->error;
-		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} else {
-			echo '<ul>';
-			foreach ( $message->operators as $item ) {
-				$business = $item->operator;
-				echo '<li><ul>';
-				echo '<li>operator_id : ' . $business->operator_id . '</li>';
-				echo '<li>category : ' . $business->category . '</li>';
-				echo '<li>sub_category : ' . $business->sub_category . '</li>';
-				echo '<li>operator_businessname : ' . $business->operator_businessname . '</li>';
-				echo '<li>country_name : ' . $business->country_name . '</li>';
-				echo '<li>state : ' . $business->state . '</li>';
-				echo '<li>suburb : ' . $business->suburb . '</li>';
-				echo '<li>latitude : ' . $business->latitude . '</li>';
-				echo '<li>longitude : ' . $business->longitude . '</li>';
-				echo '<li>postcode : ' . $business->postcode . '</li>';
-				echo '<li>keywords : ' . $business->keywords . '</li>';
-				echo '</ul></li>';
+			
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
+				echo '<lable>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
+				foreach ( $list->operators as $operator ) {
+					
+					echo '<li><ul>';
+					echo '<li>operator_id : ' . $operator->operator_id . '</li>';
+					echo '<li>category : ' . $operator->category . '</li>';
+					echo '<li>sub_category : ' . $operator->sub_category . '</li>';
+					echo '<li>operator_businessname : ' . $operator->operator_businessname . '</li>';
+					echo '<li>country_name : ' . $operator->country_name . '</li>';
+					echo '<li>state : ' . $operator->state . '</li>';
+					echo '<li>suburb : ' . $operator->suburb . '</li>';
+					echo '<li>latitude : ' . $operator->latitude . '</li>';
+					echo '<li>longitude : ' . $operator->longitude . '</li>';
+					echo '<li>postcode : ' . $operator->postcode . '</li>';
+					echo '<li>keywords : ' . $operator->keywords . '</li>';
+					echo '</ul></li>';
+				}
+				
+				echo '</ul>';
+			
 			}
 			
-			echo '</ul>';
-		
-		}
-		
-		?>
+			?>
 	  </div>
-	<?php
-	}
-	
-	?>
+
 	</div>
 	<br />
-	
+
 
 
 
