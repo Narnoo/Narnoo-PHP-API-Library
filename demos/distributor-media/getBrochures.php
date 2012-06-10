@@ -7,8 +7,12 @@ require_once '../utilities.php';
 
 $request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getBrochures ();
-
+$request->sandbox = sandbox;
+try {
+	$list = $request->getBrochures ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 ?>
 
 
@@ -31,59 +35,46 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get brochures</h2>
-<p>Distributors use this get brochures function to retrieve their brochure information.</p>
-<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getBrochures ( );	
+	<h2>Distributor's get brochures</h2>
+	<p>Distributors use this get brochures function to retrieve their
+		brochure information.</p>
+	<pre class="code" lang="php">
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getBrochures ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}	
 	
     </pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
-		<form action="" method="post">
-			<label for="operator_id">Operator id</label> <input name=operator_id
-				type="text" value="39"></input><input type="submit" value="submit">
-		</form>
-	
-	<?php
-	} else {
-		
-		?>
-	  <div>
+
 	  <?php
-		$error = $message->error;
-		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} else {
-			echo '<ul>';
 			
-			$distributor_brochures = $message->distributor_brochures;
-			
-			foreach ( $distributor_brochures as $item ) {
-				$brochure = $item->brochure;
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
+				echo '<label>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
 				
-				echo '<li><ul>';
-				echo '<li>brochure_id : ' . $brochure->brochure_id . '</li>';
-				echo '<li>entry_date :' . $brochure->entry_date . '</li>';
-				echo '<li>thumb_image_path : ' . $brochure->thumb_image_path . '</li>';
-				echo '<li>preview_image_path : ' . $brochure->preview_image_path . '</li>';
-				echo '<li>page_order_xml_config : ' . $brochure->page_order_xml_config . '</li>';
-				echo '<li>validity_date : ' . $brochure->validity_date . '</li>';
-				echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
-				echo '</ul></li>';
+				foreach ( $list->distributor_brochures as $brochure ) {
+					echo '<li><ul>';
+					echo '<li>brochure_id : ' . $brochure->brochure_id . '</li>';
+					echo '<li>entry_date :' . $brochure->entry_date . '</li>';
+					echo '<li>thumb_image_path : ' . $brochure->thumb_image_path . '</li>';
+					echo '<li>preview_image_path : ' . $brochure->preview_image_path . '</li>';
+					echo '<li>page_order_xml_config : ' . $brochure->page_order_xml_config . '</li>';
+					echo '<li>validity_date : ' . $brochure->validity_date . '</li>';
+					echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
+					echo '</ul></li>';
+				}
+				echo '</ul>';
 			}
-			echo '</ul>';
-		}
-		
-		?>
+			
+			?>
 	  </div>
-	<?php
-	}
-	
-	?>
-	</div>
 
 </body>
 </html>

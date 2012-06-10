@@ -5,11 +5,16 @@ require_once '../../narnoo/class-distributor-media-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 require_once '../utilities.php';
 
-$channel = $_POST ["channel"];
-if (isset ( $channel )) {
+$channel_name = $_POST ["channel_name"];
+if (isset ( $channel_name )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getChannelVideos ( $channel );
+	$request->sandbox = sandbox;
+	try {
+		$list = $request->getChannelVideos ( $channel_name );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -33,19 +38,25 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get channel videos</h2>
-<p>Distributors use this getChannelVideos function to retrieve their video channel detailed information.</p>
+	<h2>Distributor's get channel videos</h2>
+	<p>Distributors use this getChannelVideos function to retrieve their
+		video channel detailed information.</p>
 	<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getChannelVideos ( $channel );
-    
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getChannelVideos ( $channel_name );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )==false){ ?>
+	<?php if (isset ( $channel_name )==false){ ?>
 		<form action="" method="post">
-			<label for="channel">channel</label> <input name=channel type="text"
-				value="disst_33_channel"></input><input type="submit" value="submit">
+			<label for="channel_name">channel</label> <input name="channel_name"
+				type="text" value="disst_33_channel"></input><input type="submit"
+				value="submit">
 		</form>
 	
 	<?php
@@ -54,23 +65,20 @@ $(function(){
 		?>
 	  <div>
 	  <?php
-		$error = $message->error;
+		
 		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
+			echo $error->getMessage ();
 		} else {
+			echo '<label>total pages:' . $list->total_pages . '</label>';
 			echo '<ul>';
 			
-			$distributor_channel_videos = $message->distributor_channel_videos;
+			echo '<li><ul>';
 			
-			foreach ( $distributor_channel_videos as $item ) {
-				$channel_video_details = $item->channel_video_details;
-				echo '<li><ul>';
-				
-				if($channel_video_details->owner_id != ''){
-				
-				echo '<li>owner_id : ' . $channel_video_details->owner_id . '</li>';
-				echo '<li>owner_business_name :' . $channel_video_details->owner_business_name . '</li>';
+			foreach ( $list->distributor_channel_videos as $channel_video_details ) {
+				if ($channel_video_details->owner_id != '') {
+					
+					echo '<li>owner_id : ' . $channel_video_details->owner_id . '</li>';
+					echo '<li>owner_business_name :' . $channel_video_details->owner_business_name . '</li>';
 				}
 				echo '<li>video_id : ' . $channel_video_details->video_id . '</li>';
 				echo '<li>entry_date : ' . $channel_video_details->entry_date . '</li>';
@@ -82,9 +90,7 @@ $(function(){
 				echo '<li>video_caption : ' . $channel_video_details->video_caption . '</li>';
 				echo '<li>video_language : ' . $channel_video_details->video_language . '</li>';
 				echo '</ul></li>';
-			
 			}
-			
 			echo '<ul>';
 		}
 		

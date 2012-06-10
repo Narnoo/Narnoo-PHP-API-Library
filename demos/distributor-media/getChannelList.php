@@ -7,7 +7,12 @@ require_once '../utilities.php';
 
 $request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
-$message = $request->getChannelList ();
+$request->sandbox = sandbox;
+try {
+	$list = $request->getChannelList ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
 
 ?>
 
@@ -32,52 +37,47 @@ $(function(){
 </script>
 </head>
 <body>
-<h2>Distributor's get channel list</h2>
-<p>Distributors use this getChannelList function to retrieve their video channel names.</p>
+	<h2>Distributor's get channel list</h2>
+	<p>Distributors use this getChannelList function to retrieve their
+		video channel names.</p>
 	<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getChannelList ();
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$list = $request->getChannelList ();
+} catch ( Exception $ex ) {
+	$error = $ex;
+}
     
 </pre>
 	<div id="demo-frame">
-	<?php if (isset ( $message )){ ?>
-	  <div>
 	  <?php
-		$error = $message->error;
-		if (isset ( $error )) {
-			echo 'ErrorCode' . $error->errorCode . '</br>';
-			echo 'ErroMessage' . $error->errorMessage . '</br>';
-		} else {
-			echo '<ul>';
-			
-
-			$distributor_channel_list = $message->distributor_channel_list;			
-			
-			foreach ( $distributor_channel_list as $item ) {
-				$channel = $item->channel;
-				echo '<li><ul>';
-				echo '<li>channel_id : ' . $channel->channel_id . '</li>';
-				echo '<li>channel_name :' . $channel->channel_name . '</li>';
-				echo '<li>location : ' . $channel->location . '</li>';
-				echo '<li>latitude : ' . $channel->latitude . '</li>';
-				echo '<li>longitude : ' . $channel->longitude . '</li>';
+			if (isset ( $error )) {
+				echo $error->getMessage ();
+			} else {
+				echo '<label>total pages:' . $list->total_pages . '</label>';
+				echo '<ul>';
 				
-		
-				echo '</ul></li>';
-			
+				foreach ( $list->distributor_channel_list as $channel ) {
+					
+					echo '<li><ul>';
+					echo '<li>channel_id : ' . $channel->channel_id . '</li>';
+					echo '<li>channel_name :' . $channel->channel_name . '</li>';
+					echo '<li>location : ' . $channel->location . '</li>';
+					echo '<li>latitude : ' . $channel->latitude . '</li>';
+					echo '<li>longitude : ' . $channel->longitude . '</li>';
+					
+					echo '</ul></li>';
+				
+				}
+				
+				echo '<ul>';
 			}
 			
-			echo '<ul>';
-		}
-		
-		?>
+			?>
 	  </div>
-	<?php
-	}
-	
-	?>
-	</div>
+
 
 </body>
 </html>

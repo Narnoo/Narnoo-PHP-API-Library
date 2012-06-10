@@ -50,20 +50,20 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	 *
 	 * @return array
 	 */
-	function getBrochures() {
-		return $this->getResponse ( $this->getDistXmlApi (), 'getBrochures', null );
+	function getBrochures($page_no = 1) {
+		return $this->getResponse ( $this->getDistXmlApi (), 'getBrochures', array ('page_no' => $page_no ) );
 	}
 	
 	function getSingleBrochure($brochure_id) {
 		return $this->getResponse ( $this->getDistXmlApi (), 'getSingleBrochure', array ('brochure_id' => $brochure_id ) );
 	}
 	
-	function getChannelList() {
-		return $this->getResponse ( $this->getDistXmlApi (), 'getChannelList', null );
+	function getChannelList($page_no = 1) {
+		return $this->getResponse ( $this->getDistXmlApi (), 'getChannelList', array ('page_no' => $page_no ) );
 	}
 	
-	function getChannelVideos($channel) {
-		return $this->getResponse ( $this->getDistXmlApi (), "getChannelVideos", array ("channel" => $channel ) );
+	function getChannelVideos($channel_name,$page_no = 1) {
+		return $this->getResponse ( $this->getDistXmlApi (), "getChannelVideos", array ("channel" => $channel_name,'page_no' => $page_no ) );
 	}
 	
 	/*

@@ -10,8 +10,12 @@ $brochure_id = $_POST ['brochure_id'];
 if (isset ( $brochure_id )) {
 	$request = new DistributorMediaNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$message = $request->getSingleBrochure ( $brochure_id );
-
+	$request->sandbox = sandbox;
+	try {
+		$brochure = $request->getSingleBrochure ( $brochure_id );
+	} catch ( Exception $ex ) {
+		$error = $ex;
+	}
 }
 
 ?>
@@ -40,13 +44,17 @@ $(function(){
 	<p>Distributors use this getSingleBrochure function to retrieve a
 		single brochure's detailed information.</p>
 	<pre class="code" lang="php">
-	$request = new DistributorMediaNarnooRequest ();
-	$request->setAuth ( app_key, secret_key );
-	$message = $request->getSingleBrochure ($brochure_id );	
-    
+$request = new DistributorMediaNarnooRequest ();
+$request->setAuth ( app_key, secret_key );
+$request->sandbox = sandbox;
+try {
+	$brochure = $request->getSingleBrochure ( $brochure_id );
+} catch ( Exception $ex ) {
+	$error = $ex;
+}  
 	</pre>
 	<div id="demo-frame">
-<?php if (isset ( $message ) ==false){ ?>
+<?php if (isset ( $brochure_id ) ==false){ ?>
 	<form action="" method="post">
 			<label for="brochure_id">brochure id</label> <input name=brochure_id
 				type="text" value="208"></input><input type="submit" value="submit">
@@ -58,15 +66,11 @@ $(function(){
 	?>
 	  <div>
 	  <?php
-	$error = $message->error;
+
 	if (isset ( $error )) {
-		echo 'ErrorCode' . $error->errorCode . '</br>';
-		echo 'ErroMessage' . $error->errorMessage . '</br>';
+		echo $error->getMessage();
 	} else {
-		
-		$distributor_brochure = $message->distributor_brochure;
-		$brochure = $distributor_brochure [0]->brochure;
-		
+	
 		echo '<dl>';
 		echo '<dt>brochure_id</dt><dd>' . $brochure->brochure_id . '</dd>';
 		echo '<dt>entry_date</dt><dd>' . $brochure->entry_date . '</dd>';
@@ -77,7 +81,9 @@ $(function(){
 		echo '<dt>validity_date</dt><dd>' . $brochure->validity_date . '</dd>';
 		echo '<dt>brochure_caption</dt><dd>' . $brochure->brochure_caption . '</dd>';
 		echo '<dt>format</dt><dd>' . $brochure->format . '</dd>';
-		$standard_pages = $brochure->standard_pages;
+		$pages = $brochure->pages;
+		$standard_pages = $pages[0]->standard_pages;
+		
 		echo '<dt>standard_pages</dt><dd> <ul>';
 		
 		foreach ( $standard_pages as $item ) {
@@ -85,10 +91,10 @@ $(function(){
 		}
 		echo '</ul></dd>';
 		
-		$zoom_pages = $brochure->zoom_page;
+		$zoom_pages = $pages[0]->zoom_page;
 		echo '<dt>zoom_page </dt><dd><ul>';
 		
-		foreach($zoom_pages as $item){
+		foreach ( $zoom_pages as $item ) {
 			echo '<li>' . $item . '</li>';
 		}
 		
