@@ -9,7 +9,7 @@ $operator_id = $_POST ['operator_id'];
 if (isset ( $operator_id )) {
 	$request = new DistributorNarnooRequest ();
 	$request->setAuth ( app_key, secret_key );
-	$reqeust->sandbox = sandbox;
+	$request->sandbox = sandbox;
 	try {
 		$request->deleteOperator ( $operator_id );
 	} catch ( Exception $ex ) {
