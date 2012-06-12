@@ -84,14 +84,14 @@ try {
 		echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
 		echo '<li>format:' . $brochure->format . '</li>';
 		$pages = $brochure->pages;
-		$standard_pages = $pages [0]->standard_pages;
+		$standard_pages = $pages->standard_pages;
 		echo '<li>standard_pages : <ul>';
 		foreach ( $standard_pages as $item ) {
 			echo '<li>' . $item . '</li>';
 		}
 		echo '</ul></li>';
 		
-		$zoom_pages = $pages [0]->zoom_page;
+		$zoom_pages = $pages->zoom_page;
 		echo '<li>zoom_page : <ul>';
 		foreach ( $zoom_pages as $item ) {
 			echo '<li>' . $item . '</li>';

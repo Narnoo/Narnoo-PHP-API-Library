@@ -82,7 +82,7 @@ try {
 		echo '<dt>brochure_caption</dt><dd>' . $brochure->brochure_caption . '</dd>';
 		echo '<dt>format</dt><dd>' . $brochure->format . '</dd>';
 		$pages = $brochure->pages;
-		$standard_pages = $pages[0]->standard_pages;
+		$standard_pages = $pages->standard_pages;
 		
 		echo '<dt>standard_pages</dt><dd> <ul>';
 		
@@ -91,7 +91,7 @@ try {
 		}
 		echo '</ul></dd>';
 		
-		$zoom_pages = $pages[0]->zoom_page;
+		$zoom_pages = $pages->zoom_page;
 		echo '<dt>zoom_page </dt><dd><ul>';
 		
 		foreach ( $zoom_pages as $item ) {

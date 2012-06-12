@@ -13,7 +13,7 @@ if (isset ( $operator_id )) {
 	$request->setAuth ( app_key, secret_key );
 	$request->sandbox = sandbox;
 	try {
-		$product_description = $request->getProductTextWords ( $operator_id, $product_title );
+		$product = $request->getProductTextWords ( $operator_id, $product_title );
 	} catch ( Exception $ex ) {
 		$error = $ex;
 	}
@@ -49,7 +49,7 @@ $request = new DistributorOperatorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 try {
-	$product_description = $request->getProductTextWords ( $operator_id, $product_title );
+	$product = $request->getProductTextWords ( $operator_id, $product_title );
 } catch ( Exception $ex ) {
 	$error = $ex;
 } 
@@ -73,14 +73,13 @@ try {
 			echo $error->getMessage ();
 		} else {
 			
-			$items = $product_description->operator_products;
-			$item = $items[0];
+	
 			
 			echo "<dl>";
 			
-			echo "<dt>product_title</dt><dd>" . $item->product_title . "</dd>";
+			echo "<dt>product_title</dt><dd>" . $product_description->product_title . "</dd>";
 			
-			$text = $item->text;
+			$text = $product_description->text;
 			
 			echo "<dt></dt><dd><ul>";
 			echo "<li>word_50:" . $text->word_50 . "</li>";

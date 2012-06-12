@@ -70,16 +70,13 @@ try {
 		if (isset ( $error )) {
 			echo $error->getMessage ();
 		} else {
-			
-			$operator_products = $product->operator_products;
-			
-			$product_description = $operator_products [0];
+		
 			
 			echo "<dl>";
 			
-			echo "<dt>product_title</dt><dd>" . $product_description->product_title . "</dd>";
+			echo "<dt>product_title</dt><dd>" . $product->product_title . "</dd>";
 			
-			$text = $product_description->text;
+			$text = $product->text;
 			
 			echo "<dt></dt><dd><ul>";
 			echo "<li>word_50:" . $text->word_50 . "</li>";
