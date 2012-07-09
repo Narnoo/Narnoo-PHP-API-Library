@@ -4,7 +4,7 @@ require_once '../../narnoo/class-narnoo-request.php';
 require_once '../../narnoo/class-distributor-narnoo-request.php';
 require_once '../narnoo-cofing.php';
 
-$request = new DistributorNarnooRequest ();
+$request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 
@@ -42,7 +42,7 @@ $(function(){
 	<h2>Creat Distributor's Albums - createAlbum</h2>
 	<p>This function is used to create a new image album for a distributor. </p>
 	<pre class="code" lang="php">
-$request = new DistributorNarnooRequest ();
+$request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 

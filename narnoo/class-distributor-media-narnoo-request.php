@@ -164,6 +164,10 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	function deleteVideo($video_id) {
 		return $this->getResponse ( $this->getDistXmlApi (), 'deleteVideo', array ("video_id" => $video_id ) );
 	}
+	
+	function createAlbum($album_name) {
+		return $this->getResponse ( $this->getDistXmlApi(), 'createAlbum', array ('album_name' => $album_name ) );
+	}
 
 }
 

@@ -97,7 +97,7 @@ $(function(){
 					<tr>
 						<td class="left-nav">
 							<dl class="demos-nav">
-								<dt>Distributor->Operator</dt>
+								<dt>Distributor</dt>
 								<dd>
 									<a href="demos/distributor/addOperator.php">addOperator</a>
 								</dd>
@@ -113,8 +113,10 @@ $(function(){
 								<dd>
 									<a href="demos/distributor/searchOperators.php">searchOperators</a>
 								</dd>
+								<dd>
+									<a href="demos/distributor/getDetails.php">getDetails</a>
+								</dd>
 
-							
 								<dt>Distributor's Own Media</dt>
 								<dd>
 									<a href="demos/distributor-media/getImages.php">getImages</a>
@@ -173,8 +175,8 @@ $(function(){
 								<dd>
 									<a href="demos/distributor-media/deleteVideo.php">deleteVideo</a>
 								</dd>
-								
-									<dd>
+
+								<dd>
 									<a href="demos/distributor-media/createAlbum.php">createAlbum</a>
 								</dd>
 
@@ -278,7 +280,7 @@ $(function(){
 								<dd>
 									<a href="demos/operator/createAlbum.php">createAlbum</a>
 								</dd>
-									<dd>
+								<dd>
 									<a href="demos/operator/getDetails.php">getDetails</a>
 								</dd>
 							</dl>

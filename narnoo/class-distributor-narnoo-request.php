@@ -102,8 +102,16 @@ class DistributorNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->getXmlApi (), 'getProductDescription', array ('operator_id' => $operator_id, 'product_title' => $product_title ) );
 	}
 	
-	function createAlbum($album_name) {
-		return $this->getResponse ( $this->getDistXmlApi(), 'createAlbum', array ('album_name' => $album_name ) );
+
+	
+	function getDetails() {
+		$content = $this->getResponse ( $this->getDistXmlApi(), 'getDetails', null );
+		if($this->response_type == 'json'){
+			$distributor_detail = $content->distributor_detail;
+			return $distributor_detail[0];
+		}else{
+			return $content;
+		}
 	}
 }
 
