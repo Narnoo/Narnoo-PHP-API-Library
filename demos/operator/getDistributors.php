@@ -36,8 +36,8 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>Get distributors - getVideos</h2>
-	<p>Operators' use the Get Videos function to retrieve their own videos.</p>
+	<h2>Get distributors - getDistributors</h2>
+	<p>Operators' use the GetDistributors function to retrieve all reachable distributors.</p>
 	<pre class="code" lang="php">
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );

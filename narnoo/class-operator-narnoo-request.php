@@ -160,8 +160,16 @@ class OperatorNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->getOpXmlApi (), 'getDistributors', array ('page_no' => $page_no ) );
 	}
 	
+	/*
+	 *  <success>
+     *  <successCode>success 200</successCode>
+     *  <successMessage>
+     *   Congratulations! Album Has Created Successfully !!!.
+     *  </successMessage>
+     *  </success>
+	 */
 	function createAlbum($album_name) {
-		return $this->getResponse ( $this->getOpXmlApi (), 'createAlbum', array ('page_no' => $page_no ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'createAlbum', array ('album_name'=>$album_name ) );
 	}
 
 }
