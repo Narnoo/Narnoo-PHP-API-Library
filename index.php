@@ -278,6 +278,9 @@ $(function(){
 								<dd>
 									<a href="demos/operator/createAlbum.php">createAlbum</a>
 								</dd>
+									<dd>
+									<a href="demos/operator/getDetails.php">getDetails</a>
+								</dd>
 							</dl>
 						</td>
 						<td class="normal"><iframe id="code-container" src=""

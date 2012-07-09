@@ -161,15 +161,16 @@ class OperatorNarnooRequest extends NarnooRequest {
 	}
 	
 	/*
-	 *  <success>
-     *  <successCode>success 200</successCode>
-     *  <successMessage>
-     *   Congratulations! Album Has Created Successfully !!!.
-     *  </successMessage>
-     *  </success>
+	 * <success> <successCode>success 200</successCode> <successMessage>
+	 * Congratulations! Album Has Created Successfully !!!. </successMessage>
+	 * </success>
 	 */
 	function createAlbum($album_name) {
-		return $this->getResponse ( $this->getOpXmlApi (), 'createAlbum', array ('album_name'=>$album_name ) );
+		return $this->getResponse ( $this->getOpXmlApi (), 'createAlbum', array ('album_name' => $album_name ) );
+	}
+	
+	function getDetails() {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getDetails', null );
 	}
 
 }
