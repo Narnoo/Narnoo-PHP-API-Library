@@ -168,6 +168,14 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	function createAlbum($album_name) {
 		return $this->getResponse ( $this->getDistXmlApi(), 'createAlbum', array ('album_name' => $album_name ) );
 	}
+	
+	function addToAlbum($image_id, $album_id){
+		return $this->getResponse ( $this->getDistXmlApi (), 'addToAlbum', array ('media_id' => $image_id ,'album_id'=>$album_id) );
+	}
+	
+	function removeFromAlbum( $image_id, $album_id){
+		return $this->getResponse ( $this->getDistXmlApi (), 'removeFromAlbum', array ('media_id' => $image_id ,'album_id'=>$album_id) );
+	}
 
 }
 

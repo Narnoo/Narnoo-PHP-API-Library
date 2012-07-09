@@ -8,10 +8,11 @@ $request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 
-$album_name = $_POST ['album_name'];
-if (isset ( $album_name )) {
+$image_id = $_POST ['image_id'];
+$album_id = $_POST ['album_id'];
+if (isset ( $image_id ) && isset ( $album_id )) {
 	try {
-		$request->createAlbum ( $album_name );
+		$request->removeFromAlbum ( $image_id, $album_id );
 	} catch ( Exception $ex ) {
 		$error = $ex;
 	}
@@ -39,30 +40,31 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>Creat Distributor's Albums - createAlbum</h2>
-	<p>This function is used to create a new image album for a distributor. </p>
+	<h2>Remove Distributor's album image - removeFromAlbum</h2>
+	<p>This function is used to add an image to an existing album.</p>
 	<pre class="code" lang="php">
 $request = new DistributorMediaNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 
-$album_name = $_POST ['album_name'];
-if (isset ( $album_name )) {
+$image_id = $_POST ['image_id'];
+$album_id = $_POST['album_id'];
+if (isset ( $image_id ) && isset($album_id)) {
 	try {
-		
-		$request->createAlbum ( $album_name );
+		$request->removeFromAlbum($image_id, $album_id);
 	} catch ( Exception $ex ) {
 		$error = $ex;
 	}
-}	
+}}	
 	</pre>
 	<div id="demo-frame">
 
-	<?php if(isset($album_name) == false){?>
+	<?php if(isset($image_id) == false || isset($album_id) == false){?>
 	<form method="post">
-			<label for="album_name">album_name</label> <input name=album_name
-				type="text" value="test-dayi"></input> <input type="submit"
-				value="submit">
+			<label for="image_id">image_id</label> <input name=image_id
+				type="text" value="186"></input> <label for="album_id">album_id</label>
+			<input name=album_id type="text" value="26"></input> <input
+				type="submit" value="submit">
 		</form>
 	  <?php
 	
@@ -70,7 +72,7 @@ if (isset ( $album_name )) {
 		if (isset ( $error )) {
 			echo $error->getMessage ();
 		} else {
-			echo 'Congratulations! Album Has Created Successfully !!!.';
+			echo 'Congratulations! Image Removed from Album Successfully !!!.';
 		}
 	}
 	?>

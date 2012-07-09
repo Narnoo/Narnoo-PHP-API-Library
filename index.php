@@ -179,6 +179,13 @@ $(function(){
 								<dd>
 									<a href="demos/distributor-media/createAlbum.php">createAlbum</a>
 								</dd>
+								
+									<dd>
+									<a href="demos/distributor-media/addToAlbum.php">addToAlbum</a>
+								</dd>
+								<dd>
+									<a href="demos/distributor-media/removeFromAlbum.php">removeFromAlbum</a>
+								</dd>
 
 								<dt>Distributors->Operator Media</dt>
 								<dd>
