@@ -283,6 +283,12 @@ $(function(){
 								<dd>
 									<a href="demos/operator/getDetails.php">getDetails</a>
 								</dd>
+								<dd>
+									<a href="demos/operator/addToAlbum.php">addToAlbum</a>
+								</dd>
+								<dd>
+									<a href="demos/operator/removeFromAlbum.php">removeFromAlbum</a>
+								</dd>
 							</dl>
 						</td>
 						<td class="normal"><iframe id="code-container" src=""

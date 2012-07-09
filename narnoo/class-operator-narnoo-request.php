@@ -173,6 +173,13 @@ class OperatorNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->getOpXmlApi (), 'getDetails', null );
 	}
 
+	function addToAlbum($image_id, $album_id){
+		return $this->getResponse ( $this->getOpXmlApi (), 'addToAlbum', array ('media_id' => $image_id ,'album_id'=>$album_id) );
+	}
+	
+	function removeFromAlbum( $image_id, $album_id){
+		return $this->getResponse ( $this->getOpXmlApi (), 'removeFromAlbum', array ('media_id' => $image_id ,'album_id'=>$album_id) );
+	}
 }
 
 ?>
