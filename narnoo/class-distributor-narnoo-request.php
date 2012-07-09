@@ -10,7 +10,6 @@
  */
 class DistributorNarnooRequest extends NarnooRequest {
 	
-
 	/*
 	 * Distributor->Operator Management
 	 */
@@ -22,7 +21,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return boolean
 	 */
 	function addOperator($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'addOperator', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'addOperator', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -32,27 +31,26 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return boolean
 	 */
 	function deleteOperator($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'deleteOperator', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'deleteOperator', array ('operator_id' => $operator_id ) );
 	}
 	
-	
-	function listOperators($page_no=1) {
+	function listOperators($page_no = 1) {
 		
 		$params = array ("page_no" => $page_no );
 		
-		return $this->getResponse ( $this->getXmlApi(), 'listOperators', $params );
+		return $this->getResponse ( $this->getXmlApi (), 'listOperators', $params );
 	}
 	
 	// TODO: Not test yet
 	function singleOperatorDetail($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'singleOperatorDetail', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'singleOperatorDetail', array ('operator_id' => $operator_id ) );
 	}
 	
 	// TODO: Not test yet
 	/*
 	 * find opertators by some criterias
 	 */
-	function searchOperators($country=null, $category=null, $subcategory=null, $state=null, $suburb=null, $postal_code=null,$page_no=1) {
+	function searchOperators($country = null, $category = null, $subcategory = null, $state = null, $suburb = null, $postal_code = null, $page_no = 1) {
 		$params = array ();
 		
 		if (is_null ( $country ) == false && empty ( $country ) == false) {
@@ -81,7 +79,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 		
 		$params = array_merge ( $params, array ("page_no" => $page_no ) );
 		
-		return $this->getResponse ( $this->getXmlApi(), "searchOperators", $params );
+		return $this->getResponse ( $this->getXmlApi (), "searchOperators", $params );
 	
 	}
 	
@@ -91,7 +89,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return array
 	 */
 	function getProducts($operator_id) {
-		return $this->getResponse ( $this->getXmlApi(), 'getProducts', array ('operator_id' => $operator_id ) );
+		return $this->getResponse ( $this->getXmlApi (), 'getProducts', array ('operator_id' => $operator_id ) );
 	}
 	
 	/**
@@ -101,17 +99,12 @@ class DistributorNarnooRequest extends NarnooRequest {
 	 * @return object
 	 */
 	function getProductDescription($operator_id, $product_title) {
-		return $this->getResponse ( $this->getXmlApi(), 'getProductDescription', array ('operator_id' => $operator_id, 'product_title' => $product_title ) );
+		return $this->getResponse ( $this->getXmlApi (), 'getProductDescription', array ('operator_id' => $operator_id, 'product_title' => $product_title ) );
 	}
-
-	/**
-	 * 
-	 * 
-	 * 
-	 */
-	 //function getImages(){
-	 //	
-	// }
+	
+	function createAlbum($album_name) {
+		return $this->getResponse ( $this->getDistXmlApi(), 'createAlbum', array ('album_name' => $album_name ) );
+	}
 }
 
 ?>

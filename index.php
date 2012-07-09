@@ -113,7 +113,9 @@ $(function(){
 								<dd>
 									<a href="demos/distributor/searchOperators.php">searchOperators</a>
 								</dd>
-								<dt>Distributor’s Own Media</dt>
+
+							
+								<dt>Distributor's Own Media</dt>
 								<dd>
 									<a href="demos/distributor-media/getImages.php">getImages</a>
 								</dd>
@@ -170,6 +172,10 @@ $(function(){
 
 								<dd>
 									<a href="demos/distributor-media/deleteVideo.php">deleteVideo</a>
+								</dd>
+								
+									<dd>
+									<a href="demos/distributor-media/createAlbum.php">createAlbum</a>
 								</dd>
 
 								<dt>Distributors->Operator Media</dt>
@@ -269,7 +275,9 @@ $(function(){
 								<dd>
 									<a href="demos/operator/getDistributors.php">getDistributors</a>
 								</dd>
-
+								<dd>
+									<a href="demos/operator/createAlbum.php">createAlbum</a>
+								</dd>
 							</dl>
 						</td>
 						<td class="normal"><iframe id="code-container" src=""
@@ -289,12 +297,12 @@ $(function(){
 				<div style="margin-top: 15px">
 					<img src="icons/icon-128.png" width="124" height="124" alt="icon"><img
 						src="icons/icon-96.png" width="96" height="96" alt="icon"><img
-						src="icons/icon-72.png" width="72" height="72" alt="icon"><img
-						src="icons/icon-64.png" width="64" height="64" alt="icon"><img
-						src="icons/icon-48.png" width="48" height="48" alt="icon"><img
-						src="icons/icon-32.png" width="32" height="32" alt="icon"><img
-						src="icons/icon-24.png" width="24" height="24" alt="icon"><img
-						src="icons/icon-16.png" width="16" height="16" alt="icon">
+							src="icons/icon-72.png" width="72" height="72" alt="icon"><img
+								src="icons/icon-64.png" width="64" height="64" alt="icon"><img
+									src="icons/icon-48.png" width="48" height="48" alt="icon"><img
+										src="icons/icon-32.png" width="32" height="32" alt="icon"><img
+											src="icons/icon-24.png" width="24" height="24" alt="icon"><img
+												src="icons/icon-16.png" width="16" height="16" alt="icon">
 				
 				</div>
 			</table>
