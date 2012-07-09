@@ -11,3 +11,5 @@ obj/
 /get_dist_result_from_api.php
 /get_op_result_from_api.php
 /business.php
+/class.download.php
+/downloadfile.php

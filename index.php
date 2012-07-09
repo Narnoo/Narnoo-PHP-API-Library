@@ -266,6 +266,9 @@ $(function(){
 								<dd>
 									<a href="demos/operator/deleteVideo.php">deleteVideo</a>
 								</dd>
+								<dd>
+									<a href="demos/operator/getDistributors.php">getDistributors</a>
+								</dd>
 
 							</dl>
 						</td>

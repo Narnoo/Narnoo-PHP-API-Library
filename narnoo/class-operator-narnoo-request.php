@@ -155,6 +155,15 @@ class OperatorNarnooRequest extends NarnooRequest {
 	function deleteVideo($video_id) {
 		return $this->getResponse ( $this->getOpXmlApi (), 'deleteVideo', array ("video_id" => $video_id ) );
 	}
+	
+	function getDistributors($page_no = 1) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'getDistributors', array ('page_no' => $page_no ) );
+	}
+	
+	function createAlbum($album_name) {
+		return $this->getResponse ( $this->getOpXmlApi (), 'createAlbum', array ('page_no' => $page_no ) );
+	}
+
 }
 
 ?>
