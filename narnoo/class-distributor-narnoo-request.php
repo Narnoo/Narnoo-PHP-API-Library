@@ -105,13 +105,7 @@ class DistributorNarnooRequest extends NarnooRequest {
 
 	
 	function getDetails() {
-		$content = $this->getResponse ( $this->getDistXmlApi(), 'getDetails', null );
-		if($this->response_type == 'json'){
-			$distributor_detail = $content->distributor_detail;
-			return $distributor_detail[0];
-		}else{
-			return $content;
-		}
+		return $this->getResponse ( $this->getDistXmlApi(), 'getDetails', null );
 	}
 }
 
