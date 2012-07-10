@@ -40,7 +40,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>Creat Operator's Albums - createAlbum</h2>
+	<h2>Create Operator's Albums - createAlbum</h2>
 	<p>Operators' use the createAlbum function to add their own album.</p>
 	<pre class="code" lang="php">
 $request = new OperatorNarnooRequest ();
