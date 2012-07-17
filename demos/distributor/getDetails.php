@@ -30,7 +30,7 @@ try {
 	src="../../scripts/highlight/highlight.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
 
 });
 </script>
@@ -44,21 +44,21 @@ $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 
 try {
-	$distributor = $request->getDetails ();
+$distributor = $request->getDetails ();
 } catch ( Exception $ex ) {
-	$error = $ex;
+$error = $ex;
 }	
-	</pre>
+</pre>
 	<div id="demo-frame">
 
 
-	  <?php
-			
-			if (isset ( $error )) {
-				echo $error->getMessage ();
-			} else {
-				?>
-				<dl>
+  <?php
+		
+		if (isset ( $error )) {
+			echo $error->getMessage ();
+		} else {
+			?>
+<dl>
 			<dt>distributor_id</dt>
 			<dd><?php echo $distributor->distributor_id ?></dd>
 			<dt>distributor_businessname</dt>
@@ -79,16 +79,19 @@ try {
 			<dd><?php echo $distributor->email ?></dd>
 			<dt>postcode</dt>
 			<dd><?php echo $distributor->postcode ?></dd>
-
-			<dt>image_limit</dt>
-			<dd><?php echo $distributor->image_limit ?></dd>
+			<dt>Total Images</dt>
+			<dd><?php echo $distributor->total_images ?></dd>
+			<dt>Total Brochures</dt>
+			<dd><?php echo $distributor->total_brochures ?></dd>
+			<dt>Total Videos</dt>
+			<dd><?php echo $distributor->total_videos ?></dd>
 
 		</dl>
-				<?php
-			}
-			
-			?>
-	  </div>
+<?php
+}
+
+?>
+  </div>
 
 
 </body>

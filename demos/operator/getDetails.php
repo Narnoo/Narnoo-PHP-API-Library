@@ -30,35 +30,35 @@ try {
 	src="../../scripts/highlight/highlight.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
 
 });
 </script>
 </head>
 <body>
 	<h2>Get Operator's account information - getDetails</h2>
-	<p>This function is used to retrieve Operator¡¯s account info.</p>
+	<p>This function is used to retrieve Operator's account info.</p>
 	<pre class="code" lang="php">
 $request = new OperatorNarnooRequest ();
 $request->setAuth ( app_key, secret_key );
 $request->sandbox = sandbox;
 
 try {
-	$operator = $request->getDetails ();
+$operator = $request->getDetails ();
 } catch ( Exception $ex ) {
-	$error = $ex;
+$error = $ex;
 }	
-	</pre>
+</pre>
 	<div id="demo-frame">
 
 
-	  <?php
-			
-			if (isset ( $error )) {
-				echo $error->getMessage ();
-			} else {
-				?>
-				<dl>
+  <?php
+		
+		if (isset ( $error )) {
+			echo $error->getMessage ();
+		} else {
+			?>
+<dl>
 			<dt>operator_id</dt>
 			<dd><?php echo $operator->operator_id ?></dd>
 			<dt>operator_url</dt>
@@ -81,13 +81,21 @@ try {
 			<dd><?php echo $operator->email ?></dd>
 			<dt>postcode</dt>
 			<dd><?php echo $operator->postcode ?></dd>
+			<dt>Total Images</dt>
+			<dd><?php echo $operator->total_images ?></dd>
+			<dt>Total Brochures</dt>
+			<dd><?php echo $operator->total_brochures ?></dd>
+			<dt>Total Videos</dt>
+			<dd><?php echo $operator->total_videos ?></dd>
+			<dt>Total Products</dt>
+			<dd><?php echo $operator->total_products ?></dd>
 
 		</dl>
-				<?php
-			}
-			
-			?>
-	  </div>
+<?php
+}
+
+?>
+  </div>
 
 
 </body>
