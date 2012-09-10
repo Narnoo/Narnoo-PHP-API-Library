@@ -107,6 +107,9 @@ class DistributorNarnooRequest extends NarnooRequest {
 	function getDetails() {
 		return $this->getResponse ( $this->getDistXmlApi(), 'getDetails', null );
 	}
+	
+	
+
 }
 
 ?>

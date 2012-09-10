@@ -177,6 +177,18 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		return $this->getResponse ( $this->getDistXmlApi (), 'removeFromAlbum', array ('media_id' => $image_id ,'album_id'=>$album_id) );
 	}
 
+	
+	function createChannel($channel_name){
+		return $this->getResponse ( $this->getDistXmlApi (), 'createChannel', array ('channel' => $channel_name ) );
+	}
+	
+	function addToChannel($video_id, $channel_id){
+		return $this->getResponse ( $this->getDistXmlApi (), 'addToChannel', array ('video_id' => $video_id,'channel_id'=>$channel_id ) );
+	}
+	
+	function removeFromChannel($video_id, $channel_id){
+		return $this->getResponse ( $this->getDistXmlApi (), 'removeFromChannel', array ('video_id' => $video_id,'channel_id'=>$channel_id ) );
+	}
 }
 
 ?>

@@ -179,12 +179,24 @@ $(function(){
 								<dd>
 									<a href="demos/distributor-media/createAlbum.php">createAlbum</a>
 								</dd>
-								
-									<dd>
+
+								<dd>
 									<a href="demos/distributor-media/addToAlbum.php">addToAlbum</a>
 								</dd>
 								<dd>
 									<a href="demos/distributor-media/removeFromAlbum.php">removeFromAlbum</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/createChannel.php">createChannel</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/addToChannel.php">addToChannel</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/removeFromChannel.php">removeFromChannel</a>
 								</dd>
 
 								<dt>Distributors->Operator Media</dt>
@@ -231,6 +243,7 @@ $(function(){
 								<dd>
 									<a href="demos/distributor-operator-media/searchMedia.php">searchMedia</a>
 								</dd>
+
 
 								<dt>Operator</dt>
 								<dd>
