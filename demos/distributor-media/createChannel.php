@@ -39,7 +39,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>Creat Distributor's channel - createChannel</h2>
+	<h2>Create Distributor's channel - createChannel</h2>
 	<p>This function is used to create a new video channel for a distributor. </p>
 	<pre class="code" lang="php">
 $request = new DistributorMediaNarnooRequest ();
