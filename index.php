@@ -199,6 +199,18 @@ $(function(){
 									<a href="demos/distributor-media/removeFromChannel.php">removeFromChannel</a>
 								</dd>
 
+								<dd>
+									<a href="demos/distributor-media/sendImage.php">sendImage</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/sendVideo.php">sendVideo</a>
+								</dd>
+
+								<dd>
+									<a href="demos/distributor-media/sendBrochure.php">sendBrochure</a>
+								</dd>
+
 								<dt>Distributors->Operator Media</dt>
 								<dd>
 									<a href="demos/distributor-operator-media/getImages.php">getImages</a>
@@ -308,6 +320,18 @@ $(function(){
 								</dd>
 								<dd>
 									<a href="demos/operator/removeFromAlbum.php">removeFromAlbum</a>
+								</dd>
+
+								<dd>
+									<a href="demos/operator/sendImage.php">sendImage</a>
+								</dd>
+
+								<dd>
+									<a href="demos/operator/sendVideo.php">sendVideo</a>
+								</dd>
+
+								<dd>
+									<a href="demos/operator/sendBrochure.php">sendBrochure</a>
 								</dd>
 							</dl>
 						</td>

@@ -189,6 +189,39 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 	function removeFromChannel($video_id, $channel_id){
 		return $this->getResponse ( $this->getDistXmlApi (), 'removeFromChannel', array ('video_id' => $video_id,'channel_id'=>$channel_id ) );
 	}
+	
+	/**
+	 * This function allows the distributor to create a download link for the high resolution version of an image.
+	 * @param image_id 
+	 * @return object
+	* 	 expiry_date
+	*    download_link
+	 */
+	function sendImage($image_id){
+		return $this->getResponse($this->getDistXmlApi(),'sendImage',array('media_id'=>$image_id));
+	}
+	
+	/**
+	 * This function allows the distributor to create a download link for the high resolution version of a video.
+	 * @param video_id
+	 * @return object
+	* 	 expiry_date
+	*    download_link
+	 */
+	function sendVideo($video_id){
+		return $this->getResponse($this->getDistXmlApi(),'sendVideo',array('video_id'=>$video_id));
+	}
+	
+	/**
+	 *This function allows the distributor to create a download link for an brochure.
+	* @param video_id
+	* @return object
+	* 	 expiry_date
+	*    download_link
+	*/
+	function sendBrochure($brochure_id){
+		return $this->getResponse($this->getDistXmlApi(),'sendBrochure',array('brochure_id'=>$brochure_id));
+	}
 }
 
 ?>
