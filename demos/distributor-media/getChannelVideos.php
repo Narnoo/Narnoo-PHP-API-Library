@@ -83,10 +83,11 @@ try {
 				echo '<li>video_id : ' . $channel_video_details->video_id . '</li>';
 				echo '<li>entry_date : ' . $channel_video_details->entry_date . '</li>';
 				echo '<li>video_thumb_image_path : ' . $channel_video_details->video_thumb_image_path . '</li>';
-				
 				echo '<li>video_pause_image_path : ' . $channel_video_details->video_pause_image_path . '</li>';
 				echo '<li>video_preview_path : ' . $channel_video_details->video_preview_path . '</li>';
+				echo '<li>video_webm_path : ' . uncdata ( $channel_video_details->video_webm_path ) . '</li>';
 				echo '<li>video_stream_path : ' . uncdata ( $channel_video_details->video_stream_path ) . '</li>';
+				echo '<li>video_hqstream_path : ' . uncdata ( $channel_video_details->video_hqstream_path ) . '</li>';
 				echo '<li>video_caption : ' . $channel_video_details->video_caption . '</li>';
 				echo '<li>video_language : ' . $channel_video_details->video_language . '</li>';
 				echo '</ul></li>';
