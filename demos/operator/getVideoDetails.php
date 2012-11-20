@@ -78,7 +78,9 @@ try {
 		echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
 		echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
 		echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
+		echo '<li>video_webm_path : ' . uncdata ( $operator_video->video_webm_path ) . '</pre></li>';
 		echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</pre></li>';
+		echo '<li>video_hqstream_path : ' . uncdata ( $operator_video->video_hqstream_path ) . '</pre></li>';		
 		echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
 		echo '<li>video_language : ' . $operator_video->video_language . '</li>';
 		echo '<ul>';
