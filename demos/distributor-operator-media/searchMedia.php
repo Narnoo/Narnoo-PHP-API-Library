@@ -71,7 +71,7 @@ try {
 } 
 	</pre>
 	<div id="demo-frame">
-	<?php if (isset ( $postback )==false){ ?>
+	<?php if ($postback==false){ ?>
 		<form method="post">
 			<label for="media_type">media_type</label><select name="media_type">
 				<option value="image">image</option>

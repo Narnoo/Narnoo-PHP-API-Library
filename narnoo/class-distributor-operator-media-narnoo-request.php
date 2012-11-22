@@ -81,6 +81,13 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		
 		$params = array_merge ( $params, array ("media_type" => $media_type ) );
 		
+		
+		
+		if (is_null ( $business_name ) == false && empty ( $business_name ) == false) {
+			$params = array_merge ( $params, array ("business_name" => $business_name ) );
+		}
+		
+		
 		if (is_null ( $country ) == false && empty ( $country ) == false) {
 			$params = array_merge ( $params, array ("country" => $country ) );
 		}
@@ -116,7 +123,7 @@ class DistributorOperatorMediaNarnooRequest extends NarnooRequest {
 		if (is_null ( $longitude ) == false && empty ( $longitude ) == false) {
 			$params = array_merge ( $params, array ("longitude" => $longitude ) );
 		}
-		
+	
 		if (is_null ( $keywords ) == false && empty ( $keywords ) == false) {
 			$params = array_merge ( $params, array ("keywords" => $keywords ) );
 		}
