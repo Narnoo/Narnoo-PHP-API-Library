@@ -124,6 +124,7 @@ try {
 				
 				if ($media_type == 'brochure') {
 					echo '<li><dl>';
+					echo "<dt>operator_id</dt><dd>" . $item->operator_id . "</dd>";
 					echo "<dt>brochure_id</dt><dd>" . $item->brochure_id . "</dd>";
 					echo "<dt>entry_date</dt><dd>" . $item->entry_date . "</dd>";
 					echo "<dt>thumb_image_path</dt><dd>" . uncdata ( $item->thumb_image_path ) . "</dd>";
@@ -160,6 +161,7 @@ try {
 				
 				if ($media_type == 'video') {
 					echo '<li><dl>';
+					echo "<dt>operator_id</dt><dd>" . $item->operator_id . "</dd>";
 					echo "<dt>video_id</dt><dd>" . $item->video_id . "</dd>";
 					echo "<dt>entry_date</dt><dd>" . $item->entry_date . "</dd>";
 					echo "<dt>video_thumb_image_path</dt><dd>" . uncdata ( $item->video_thumb_image_path ) . "</dd>";
