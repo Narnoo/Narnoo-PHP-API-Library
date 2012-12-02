@@ -110,6 +110,7 @@ try {
 				
 				if ($media_type == 'image') {
 					echo '<li><dl>';
+					echo "<dt>operator_id</dt><dd>" . $item->operator_id . "</dd>";
 					echo "<dt>media_id</dt><dd>" . $item->media_id . "</dd>";
 					echo "<dt>entry_date</dt><dd>" . $item->entry_date . "</dd>";
 					echo "<dt>thumb_media_path</dt><dd>" . uncdata ( $item->thumb_media_path ) . "</dd>";
