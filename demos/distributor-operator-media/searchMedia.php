@@ -129,33 +129,8 @@ try {
 					echo "<dt>entry_date</dt><dd>" . $item->entry_date . "</dd>";
 					echo "<dt>thumb_image_path</dt><dd>" . uncdata ( $item->thumb_image_path ) . "</dd>";
 					echo "<dt>preview_image_path</dt><dd>" . uncdata ( $item->preview_image_path ) . "</dd>";
-					
-					$standard_pages = $item->standard_pages;
-					
-					echo "<dt>standard_pages</dt><dd><ul>";
-					if (isset ( $standard_pages )) {
-						echo '<li>page_0: ' . $standard_pages->page_0 . '</li>';
-						echo '<li>page_1: ' . $standard_pages->page_1 . '</li>';
-						echo '<li>page_2: ' . $standard_pages->page_2 . '</li>';
-						echo '<li>page_3: ' . $standard_pages->page_3 . '</li>';
-						echo '<li>page_4: ' . $standard_pages->page_4 . '</li>';
-						echo '<li>page_5: ' . $standard_pages->page_5 . '</li>';
-					
-					}
-					
-					echo "</ul></dd>";
-					
-					$zoom_page = $item->zoom_page;
-					echo '<dt>zoom_page </dt><dd><ul>';
-					
-					if (isset ( $zoom_page )) {
-						echo '<li>page_order_xml_config: ' . $zoom_pages->page_order_xml_config . '</li>';
-						echo '<li>file_path_to_pdf: ' . uncdata ( $zoom_pages->file_path_to_pdf ) . '</li>';
-						echo '<li>validity_date: ' . $zoom_pages->validity_date . '</li>';
-						echo '<li>brochure_caption: ' . $zoom_pages->brochure_caption . '</li>';
-					}
-					echo '</ul></dd>';
-					
+					echo '<dt>validity_date: ' . $item->validity_date . '</dt>';
+					echo '<dt>brochure_caption: ' . $item->brochure_caption . '</dt>';
 					echo '</dl></li>';
 				}
 				
@@ -167,7 +142,6 @@ try {
 					echo "<dt>video_thumb_image_path</dt><dd>" . uncdata ( $item->video_thumb_image_path ) . "</dd>";
 					echo "<dt>video_pause_image_path</dt><dd>" . uncdata ( $item->video_pause_image_path ) . "</dd>";
 					echo "<dt>video_preview_path</dt><dd>" . uncdata ( $item->video_preview_path ) . "</dd>";
-					echo "<dt>video_stream_path</dt><dd>" . uncdata ( $item->video_stream_path ) . "</dd>";
 					echo "<dt>video_caption</dt><dd>" . $item->video_caption . "</dd>";
 					echo "<dt>video_language</dt><dd>" . $item->video_language . "</dd>";
 					
