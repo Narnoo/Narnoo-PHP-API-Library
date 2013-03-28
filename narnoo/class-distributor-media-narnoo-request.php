@@ -138,7 +138,7 @@ class DistributorMediaNarnooRequest extends NarnooRequest {
 		// return $message;
 		// }
 		
-		return $this->getResponse ( $this->getXmlApi (), 'searchMedia', $params );
+		return $this->getResponse ( $this->getDistXmlApi (), 'searchMedia', $params );
 	}
 	
 	function downloadImage($image_id) {
