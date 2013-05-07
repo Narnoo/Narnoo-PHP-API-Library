@@ -81,6 +81,12 @@ try {
 		echo '<dt>video_webm_path<dt><dd>  ' . uncdata ( $distributor_video->video_webm_path ) . '</pre></dt>';
 		echo '<dt>video_stream_path<dt><dd>  ' . uncdata ( $distributor_video->video_stream_path ) . '</pre></dt>';
 		echo '<dt>video_hqstream_path<dt><dd>  ' . uncdata ( $distributor_video->video_hqstream_path ) . '</pre></dt>';
+		echo '<dt>secure_video_thumb_image_path<dt><dd>' . $distributor_video->secure_video_thumb_image_path . '</dt>';
+		echo '<dt>secure_video_pause_image_path <dt><dd> ' . $distributor_video->secure_video_pause_image_path . '</dt>';
+		echo '<dt>secure_video_preview_path<dt><dd> ' . $distributor_video->secure_video_preview_path . '</dt>';
+		echo '<dt>secure_video_webm_path<dt><dd>  ' . uncdata ( $distributor_video->secure_video_webm_path ) . '</pre></dt>';
+		echo '<dt>secure_video_stream_path<dt><dd>  ' . uncdata ( $distributor_video->secure_video_stream_path ) . '</pre></dt>';
+		echo '<dt>secure_video_hqstream_path<dt><dd>  ' . uncdata ( $distributor_video->secure_video_hqstream_path ) . '</pre></dt>';
 		echo '<dt>video_caption <dt><dd> ' . $distributor_video->video_caption . '</dt>';
 		echo '<dt>video_language <dt><dd>' . $distributor_video->video_language . '</dt>';
 		echo '</dl>';

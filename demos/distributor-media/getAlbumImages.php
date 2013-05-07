@@ -83,6 +83,9 @@ try {
 			echo '<li>thumb_image_path:' . $album_image->thumb_image_path . '</li>';
 			echo '<li>preview_image_path:' . $album_image->preview_image_path . '</li>';
 			echo '<li>large_image_path:' . $album_image->large_image_path . '</li>';
+			echo '<li>secure_thumb_image_path:' . $album_image->secure_thumb_image_path . '</li>';
+			echo '<li>secure_preview_image_path:' . $album_image->secure_preview_image_path . '</li>';
+			echo '<li>secure_large_image_path:' . $album_image->secure_large_image_path . '</li>';
 			echo '<li>image_caption:' . $album_image->image_caption . '</li>';
 			
 			echo '</ul></li>';

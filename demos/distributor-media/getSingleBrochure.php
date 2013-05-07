@@ -77,6 +77,9 @@ try {
 		echo '<dt>thumb_image_path</dt><dd>' . $brochure->thumb_image_path . '</dd>';
 		echo '<dt>preview_image_path</dt><dd>' . $brochure->preview_image_path . '</dd>';
 		echo '<dt>page_order_xml_config</dt><dd>' . $brochure->page_order_xml_config . '</dd>';
+		echo '<dt>secure_thumb_image_path</dt><dd>' . $brochure->secure_thumb_image_path . '</dd>';
+		echo '<dt>secure_preview_image_path</dt><dd>' . $brochure->secure_preview_image_path . '</dd>';
+		echo '<dt>secure_page_order_xml_config</dt><dd>' . $brochure->secure_page_order_xml_config . '</dd>';
 		echo '<dt>file_path_to_pdf</dt><dd>' . uncdata ( $brochure->file_path_to_pdf ) . '</dd>';
 		echo '<dt>validity_date</dt><dd>' . $brochure->validity_date . '</dd>';
 		echo '<dt>brochure_caption</dt><dd>' . $brochure->brochure_caption . '</dd>';

@@ -81,6 +81,9 @@ if (isset ( $operator_id ) == false) {
 			echo '<li>thumb_image_path : ' . $image->thumb_image_path . '</li>';
 			echo '<li>preview_image_path : ' . $image->preview_image_path . '</li>';
 			echo '<li>large_image_path : ' . $image->large_image_path . '</li>';
+			echo '<li>secure_thumb_image_path : ' . $image->secure_thumb_image_path . '</li>';
+			echo '<li>secure_preview_image_path : ' . $image->secure_preview_image_path . '</li>';
+			echo '<li>secure_large_image_path : ' . $image->secure_large_image_path . '</li>';
 			echo '<li>image_caption : ' . $image->image_caption . '</li>';
 			echo '</ul></li>';
 		}

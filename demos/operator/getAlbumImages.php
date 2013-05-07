@@ -79,6 +79,9 @@ if (isset ( $album_name ) == false) {
 			echo '<li>thumb_image_path : ' . $album->thumb_image_path . '</li>';
 			echo '<li>preview_image_path : ' . $album->preview_image_path . '</li>';
 			echo '<li>large_image_path : ' . $album->large_image_path . '</li>';
+			echo '<li>secure_thumb_image_path : ' . $album->secure_thumb_image_path . '</li>';
+			echo '<li>secure_preview_image_path : ' . $album->secure_preview_image_path . '</li>';
+			echo '<li>secure_large_image_path : ' . $album->secure_large_image_path . '</li>';
 			echo '<li>image_caption : ' . $album->image_caption . '</li>';
 			
 			echo '</ul></li>';

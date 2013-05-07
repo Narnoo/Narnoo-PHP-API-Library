@@ -65,8 +65,9 @@ try {
 					echo '<li>video_thumb_image_path : ' . $operator_video->video_thumb_image_path . '</li>';
 					echo '<li>video_pause_image_path : ' . $operator_video->video_pause_image_path . '</li>';
 					echo '<li>video_preview_path : ' . $operator_video->video_preview_path . '</li>';
-					
-					echo '<li>video_stream_path : ' . uncdata ( $operator_video->video_stream_path ) . '</li>';
+					echo '<li>secure_video_thumb_image_path : ' . $operator_video->secure_video_thumb_image_path . '</li>';
+					echo '<li>secure_video_pause_image_path : ' . $operator_video->secure_video_pause_image_path . '</li>';
+					echo '<li>secure_video_preview_path : ' . $operator_video->secure_video_preview_path . '</li>';
 					echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
 					echo '<li>video_language : ' . $operator_video->video_language . '</li>';
 					echo '</ul></li>';

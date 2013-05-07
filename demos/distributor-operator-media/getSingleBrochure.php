@@ -79,6 +79,9 @@ try {
 		echo '<li>thumb_image_path : ' . $brochure->thumb_image_path . '</li>';
 		echo '<li>preview_image_path : ' . $brochure->preview_image_path . '</li>';
 		echo '<li>page_order_xml_config : ' . $brochure->page_order_xml_config . '</li>';
+		echo '<li>secure_thumb_image_path : ' . $brochure->secure_thumb_image_path . '</li>';
+		echo '<li>secure_preview_image_path : ' . $brochure->secure_preview_image_path . '</li>';
+		echo '<li>secure_page_order_xml_config : ' . $brochure->secure_page_order_xml_config . '</li>';
 		echo '<li>file_path_to_pdf : ' . uncdata ( $brochure->file_path_to_pdf ) . '</li>';
 		echo '<li>validity_date : ' . $brochure->validity_date . '</li>';
 		echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
