@@ -62,6 +62,7 @@ try {
 					echo '<li><ul>';
 					echo '<li>album_id : ' . $album->album_id . '</li>';
 					echo '<li>album_name : ' . $album->album_name . '</li>';
+                                        echo '<li>image_privileges : ' . $album->image_privileges . '</li>';
 					echo '</ul></li>';
 				}
 				

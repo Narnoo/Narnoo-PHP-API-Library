@@ -69,6 +69,7 @@ try {
 					echo '<li>secure_preview_image_path : ' . $image->secure_preview_image_path . '</li>';
 					echo '<li>secure_large_image_path : ' . $image->secure_large_image_path . '</li>';
 					echo '<li>image_caption : ' . $image->image_caption . '</li>';
+                                        echo '<li>image_privileges : ' . $image->image_privileges . '</li>';
 					echo '</ul></li>';
 				}
 				

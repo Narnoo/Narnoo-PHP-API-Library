@@ -85,6 +85,7 @@ try {
 		echo '<li>validity_date : ' . $brochure->validity_date . '</li>';
 		echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
 		echo '<li>format : ' . $brochure->format . '</li>';
+                echo '<li>brochure_privileges : ' . $brochure->brochure_privileges . '</li>';
 		$pages = $brochure->pages;
 		$standard_pages = $pages->standard_pages;
 		echo '<li>standard_pages : <ul>';

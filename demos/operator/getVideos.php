@@ -70,6 +70,7 @@ try {
 					echo '<li>secure_video_preview_path : ' . $operator_video->secure_video_preview_path . '</li>';
 					echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
 					echo '<li>video_language : ' . $operator_video->video_language . '</li>';
+                                        echo '<li>video_privileges : ' . $operator_video->video_privileges . '</li>';
 					echo '</ul></li>';
 				
 				}

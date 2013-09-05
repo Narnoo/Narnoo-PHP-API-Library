@@ -71,6 +71,7 @@ try {
 					echo '<li>file_path_to_pdf : ' . uncdata ( $brochure->file_path_to_pdf ) . '</li>';
 					echo '<li>validity_date : ' . $brochure->validity_date . '</li>';
 					echo '<li>brochure_caption : ' . $brochure->brochure_caption . '</li>';
+                                        echo '<li>brochure_privileges : ' . $brochure->brochure_privileges . '</li>';
 					echo '</ul></li>';
 				}
 				echo '</ul>';

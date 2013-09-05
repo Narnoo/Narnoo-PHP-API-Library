@@ -83,7 +83,7 @@ if (isset ( $album_name ) == false) {
 			echo '<li>secure_preview_image_path : ' . $album->secure_preview_image_path . '</li>';
 			echo '<li>secure_large_image_path : ' . $album->secure_large_image_path . '</li>';
 			echo '<li>image_caption : ' . $album->image_caption . '</li>';
-			
+                        echo '<li>image_privileges : ' . $album->image_privileges . '</li>';
 			echo '</ul></li>';
 		}
 		

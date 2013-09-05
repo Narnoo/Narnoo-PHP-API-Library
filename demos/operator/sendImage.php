@@ -71,6 +71,7 @@ try {
 		} else {
 			$download_link = uncdata ( $ret->download_link );
 			echo "expiry_date: $ret->expiry_date <br/>";
+                        echo "image_privileges: $ret->image_privileges <br/>";
 			echo "download_link: <a href='$download_link' target='_blank'>$download_link</a>";
 		}
 		

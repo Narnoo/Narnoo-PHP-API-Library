@@ -89,6 +89,7 @@ try {
 		echo '<li>secure_video_hqstream_path : ' . uncdata ( $operator_video->secure_video_hqstream_path ) . '</pre></li>';		
 		echo '<li>video_caption : ' . $operator_video->video_caption . '</li>';
 		echo '<li>video_language : ' . $operator_video->video_language . '</li>';
+                echo '<li>video_priveleges : ' . $operator_video->video_priveleges . '</li>';
 		echo '<ul>';
 	}
 	
